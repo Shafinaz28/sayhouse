@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Construction Projects | SayHomes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root{--navy:#0F1B2D;--primary:#1A3C6E;--secondary:#2F5DAA;--gold:#C9A84C;--cream:#FAF7F2;--light:#F0EBE3;--text:#2C2C2C;--muted:#7A7269}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
+    img{max-width:100%;display:block}
+    #navbar{position:fixed;top:0;left:0;width:100%;height:72px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,247,242,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,.07);z-index:100}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--navy);text-decoration:none;white-space:nowrap}.nav-logo span{color:var(--primary)}
+    .nav-links{display:flex;gap:2.3rem;list-style:none}.nav-links a{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none}.nav-links a:hover,.nav-links a.active{color:var(--primary)}
+    .nav-cta{background:var(--primary);color:#fff;padding:10px 24px;border-radius:3px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+    .nav-toggle{display:none;width:44px;height:44px;border:1px solid rgba(15,27,45,.15);background:#fff;color:var(--navy);border-radius:999px;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer}
+    .mobile-menu{position:fixed;top:82px;left:16px;right:16px;z-index:99;background:rgba(255,255,255,.98);border:1px solid rgba(15,27,45,.08);border-radius:22px;box-shadow:0 24px 70px rgba(15,27,45,.18);overflow:hidden;opacity:0;transform:translateY(-12px);pointer-events:none;visibility:hidden;transition:.3s}
+    .mobile-menu.active{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible}.mobile-menu a{display:flex;align-items:center;gap:12px;padding:16px 20px;color:var(--navy);text-decoration:none;font-size:.84rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--light)}.mobile-menu a i{color:var(--primary);width:18px}.mobile-menu a:last-child{background:var(--primary);color:#fff;justify-content:center}.mobile-menu a:last-child i{color:#fff}
+    .page-hero{position:relative;height:380px;margin-top:72px;display:flex;align-items:center;justify-content:center;overflow:hidden}.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,35,.72),rgba(10,20,35,.58))}
+    .page-hero-inner{position:relative;z-index:2;text-align:center;padding:0 20px}.page-hero-inner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff}.page-hero-inner h1 em{color:var(--gold);font-style:italic}
+    .breadcrumb{display:flex;justify-content:center;gap:8px;margin-top:14px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;flex-wrap:wrap}.breadcrumb a{color:rgba(255,255,255,.58);text-decoration:none}.breadcrumb span{color:var(--gold)}
+    .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
+    .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .project-content{padding:24px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem}.gallery-grid{padding:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-grid img{width:100%;height:220px;object-fit:cover}
+
+    @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-grid{grid-template-columns:1fr;padding:16px}.gallery-grid img{height:230px}}
+   /* Professional Footer */
+    .main-footer {
+      background:var(--navy);
+      color:#fff;
+      padding:64px 40px 20px;
+    }
+
+    .footer-grid {
+      max-width:1200px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
+      gap:44px;
+      align-items:start;
+    }
+
+    .footer-grid > div {
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+    }
+
+    .main-footer .footer-logo {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.8rem;
+      font-weight:700;
+      color:rgba(255,255,255,0.85);
+      margin-bottom:14px;
+    }
+
+    .main-footer .footer-logo span {
+      color:var(--primary);
+    }
+
+    .footer-text {
+      font-size:0.88rem;
+      line-height:1.8;
+      color:rgba(255,255,255,0.55);
+      max-width:320px;
+    }
+
+    .footer-title {
+      font-size:0.78rem;
+      font-weight:700;
+      letter-spacing:0.16em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:18px;
+    }
+
+    .footer-links {
+      list-style:none;
+      display:flex;
+      flex-direction:column;
+      gap:11px;
+    }
+
+    .footer-links a {
+      text-decoration:none;
+      color:rgba(255,255,255,0.58);
+      font-size:0.86rem;
+      transition:color .25s, padding-left .25s;
+    }
+
+    .footer-links a:hover {
+      color:#fff;
+      padding-left:5px;
+    }
+
+    .footer-social {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .footer-social a {
+      width:42px;
+      height:42px;
+      background:rgba(255,255,255,0.08);
+      border:1px solid rgba(255,255,255,0.12);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:50%;
+      text-decoration:none;
+      transition:background .25s, transform .25s;
+    }
+
+    .footer-social a:hover {
+      background:var(--primary);
+      transform:translateY(-3px);
+    }
+    .footer-social-contact {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      color:rgba(255,255,255,0.62);
+      font-size:0.86rem;
+      line-height:1.5;
+    }
+    .footer-social-contact div {
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+    }
+    .footer-social-contact i {
+      color:var(--gold);
+      width:18px;
+      margin-top:3px;
+    }
+
+    .footer-bottom {
+      max-width:1200px;
+      width:100%;
+      margin:42px auto 0;
+      padding-top:20px;
+      border-top:1px solid rgba(255,255,255,0.1);
+      display:flex;
+      justify-content:center;
+      flex-direction:column;
+      align-items:center;
+      gap:10px;
+      color:rgba(255,255,255,0.35);
+      font-size:0.75rem;
+      text-align:center;
+    }
+
+    @media(max-width:900px){
+      .footer-grid {
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:560px){
+      .main-footer {
+        padding:52px 20px 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns:1fr;
+        gap:34px;
+      }
+
+      .footer-bottom {
+        flex-direction:column;
+        text-align:center;
+      }
+    }
+
+
+    /* Professional Footer */
+    .main-footer { background: var(--navy); color: #fff; padding: 64px 40px 22px; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 0.8fr 0.9fr 1.4fr; gap: 48px; align-items: flex-start; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; }
+    .footer-logo span { color: var(--primary); }
+    .footer-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.62); max-width: 260px; }
+    .footer-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
+    .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
+    .footer-links a { text-decoration: none; color: rgba(255,255,255,0.65); font-size: 0.9rem; line-height: 1.45; transition: color .25s, padding-left .25s; }
+    .footer-links a:hover { color: #fff; padding-left: 5px; }
+    .footer-social { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 18px; }
+    .footer-social a { width: 42px; height: 42px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); color: #fff; display: flex; align-items: center; justify-content: center; border-radius: 50%; text-decoration: none; transition: background .25s, transform .25s; }
+    .footer-social a:hover { background: var(--primary); transform: translateY(-3px); }
+    .footer-social-contact { display: flex; flex-direction: column; gap: 10px; color: rgba(255,255,255,0.62); font-size: 0.86rem; line-height: 1.5; }
+    .footer-social-contact div { display: flex; align-items: flex-start; gap: 10px; }
+    .footer-social-contact i { color: var(--gold); width: 18px; margin-top: 3px; }
+    .footer-bottom { max-width: 1200px; width: 100%; margin: 42px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+    .footer-bottom p { margin: 0; font-size: 0.78rem; color: rgba(255,255,255,0.38); letter-spacing: 0.02em; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 38px; } }
+    @media (max-width: 560px) { .main-footer { padding: 48px 22px 22px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-text { max-width: 100%; } .footer-social { max-width: 230px; } .footer-bottom { margin-top: 34px; } }
+
+    /* Unified Navbar (same as index.html) */
+    #navbar {
+      background:transparent;
+      box-shadow:none;
+      transition:background .35s, box-shadow .35s;
+    }
+    #navbar.scrolled,
+    body.menu-open #navbar {
+      background:rgba(250,247,242,0.97);
+      backdrop-filter:blur(16px);
+      box-shadow:0 1px 0 rgba(0,0,0,0.08);
+    }
+    .nav-logo { color:var(--navy); transition:color .35s; }
+    .nav-logo span { color:var(--primary); }
+    .nav-links a {
+      color:var(--text);
+      padding:8px 14px;
+      border-radius:4px;
+      transition:all .25s;
+    }
+    .nav-links a:hover,
+    #navbar.scrolled .nav-links a:hover,
+    .nav-links a.active,
+    #navbar.scrolled .nav-links a.active,
+    body.menu-open .nav-links a.active {
+      background:var(--primary);
+      color:#fff;
+    }
+    .nav-toggle {
+      border:1px solid rgba(15,27,45,0.15);
+      background:#fff;
+      color:var(--navy);
+      transition:all .3s;
+      box-shadow:0 8px 24px rgba(15,27,45,0.08);
+    }
+
+  </style>
+</head>
+<body>
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Say<span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="projects.html" class="active">Projects</a></li><li><a href="packages.html">Packages</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Request a Call</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="projects.html"><i class="fa-solid fa-images"></i>Projects</a>
+    <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
+    <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
+    <a href="contact.html"><i class="fa-solid fa-phone"></i>Request a Call</a>
+  </div>
+
+  <div class="page-hero">
+    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" alt="Building Construction Projects">
+    <div class="page-hero-inner">
+      <h1>Building <em>Construction</em></h1>
+      <div class="breadcrumb"><a href="projects.html">Projects</a><span>/</span><span>Building Construction</span></div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="inner">
+      <div class="section-head">
+        <span class="section-tag">Construction Project Gallery</span>
+        <h2 class="section-title">Building Construction Projects</h2>
+        <p class="section-sub">Explore SayHomes construction works. Click any project to view its image gallery.</p>
+      </div>
+      <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+  </section>
+
+  <div class="modal" id="galleryModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Project Gallery</h3>
+        <button class="close-btn" onclick="closeGallery()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="gallery-grid" id="modalImages"></div>
+    </div>
+  </div>
+
+   <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">Say<span>Homes</span></div>
+        <p class="footer-text">
+          We build modern homes with quality construction, elegant design, transparent pricing, and professional project execution.
+        </p>
+
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Projects</h4>
+        <ul class="footer-links">
+          <li><a href="projects.html">All Projects</a></li>
+          <li><a href="interior.html">Interior Projects</a></li>
+          <li><a href="BuildingConstruction.html">Building Construction</a></li>
+          <li><a href="CommercialProjects.html">Commercial Projects</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Follow Us</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919686326936" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <div class="footer-social-contact">
+          <div><i class="fa-solid fa-phone"></i> +91 9686326936</div>
+          <div><i class="fa-solid fa-envelope"></i> contact@sayhomes.co.in</div>
+          <div><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 SayHomes. All rights reserved.</p>
+      <p>Designed for premium home construction in Bengaluru</p>
+    </div>
+  </footer>
+
+  <script>
+    const projects = [
+      ['Independent House Construction','Premium independent home with strong structure, modern elevation, and planned execution.','https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'],
+      ['Duplex Home Construction','Spacious duplex construction with smart layout, durable materials, and elegant facade.','https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80'],
+      ['Villa Construction','Luxury villa project with premium elevation, wide spaces, and quality finishing.','https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80'],
+      ['G+1 Residential Project','Efficient G+1 construction with practical planning and strong civil execution.','https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80'],
+      ['G+2 Home Construction','Modern G+2 building designed for space, comfort, and long-term durability.','https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=900&q=80'],
+      ['Modern Elevation Project','Contemporary elevation-focused project with clean lines and premium exterior details.','https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80'],
+      ['Residential Layout Construction','Well-planned residential construction with efficient material usage and site supervision.','https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=900&q=80'],
+      ['Turnkey Home Construction','Complete end-to-end home construction from foundation to final handover.','https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80'],
+      ['Premium House Project','Premium house construction with structural quality, elevation design, and refined finish.','https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80']
+    ];
+
+    const baseImages = [
+      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=900&q=80'
+    ];
+
+    document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
+      <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p[0]}', ${i})">
+        <div class="project-img"><img src="${p[2]}" alt="${p[0]}"><span class="project-badge">Construction</span></div>
+        <div class="project-content"><h3>${p[0]}</h3><p>${p[1]}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
+      </div>
+    `).join('');
+
+    function openGallery(title, index) {
+      document.getElementById('modalTitle').innerText = title;
+      const rotated = baseImages.slice(index % baseImages.length).concat(baseImages.slice(0, index % baseImages.length));
+      document.getElementById('modalImages').innerHTML = rotated.map(src => `<img src="${src}" alt="${title}">`).join('');
+      document.getElementById('galleryModal').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeGallery() {
+      document.getElementById('galleryModal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('galleryModal').addEventListener('click', function(e){ if(e.target === this) closeGallery(); });
+
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleIcon = navToggle.querySelector('i');
+    const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const navTargets = new Set([currentPage]);
+    if (!currentPage) navTargets.add('index.html');
+    if (['interior.html', 'buildingconstruction.html', 'commercialprojects.html'].includes(currentPage)) {
+      navTargets.add('projects.html');
+    }
+    document.querySelectorAll('.nav-links a, #mobileMenu a').forEach((link) => {
+      const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
+      if (navTargets.has(href)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+    function updateNavbar() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', updateNavbar);
+    window.addEventListener('load', updateNavbar);
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggleIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        toggleIcon.className = 'fa-solid fa-bars';
+      });
+    });
+  </script>
+</body>
+</html>

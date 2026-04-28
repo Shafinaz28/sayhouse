@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | SayHomes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --navy:#0F1B2D;
+      --primary:#1A3C6E;
+      --secondary:#2F5DAA;
+      --gold:#C9A84C;
+      --cream:#FAF7F2;
+      --light:#F0EBE3;
+      --text:#2C2C2C;
+      --muted:#7A7269;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'DM Sans', sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    img { max-width:100%; display:block; }
+
+    .reveal {
+      opacity:0;
+      transform:translateY(44px);
+      transition:opacity 0.85s cubic-bezier(.22,.61,.36,1), transform 0.85s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal.from-left { transform:translateX(-56px); }
+    .reveal.from-right { transform:translateX(56px); }
+    .reveal.scale-in { transform:scale(0.92); }
+    .reveal.visible { opacity:1; transform:translate(0) scale(1); }
+    .d1 { transition-delay:.1s; }
+    .d2 { transition-delay:.2s; }
+    .d3 { transition-delay:.3s; }
+    .d4 { transition-delay:.4s; }
+
+    #navbar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:72px;
+      padding:0 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      background:rgba(250,247,242,0.97);
+      backdrop-filter:blur(16px);
+      box-shadow:0 1px 0 rgba(0,0,0,0.07);
+      z-index:100;
+    }
+
+    .nav-logo {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.75rem;
+      font-weight:700;
+      color:var(--navy);
+      letter-spacing:-0.5px;
+      text-decoration:none;
+      white-space:nowrap;
+    }
+
+    .nav-logo span { color:var(--primary); }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:2.3rem;
+      list-style:none;
+    }
+
+    .nav-links a {
+      font-size:0.8rem;
+      font-weight:600;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:var(--text);
+      text-decoration:none;
+      transition:color 0.3s;
+      white-space:nowrap;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color:var(--primary);
+    }
+
+    .nav-cta {
+      background:var(--primary);
+      color:#fff;
+      padding:10px 24px;
+      border-radius:3px;
+      font-size:0.76rem;
+      font-weight:700;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:background 0.3s, transform 0.2s;
+      white-space:nowrap;
+    }
+
+    .nav-cta:hover {
+      background:var(--secondary);
+      transform:translateY(-1px);
+    }
+
+    .nav-toggle {
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid rgba(15,27,45,0.15);
+      background:#fff;
+      color:var(--navy);
+      border-radius:999px;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
+      cursor:pointer;
+      box-shadow:0 4px 12px rgba(15,27,45,0.08);
+      transition:transform 0.2s, color 0.2s;
+    }
+
+    .mobile-menu {
+      display:block;
+      position:fixed;
+      top:82px;
+      left:16px;
+      right:16px;
+      z-index:99;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(15,27,45,0.08);
+      border-radius:22px;
+      box-shadow:0 24px 70px rgba(15,27,45,0.18);
+      overflow:hidden;
+      opacity:0;
+      transform:translateY(-12px);
+      pointer-events:none;
+      visibility:hidden;
+      transition:opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu.active {
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:auto;
+      visibility:visible;
+    }
+
+    .mobile-menu a {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 20px;
+      color:var(--navy);
+      text-decoration:none;
+      font-size:0.84rem;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--light);
+    }
+
+    .mobile-menu a i {
+      color:var(--primary);
+      width:18px;
+    }
+
+    .mobile-menu a:last-child {
+      background:var(--primary);
+      color:#fff;
+      border-bottom:0;
+      justify-content:center;
+    }
+
+    .mobile-menu a:last-child i { color:#fff; }
+
+    .page-hero {
+      position:relative;
+      height:380px;
+      margin-top:72px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+
+    .page-hero img {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .page-hero::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(10,20,35,0.72), rgba(10,20,35,0.58));
+    }
+
+    .page-hero-inner {
+      position:relative;
+      z-index:2;
+      text-align:center;
+      padding:0 20px;
+    }
+
+    .page-hero-inner h1 {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2.4rem, 5vw, 3.8rem);
+      font-weight:300;
+      color:#fff;
+      letter-spacing:-0.5px;
+      line-height:1.08;
+    }
+
+    .page-hero-inner h1 em {
+      font-style:italic;
+      color:var(--gold);
+    }
+
+    .breadcrumb {
+      display:flex;
+      justify-content:center;
+      gap:8px;
+      margin-top:14px;
+      font-size:0.78rem;
+      letter-spacing:0.12em;
+      text-transform:uppercase;
+      flex-wrap:wrap;
+    }
+
+    .breadcrumb a {
+      color:rgba(255,255,255,0.58);
+      text-decoration:none;
+      transition:color 0.3s;
+    }
+
+    .breadcrumb a:hover { color:var(--gold); }
+    .breadcrumb span { color:var(--gold); }
+
+    .section { padding:96px 40px; }
+    .inner { max-width:1200px; margin:0 auto; }
+
+    .section-tag {
+      font-size:0.68rem;
+      letter-spacing:0.25em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:14px;
+      display:block;
+    }
+
+    .section-title {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2rem, 3.5vw, 3rem);
+      font-weight:600;
+      color:var(--navy);
+      line-height:1.1;
+    }
+
+    .section-sub {
+      font-size:0.95rem;
+      color:var(--muted);
+      line-height:1.85;
+      margin-top:16px;
+    }
+
+    .about-grid,
+    .values-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+
+    .about-img-wrap { position:relative; }
+
+    .about-img,
+    .values-img {
+      width:100%;
+      height:520px;
+      object-fit:cover;
+    }
+
+    .about-accent {
+      position:absolute;
+      bottom:-20px;
+      right:-20px;
+      width:140px;
+      height:140px;
+      border:2px solid var(--gold);
+      opacity:0.35;
+      pointer-events:none;
+    }
+
+    .about-grid p {
+      font-size:0.97rem;
+      color:var(--muted);
+      line-height:1.9;
+      margin-top:18px;
+    }
+
+    .check-list {
+      list-style:none;
+      margin-top:28px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    .check-list li {
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      font-size:0.9rem;
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    .check-list li i {
+      color:var(--primary);
+      font-size:0.75rem;
+      margin-top:6px;
+      flex-shrink:0;
+    }
+
+    .btn-group {
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:36px;
+    }
+
+    .btn-solid,
+    .btn-ghost {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:46px;
+      padding:13px 30px;
+      border-radius:3px;
+      font-size:0.76rem;
+      font-weight:700;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:background 0.3s, transform 0.2s, color 0.3s;
+    }
+
+    .btn-solid {
+      background:var(--primary);
+      color:#fff;
+    }
+
+    .btn-solid:hover {
+      background:var(--secondary);
+      transform:translateY(-1px);
+    }
+
+    .btn-ghost {
+      border:1px solid var(--primary);
+      color:var(--primary);
+    }
+
+    .btn-ghost:hover {
+      background:var(--primary);
+      color:#fff;
+    }
+
+    #counter {
+      background:var(--navy);
+      padding:72px 40px;
+    }
+
+    .counter-grid {
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+      text-align:center;
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .counter-num {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2.8rem, 4.5vw, 4rem);
+      font-weight:700;
+      color:var(--gold);
+      line-height:1;
+    }
+
+    .counter-label {
+      font-size:0.72rem;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.45);
+      margin-top:10px;
+    }
+
+    .services-header {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:end;
+      margin-bottom:56px;
+    }
+
+    .services-grid {
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:2px;
+      background:var(--light);
+    }
+
+    .service-card {
+      background:#fff;
+      padding:44px 28px;
+      transition:background 0.35s, transform 0.3s;
+    }
+
+    .service-card:hover {
+      background:var(--navy);
+      transform:translateY(-4px);
+    }
+
+    .service-icon {
+      width:52px;
+      height:52px;
+      border:1px solid rgba(201,168,76,0.55);
+      border-radius:14px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
+      color:var(--primary);
+      background:rgba(26,60,110,0.05);
+      margin-bottom:24px;
+    }
+
+    .service-card:hover .service-icon {
+      color:var(--gold);
+      background:rgba(255,255,255,0.07);
+    }
+
+    .service-card h3 {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.3rem;
+      font-weight:600;
+      color:var(--navy);
+      margin-bottom:10px;
+      transition:color 0.3s;
+    }
+
+    .service-card:hover h3 { color:#fff; }
+
+    .service-card p {
+      font-size:0.84rem;
+      color:var(--muted);
+      line-height:1.8;
+      transition:color 0.3s;
+    }
+
+    .service-card:hover p { color:rgba(255,255,255,0.62); }
+
+    .values-list {
+      display:flex;
+      flex-direction:column;
+      gap:32px;
+      margin-top:36px;
+    }
+
+    .value-item {
+      display:flex;
+      gap:20px;
+    }
+
+    .value-num {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.4rem;
+      color:var(--gold);
+      font-weight:700;
+      min-width:30px;
+      line-height:1.2;
+    }
+
+    .value-item h4 {
+      font-size:0.95rem;
+      font-weight:700;
+      color:var(--navy);
+      margin-bottom:6px;
+    }
+
+    .value-item p {
+      font-size:0.84rem;
+      color:var(--muted);
+      line-height:1.75;
+    }
+
+  
+
+    @media (max-width:1100px) {
+      .nav-links { gap:1.4rem; }
+
+      .about-grid,
+      .values-grid,
+      .services-header {
+        grid-template-columns:1fr;
+        gap:44px;
+      }
+
+      .services-grid { grid-template-columns:1fr 1fr; }
+      .about-accent { display:none; }
+    }
+
+    @media (max-width:1024px) {
+      .nav-links,
+      .nav-cta { display:none; }
+
+      .nav-toggle { display:flex; }
+
+      .counter-grid {
+        grid-template-columns:1fr 1fr;
+        gap:36px;
+      }
+
+      .reveal.from-left,
+      .reveal.from-right {
+        transform:translateY(44px);
+      }
+
+      .reveal.visible {
+        transform:translateY(0);
+      }
+    }
+
+    @media (max-width:640px) {
+      #navbar {
+        height:66px;
+        padding:0 18px;
+      }
+
+      .nav-logo { font-size:1.55rem; }
+
+      .mobile-menu {
+        top:76px;
+        left:12px;
+        right:12px;
+        border-radius:18px;
+      }
+
+      .mobile-menu a {
+        padding:15px 18px;
+        font-size:0.78rem;
+      }
+
+      .page-hero {
+        height:300px;
+        margin-top:66px;
+      }
+
+      .page-hero-inner h1 { font-size:2.55rem; }
+      .breadcrumb { font-size:0.66rem; }
+
+      .section { padding:68px 20px; }
+
+      .section-title {
+        font-size:clamp(2rem, 11vw, 2.6rem);
+      }
+
+      .about-img,
+      .values-img {
+        height:330px;
+        border-radius:18px;
+      }
+
+      .services-grid { grid-template-columns:1fr; }
+
+      .service-card {
+        padding:36px 26px;
+        border-radius:18px;
+        box-shadow:0 14px 40px rgba(15,27,45,0.06);
+      }
+
+      #counter { padding:64px 20px; }
+
+      .counter-grid {
+        grid-template-columns:1fr 1fr;
+        gap:26px 18px;
+      }
+
+      .counter-num { font-size:3rem; }
+      .counter-label { font-size:0.62rem; }
+
+      .btn-group { flex-direction:column; }
+      .btn-solid, .btn-ghost { width:100%; }
+
+      .value-item { gap:14px; }
+
+      footer {
+        flex-direction:column;
+        text-align:center;
+        padding:30px 20px;
+      }
+    }
+
+    @media (max-width:380px) {
+      .section {
+        padding-left:16px;
+        padding-right:16px;
+      }
+
+      .counter-grid { grid-template-columns:1fr; }
+      .page-hero-inner h1 { font-size:2.25rem; }
+    }
+     /* Professional Footer */
+
+
+    /* Professional Footer */
+    .main-footer {
+      background: var(--navy);
+      color: #fff;
+      padding: 64px 40px 22px;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 0.9fr 1.4fr;
+      gap: 48px;
+      align-items: flex-start;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 14px;
+    }
+
+    .footer-logo span {
+      color: var(--primary);
+    }
+
+    .footer-text {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.62);
+      max-width: 260px;
+    }
+
+    .footer-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 18px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .footer-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.9rem;
+      line-height: 1.45;
+      transition: color .25s, padding-left .25s;
+    }
+
+    .footer-links a:hover {
+      color: #fff;
+      padding-left: 5px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .footer-social a {
+      width: 42px;
+      height: 42px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      text-decoration: none;
+      transition: background .25s, transform .25s;
+    }
+
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-social-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: rgba(255,255,255,0.62);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .footer-social-contact div {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .footer-social-contact i {
+      color: var(--gold);
+      width: 18px;
+      margin-top: 3px;
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      width: 100%;
+      margin: 42px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .footer-bottom p {
+      margin: 0;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.38);
+      letter-spacing: 0.02em;
+    }
+
+    /* Tablet */
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 38px;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 560px) {
+      .main-footer {
+        padding: 48px 22px 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-text {
+        max-width: 100%;
+      }
+
+      .footer-social {
+        max-width: 230px;
+      }
+
+      .footer-bottom {
+        margin-top: 34px;
+      }
+    }
+
+    /* Unified Navbar */
+    #navbar {
+      background:rgba(236,233,228,0.97);
+      box-shadow:0 1px 0 rgba(0,0,0,0.08);
+      transition:background .35s, box-shadow .35s;
+    }
+    #navbar.scrolled,
+    body.menu-open #navbar {
+      background:rgba(236,233,228,0.97);
+      backdrop-filter:blur(16px);
+      box-shadow:0 1px 0 rgba(0,0,0,0.08);
+    }
+    .nav-logo {
+      color:var(--navy);
+      transition:color .35s;
+    }
+    .nav-logo span { color:inherit; }
+    .nav-links a {
+      color:var(--text);
+      padding:8px 14px;
+      border-radius:4px;
+      transition:all .25s;
+    }
+    #navbar.scrolled .nav-links a,
+    body.menu-open .nav-links a { color:var(--text); }
+    .nav-links a:hover,
+    #navbar.scrolled .nav-links a:hover,
+    .nav-links a.active,
+    #navbar.scrolled .nav-links a.active,
+    body.menu-open .nav-links a.active {
+      background:var(--primary);
+      color:#fff;
+    }
+    .nav-toggle {
+      border:1px solid rgba(15,27,45,0.15);
+      background:#fff;
+      color:var(--navy);
+      transition:all .3s;
+      box-shadow:0 8px 24px rgba(15,27,45,0.08);
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Say<span>Homes</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="nav-cta">Request a Call</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="projects.html"><i class="fa-solid fa-images"></i>Projects</a>
+    <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
+    <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
+    <a href="contact.html"><i class="fa-solid fa-phone"></i>Request a Call</a>
+  </div>
+
+  <div class="page-hero">
+    <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?auto=format&fit=crop&w=1600&q=80" alt="About SayHomes">
+    <div class="page-hero-inner">
+      <h1>About <em>SayHomes</em></h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>About Us</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" style="background:#fff;">
+    <div class="inner">
+      <div class="about-grid">
+        <div class="reveal from-left">
+          <div class="about-img-wrap">
+            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80" class="about-img" alt="SayHomes Interior">
+            <div class="about-accent"></div>
+          </div>
+        </div>
+
+        <div class="reveal from-right">
+          <span class="section-tag">Who We Are</span>
+          <h2 class="section-title">Crafting Homes<br>With Purpose</h2>
+          <p class="section-sub">SayHomes is a professional home construction company focused on creating beautiful, functional, and long-lasting homes. We bring together expert architecture, quality construction, elegant interiors, and transparent project execution.</p>
+          <p>Our commitment to excellence and attention to detail result in stunning spaces that exude style, functionality, and timeless elegance — from the first blueprint to final handover.</p>
+
+          <ul class="check-list">
+            <li><i class="fa-solid fa-check"></i>Complete home construction solutions</li>
+            <li><i class="fa-solid fa-check"></i>In-house architects and engineers</li>
+            <li><i class="fa-solid fa-check"></i>Quality materials and professional execution</li>
+            <li><i class="fa-solid fa-check"></i>Transparent pricing and timely delivery</li>
+          </ul>
+
+          <div class="btn-group">
+            <a href="contact.html" class="btn-solid">Contact Us</a>
+            <a href="packages.html" class="btn-ghost">View Packages</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="counter">
+    <div class="counter-grid">
+      <div class="reveal">
+        <div class="counter-num"><span class="count" data-target="45">0</span>+</div>
+        <div class="counter-label">Projects Completed</div>
+      </div>
+      <div class="reveal d1">
+        <div class="counter-num"><span class="count" data-target="12">0</span>k</div>
+        <div class="counter-label">Sqft Delivered</div>
+      </div>
+      <div class="reveal d2">
+        <div class="counter-num"><span class="count" data-target="98">0</span>%</div>
+        <div class="counter-label">Happy Clients</div>
+      </div>
+      <div class="reveal d3">
+        <div class="counter-num"><span class="count" data-target="10">0</span>+</div>
+        <div class="counter-label">Years Experience</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="section" style="background:#fff;">
+    <div class="inner">
+      <div class="services-header">
+        <div class="reveal">
+          <span class="section-tag">Our Services</span>
+          <h2 class="section-title">Complete Home<br>Solutions</h2>
+        </div>
+        <p class="section-sub reveal from-right">From design planning to final handover, our team ensures every home is built with care, quality, and modern functionality.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal d1">
+          <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <h3>Quality Construction</h3>
+          <p>Strong structures built with trusted materials and expert supervision at every stage.</p>
+        </div>
+        <div class="service-card reveal d2">
+          <div class="service-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+          <h3>Practical Floor Plans</h3>
+          <p>Smart layouts designed for comfort, space usage, and everyday functional living.</p>
+        </div>
+        <div class="service-card reveal d3">
+          <div class="service-icon"><i class="fa-solid fa-paint-roller"></i></div>
+          <h3>Premium Finishing</h3>
+          <p>Elegant finishes that give your home a refined, premium, and modern aesthetic.</p>
+        </div>
+        <div class="service-card reveal d4">
+          <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
+          <h3>Transparent Support</h3>
+          <p>Clear communication, honest updates, and reliable project guidance throughout.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values" class="section">
+    <div class="inner">
+      <div class="values-grid">
+        <div class="reveal scale-in">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="values-img" alt="Our Values">
+        </div>
+
+        <div class="reveal from-right">
+          <span class="section-tag">Our Values</span>
+          <h2 class="section-title">Built On Trust,<br>Delivered With Care</h2>
+
+          <div class="values-list">
+            <div class="value-item">
+              <span class="value-num">01</span>
+              <div>
+                <h4>Integrity in Every Project</h4>
+                <p>We maintain complete transparency in contracts, costs, and timelines — no hidden fees, ever.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-num">02</span>
+              <div>
+                <h4>Craftsmanship First</h4>
+                <p>Every detail — from foundation to finish — is executed with precision and pride by our team.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-num">03</span>
+              <div>
+                <h4>Client-Centred Approach</h4>
+                <p>Your vision drives every decision. We listen, adapt, and build exactly what you dream of.</p>
+              </div>
+            </div>
+            <div class="value-item">
+              <span class="value-num">04</span>
+              <div>
+                <h4>On-Time Delivery</h4>
+                <p>Structured project management ensures your home is handed over on schedule, every time.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">Say<span>Homes</span></div>
+        <p class="footer-text">
+          We build modern homes with quality construction, elegant design, transparent pricing, and professional project execution.
+        </p>
+
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Projects</h4>
+        <ul class="footer-links">
+          <li><a href="projects.html">All Projects</a></li>
+          <li><a href="interior.html">Interior Projects</a></li>
+          <li><a href="BuildingConstruction.html">Building Construction</a></li>
+          <li><a href="CommercialProjects.html">Commercial Projects</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Follow Us</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919686326936" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <div class="footer-social-contact">
+          <div><i class="fa-solid fa-phone"></i> +91 9686326936</div>
+          <div><i class="fa-solid fa-envelope"></i> contact@sayhomes.co.in</div>
+          <div><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 SayHomes. All rights reserved.</p>
+      <p>Designed for premium home construction in Bengaluru</p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleIcon = navToggle.querySelector('i');
+    const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const navTargets = new Set([currentPage]);
+
+    if (!currentPage) navTargets.add('index.html');
+    if (['interior.html', 'buildingconstruction.html', 'commercialprojects.html'].includes(currentPage)) {
+      navTargets.add('projects.html');
+    }
+
+    document.querySelectorAll('.nav-links a, #mobileMenu a').forEach((link) => {
+      const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
+      if (navTargets.has(href)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    function updateNavbar() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', updateNavbar);
+    window.addEventListener('load', updateNavbar);
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggleIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        toggleIcon.className = 'fa-solid fa-bars';
+      });
+    });
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -36px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    const countObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          e.target.dataset.done = '1';
+          const target = +e.target.dataset.target;
+          let n = 0;
+          const step = Math.max(1, Math.ceil(target / 40));
+          const timer = setInterval(() => {
+            n = Math.min(n + step, target);
+            e.target.textContent = n;
+            if (n >= target) clearInterval(timer);
+          }, 35);
+        }
+      });
+    }, { threshold:0.5 });
+
+    document.querySelectorAll('.count').forEach(c => countObs.observe(c));
+  </script>
+</body>
+</html>

@@ -1,0 +1,1892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SayHomes — Build Your Dream Home</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+      --navy:#0F1B2D;
+      --primary:#1A3C6E;
+      --secondary:#2F5DAA;
+      --light-blue:#E6EEF8;
+      --gold:#C9A84C;
+      --cream:#FAF7F2;
+      --light:#F0EBE3;
+      --text:#2C2C2C;
+      --muted:#7A7269;
+      --white:#ffffff;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body {
+      font-family:'DM Sans', sans-serif;
+      background:var(--cream);
+      color:var(--text);
+      overflow-x:hidden;
+    }
+
+    img, video { max-width:100%; }
+    a { color:inherit; }
+
+    .serif { font-family:'Cormorant Garamond', serif; }
+
+    /* Reveal */
+    .reveal {
+      opacity:0;
+      transform:translateY(44px);
+      transition:opacity 0.85s cubic-bezier(.22,.61,.36,1), transform 0.85s cubic-bezier(.22,.61,.36,1);
+    }
+    .reveal.from-left { transform:translateX(-56px); }
+    .reveal.from-right { transform:translateX(56px); }
+    .reveal.scale-in { transform:scale(0.92); }
+    .reveal.visible { opacity:1; transform:translate(0) scale(1); }
+    .d1 { transition-delay:.1s; }
+    .d2 { transition-delay:.2s; }
+    .d3 { transition-delay:.3s; }
+    .d4 { transition-delay:.4s; }
+
+    /* Navbar */
+    #navbar {
+      position:fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:72px;
+      padding:0 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      z-index:100;
+      transition:background .35s, box-shadow .35s;
+    }
+
+    #navbar.scrolled,
+    body.menu-open #navbar {
+      background:rgba(250,247,242,0.97);
+      backdrop-filter:blur(16px);
+      box-shadow:0 1px 0 rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.75rem;
+      font-weight:700;
+      color:#fff;
+      letter-spacing:-0.5px;
+      text-decoration:none;
+      transition:color .35s;
+      white-space:nowrap;
+    }
+    .nav-logo span { color:var(--gold); }
+    #navbar.scrolled .nav-logo,
+    body.menu-open .nav-logo { color:var(--navy); }
+    #navbar.scrolled .nav-logo span,
+    body.menu-open .nav-logo span { color:var(--primary); }
+
+    .nav-links {
+      display:flex;
+      align-items:center;
+      gap:2.25rem;
+      list-style:none;
+    }
+
+    .nav-links a {
+      font-size:0.8rem;
+      font-weight:600;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.86);
+      text-decoration:none;
+      transition:all .25s;
+      white-space:nowrap;
+      padding:8px 14px;
+      border-radius:4px;
+    }
+
+    #navbar.scrolled .nav-links a,
+    body.menu-open .nav-links a { color:var(--text); }
+
+    .nav-links a:hover,
+    #navbar.scrolled .nav-links a:hover {
+      background:var(--primary);
+      color:#fff;
+    }
+    .nav-links a.active,
+    #navbar.scrolled .nav-links a.active,
+    body.menu-open .nav-links a.active {
+      background:var(--primary);
+      color:#fff;
+    }
+
+    .nav-cta {
+      background:var(--primary);
+      color:#fff;
+      padding:10px 24px;
+      border-radius:3px;
+      font-size:0.76rem;
+      font-weight:700;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:background .3s, transform .2s;
+      white-space:nowrap;
+    }
+
+    .nav-cta:hover {
+      background:var(--secondary);
+      transform:translateY(-1px);
+    }
+
+    .nav-toggle {
+      display:none;
+      width:44px;
+      height:44px;
+      border:1px solid rgba(255,255,255,0.35);
+      background:rgba(255,255,255,0.08);
+      color:#fff;
+      border-radius:999px;
+      align-items:center;
+      justify-content:center;
+      font-size:1.1rem;
+      cursor:pointer;
+      transition:all .3s;
+    }
+
+    #navbar.scrolled .nav-toggle,
+    body.menu-open .nav-toggle {
+      color:var(--navy);
+      border-color:rgba(15,27,45,0.15);
+      background:#fff;
+      box-shadow:0 8px 24px rgba(15,27,45,0.08);
+    }
+
+    .mobile-menu {
+      display:block;
+      position:fixed;
+      top:82px;
+      left:16px;
+      right:16px;
+      z-index:99;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(18px);
+      border:1px solid rgba(15,27,45,0.08);
+      border-radius:22px;
+      box-shadow:0 24px 70px rgba(15,27,45,0.18);
+      overflow:hidden;
+      transform:translateY(-14px);
+      opacity:0;
+      pointer-events:none;
+      visibility:hidden;
+      transition:opacity .28s ease, transform .28s ease, visibility .28s ease;
+    }
+
+    .mobile-menu.active {
+      opacity:1;
+      transform:translateY(0);
+      pointer-events:auto;
+      visibility:visible;
+    }
+
+    .mobile-menu a {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:16px 20px;
+      color:var(--navy);
+      text-decoration:none;
+      font-size:0.84rem;
+      font-weight:700;
+      letter-spacing:0.08em;
+      text-transform:uppercase;
+      border-bottom:1px solid var(--light);
+    }
+
+    .mobile-menu a i {
+      color:var(--primary);
+      width:18px;
+    }
+
+    .mobile-menu a:last-child {
+      background:var(--primary);
+      color:#fff;
+      border-bottom:0;
+      justify-content:center;
+    }
+
+    .mobile-menu a:last-child i { color:#fff; }
+
+    /* Hero */
+    #hero {
+      position:relative;
+      min-height:100svh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+      background:var(--navy);
+    }
+
+    #hero video {
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    #hero::after {
+      content:'';
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to bottom, rgba(10,20,35,0.76) 0%, rgba(10,20,35,0.48) 58%, rgba(10,20,35,0.82) 100%);
+    }
+
+    .hero-inner {
+      position:relative;
+      z-index:2;
+      text-align:center;
+      max-width:900px;
+      padding:0 24px;
+    }
+
+    .hero-badge {
+      display:inline-block;
+      border:1px solid rgba(201,168,76,0.6);
+      color:var(--gold);
+      font-size:0.68rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      padding:7px 20px;
+      border-radius:2px;
+      margin-bottom:28px;
+      animation:fadeDown 1s ease both;
+    }
+
+    .hero-h1 {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2.8rem, 6.5vw, 5.2rem);
+      font-weight:300;
+      color:#fff;
+      line-height:1.08;
+      letter-spacing:-0.5px;
+      margin-bottom:24px;
+      animation:fadeUp 1s .2s ease both;
+    }
+
+    .hero-h1 em {
+      font-style:italic;
+      color:var(--gold);
+    }
+
+    .hero-sub {
+      color:rgba(255,255,255,0.74);
+      font-size:1rem;
+      line-height:1.8;
+      max-width:560px;
+      margin:0 auto 40px;
+      animation:fadeUp 1s .4s ease both;
+    }
+
+    .hero-btns {
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      flex-wrap:wrap;
+      animation:fadeUp 1s .6s ease both;
+    }
+
+    .btn-primary,
+    .btn-outline {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:14px 36px;
+      border-radius:3px;
+      font-size:0.78rem;
+      font-weight:700;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      text-decoration:none;
+      transition:background .3s, transform .2s, border-color .3s;
+    }
+
+    .btn-primary {
+      background:linear-gradient(135deg, var(--primary), var(--secondary));
+      color:#fff;
+    }
+
+    .btn-primary:hover {
+      background:var(--secondary);
+      transform:translateY(-2px);
+    }
+
+    .btn-outline {
+      border:1px solid rgba(255,255,255,0.5);
+      color:#fff;
+    }
+
+    .btn-outline:hover {
+      background:rgba(255,255,255,0.12);
+      border-color:#fff;
+    }
+
+    .scroll-line {
+      position:absolute;
+      bottom:36px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+      animation:fadeUp 1s 1s ease both;
+    }
+
+    .scroll-line span {
+      font-size:0.62rem;
+      letter-spacing:0.18em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.5);
+    }
+
+    .scroll-line::after {
+      content:'';
+      display:block;
+      width:1px;
+      height:50px;
+      background:linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
+      animation:lineGrow 2s 1.5s ease infinite;
+    }
+
+    .float-btn {
+      position:fixed;
+      right:28px;
+      bottom:28px;
+      z-index:200;
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      background:var(--primary);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      box-shadow:0 8px 32px rgba(26,60,110,0.35);
+      text-decoration:none;
+      animation:pulse 2.5s ease infinite;
+    }
+
+    /* Shared */
+    .section { padding:100px 40px; }
+    .inner { max-width:1200px; margin:0 auto; }
+    .section-tag {
+      font-size:0.68rem;
+      letter-spacing:0.25em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:14px;
+      display:block;
+    }
+    .section-title {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(2rem, 3.5vw, 3rem);
+      font-weight:600;
+      color:var(--navy);
+      line-height:1.1;
+    }
+    .section-head-center {
+      text-align:center;
+    }
+    .section-sub {
+      font-size:0.95rem;
+      color:var(--muted);
+      line-height:1.8;
+      margin-top:14px;
+      max-width:540px;
+    }
+
+    /* About */
+    #about { background:#fff; }
+    .about-grid {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:80px;
+      align-items:center;
+    }
+    .about-img-wrap { position:relative; }
+    .about-img {
+      width:100%;
+      height:520px;
+      object-fit:cover;
+      display:block;
+    }
+    .about-accent {
+      position:absolute;
+      bottom:-24px;
+      right:-24px;
+      width:160px;
+      height:160px;
+      border:2px solid var(--gold);
+      opacity:.4;
+      pointer-events:none;
+    }
+    .about-text p {
+      font-size:0.97rem;
+      color:var(--muted);
+      line-height:1.9;
+      margin-top:20px;
+    }
+    .about-stats {
+      display:flex;
+      gap:40px;
+      margin-top:40px;
+      padding-top:32px;
+      border-top:1px solid var(--light);
+    }
+    .about-stat-num {
+      font-family:'Cormorant Garamond', serif;
+      font-size:2.4rem;
+      font-weight:700;
+      color:var(--primary);
+      line-height:1;
+    }
+    .about-stat-label {
+      font-size:0.75rem;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-top:4px;
+    }
+
+    /* Services */
+    #services { background:var(--cream); }
+    .services-grid {
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:2px;
+      margin-top:60px;
+      background:var(--light);
+    }
+    .service-card {
+      background:#fff;
+      padding:48px 32px;
+      transition:background .35s, transform .35s;
+    }
+    .service-card:hover {
+      background:var(--navy);
+      transform:translateY(-4px);
+    }
+    .service-icon {
+      width:54px;
+      height:54px;
+      border:1px solid rgba(201,168,76,0.65);
+      border-radius:16px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:28px;
+      font-size:20px;
+      color:var(--primary);
+      background:rgba(26,60,110,0.06);
+      transition:border-color .3s, background .3s, color .3s;
+    }
+    .service-card:hover .service-icon {
+      border-color:rgba(201,168,76,0.4);
+      background:rgba(255,255,255,0.08);
+      color:var(--gold);
+    }
+    .service-card h3 {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.35rem;
+      font-weight:600;
+      color:var(--navy);
+      margin-bottom:12px;
+      transition:color .3s;
+    }
+    .service-card:hover h3 { color:#fff; }
+    .service-card p {
+      font-size:0.85rem;
+      color:var(--muted);
+      line-height:1.8;
+      transition:color .3s;
+    }
+    .service-card:hover p { color:rgba(255,255,255,0.62); }
+
+    /* Why */
+    #why { background:#fff; }
+    .why-grid {
+      display:grid;
+      grid-template-columns:1fr 400px 1fr;
+      gap:60px;
+      align-items:center;
+      margin-top:60px;
+    }
+    .why-list {
+      display:flex;
+      flex-direction:column;
+      gap:36px;
+    }
+    .why-item {
+      display:flex;
+      gap:20px;
+      align-items:flex-start;
+    }
+    .why-num {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.5rem;
+      color:var(--gold);
+      font-weight:700;
+      min-width:32px;
+      line-height:1.2;
+    }
+    .why-item h4 {
+      font-size:0.95rem;
+      font-weight:700;
+      color:var(--navy);
+      margin-bottom:6px;
+    }
+    .why-item p {
+      font-size:0.83rem;
+      color:var(--muted);
+      line-height:1.75;
+    }
+    .why-img {
+      width:100%;
+      height:500px;
+      object-fit:cover;
+      display:block;
+    }
+
+    /* Counter */
+    #counter {
+      background:var(--navy);
+      padding:80px 40px;
+    }
+    .counter-grid {
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:40px;
+      text-align:center;
+      max-width:900px;
+      margin:0 auto;
+    }
+    .counter-num {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(3rem, 5vw, 4.5rem);
+      font-weight:700;
+      color:var(--gold);
+      line-height:1;
+    }
+    .counter-label {
+      font-size:0.72rem;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,0.5);
+      margin-top:10px;
+    }
+
+    /* Gallery */
+    #gallery { background:var(--cream); }
+    .gallery-grid {
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      grid-template-rows:260px 260px;
+      gap:8px;
+      margin-top:50px;
+    }
+    .gallery-item {
+      overflow:hidden;
+      position:relative;
+      min-height:240px;
+    }
+    .gallery-item:first-child { grid-row:1 / 3; }
+    .gallery-item img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transition:transform .7s cubic-bezier(.22,.61,.36,1);
+    }
+    .gallery-item:hover img { transform:scale(1.07); }
+    .gallery-overlay {
+      position:absolute;
+      inset:0;
+      background:linear-gradient(to top, rgba(10,20,35,0.72), transparent);
+      opacity:0;
+      transition:opacity .4s;
+      display:flex;
+      align-items:flex-end;
+      padding:24px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity:1; }
+    .gallery-overlay span {
+      font-family:'Cormorant Garamond', serif;
+      color:#fff;
+      font-size:1.1rem;
+      font-style:italic;
+    }
+
+    /* Packages */
+    #packages { background:#fff; }
+    .packages-grid {
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      gap:24px;
+      margin-top:56px;
+    }
+    .pkg-card {
+      border:1px solid var(--light);
+      padding:40px 28px;
+      position:relative;
+      overflow:hidden;
+      background:#fff;
+      transition:border-color .3s, box-shadow .3s, transform .3s;
+    }
+    .pkg-card::before {
+      content:'';
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:3px;
+      background:var(--gold);
+      transform:scaleX(0);
+      transition:transform .4s;
+    }
+    .pkg-card:hover::before { transform:scaleX(1); }
+    .pkg-card:hover {
+      border-color:transparent;
+      box-shadow:0 20px 60px rgba(0,0,0,0.1);
+      transform:translateY(-6px);
+    }
+    .pkg-icon {
+      width:58px;
+      height:58px;
+      border-radius:16px;
+      background:rgba(26,60,110,0.08);
+      color:var(--primary);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:1.45rem;
+      margin-bottom:24px;
+    }
+    .pkg-card h3 {
+      font-family:'Cormorant Garamond', serif;
+      font-size:1.4rem;
+      font-weight:600;
+      color:var(--navy);
+      margin-bottom:10px;
+    }
+    .pkg-card p {
+      font-size:0.83rem;
+      color:var(--muted);
+      line-height:1.75;
+    }
+    .pkg-tag {
+      font-size:0.68rem;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:var(--primary);
+      font-weight:700;
+      margin-bottom:10px;
+      display:block;
+    }
+
+    /* Testimonial */
+    #testimonials {
+      background:var(--navy);
+      padding:100px 40px;
+    }
+    .testi-inner {
+      max-width:760px;
+      margin:0 auto;
+      text-align:center;
+    }
+    .testi-quote {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight:300;
+      font-style:italic;
+      color:rgba(255,255,255,0.88);
+      line-height:1.7;
+      margin:40px 0;
+    }
+    .testi-author {
+      font-size:0.78rem;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+    .testi-divider {
+      width:40px;
+      height:1px;
+      background:var(--gold);
+      margin:20px auto;
+    }
+    .testi-mark {
+      font-family:'Cormorant Garamond', serif;
+      font-size:5rem;
+      color:var(--gold);
+      opacity:.3;
+      line-height:.8;
+    }
+    .testi-nav {
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:40px;
+    }
+    .testi-dot {
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:rgba(255,255,255,0.2);
+      cursor:pointer;
+      transition:background .3s, transform .3s;
+    }
+    .testi-dot.active {
+      background:var(--gold);
+      transform:scale(1.4);
+    }
+
+    /* FAQ */
+    #faq { background:var(--cream); }
+    .faq-list {
+      max-width:720px;
+      margin:56px auto 0;
+    }
+    details {
+      border-bottom:1px solid var(--light);
+      padding:24px 0;
+      cursor:pointer;
+    }
+    details summary {
+      font-size:0.95rem;
+      font-weight:600;
+      color:var(--navy);
+      list-style:none;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:18px;
+    }
+    details summary::-webkit-details-marker { display:none; }
+    details summary::after {
+      content:'+';
+      font-size:1.4rem;
+      color:var(--primary);
+      font-weight:300;
+      transition:transform .3s;
+      flex-shrink:0;
+    }
+    details[open] summary::after { transform:rotate(45deg); }
+    details p {
+      font-size:0.88rem;
+      color:var(--muted);
+      line-height:1.85;
+      padding-top:16px;
+    }
+
+    /* Contact */
+    #contact { background:var(--cream); }
+    .contact-grid {
+      display:grid;
+      grid-template-columns:1.2fr 1fr;
+      gap:64px;
+      align-items:start;
+      margin-top:56px;
+    }
+    .form-group { margin-bottom:20px; }
+    .form-label {
+      font-size:0.7rem;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      color:var(--muted);
+      display:block;
+      margin-bottom:8px;
+      font-weight:700;
+    }
+    .form-input {
+      width:100%;
+      background:#fff;
+      border:1px solid var(--light);
+      padding:13px 18px;
+      font-family:'DM Sans', sans-serif;
+      font-size:0.9rem;
+      color:var(--text);
+      outline:none;
+      transition:border-color .3s, background .3s;
+    }
+    .form-input:focus {
+      border-color:var(--primary);
+      background:#fff;
+    }
+    .form-row {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .submit-btn {
+      width:100%;
+      background:var(--navy);
+      color:#fff;
+      padding:15px;
+      border:none;
+      cursor:pointer;
+      font-family:'DM Sans', sans-serif;
+      font-size:0.78rem;
+      font-weight:700;
+      letter-spacing:0.15em;
+      text-transform:uppercase;
+      transition:background .3s, transform .2s;
+    }
+    .submit-btn:hover {
+      background:var(--primary);
+      transform:translateY(-1px);
+    }
+    .contact-info {
+      padding-left:40px;
+      border-left:1px solid var(--light);
+    }
+    .contact-item {
+      margin-bottom:36px;
+    }
+    .contact-item-label {
+      font-size:0.68rem;
+      letter-spacing:0.2em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:10px;
+      display:block;
+      font-weight:700;
+    }
+    .contact-item p {
+      font-size:0.9rem;
+      color:var(--muted);
+      line-height:1.8;
+    }
+    .social-links {
+      display:flex;
+      gap:16px;
+      margin-top:10px;
+      flex-wrap:wrap;
+    }
+    .social-links a {
+      width:40px;
+      height:40px;
+      border:1px solid var(--light);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:0.78rem;
+      color:var(--muted);
+      text-decoration:none;
+      transition:background .3s, color .3s, border-color .3s;
+      background:#fff;
+    }
+    .social-links a:hover {
+      background:var(--navy);
+      color:#fff;
+      border-color:var(--navy);
+    }
+
+    /* Professional Footer */
+.main-footer {
+  background: var(--navy);
+  color: #fff;
+  padding: 64px 40px 22px;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 0.9fr 1.4fr;
+  gap: 48px;
+  align-items: flex-start;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 14px;
+}
+
+.footer-logo span {
+  color: var(--primary);
+}
+
+.footer-text {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.62);
+  max-width: 260px;
+}
+
+.footer-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  transition: color .25s, padding-left .25s;
+}
+
+.footer-links a:hover {
+  color: #fff;
+  padding-left: 5px;
+}
+
+.footer-social {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background .25s, transform .25s;
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  transform: translateY(-3px);
+}
+
+.footer-social-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(255,255,255,0.62);
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+.footer-social-contact div {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer-social-contact i {
+  color: var(--gold);
+  width: 18px;
+  margin-top: 3px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  width: 100%;
+  margin: 42px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.38);
+  letter-spacing: 0.02em;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 38px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 560px) {
+  .main-footer {
+    padding: 48px 22px 22px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-text {
+    max-width: 100%;
+  }
+
+  .footer-social {
+    max-width: 230px;
+  }
+
+  .footer-bottom {
+    margin-top: 34px;
+  }
+}
+  
+    /* Keyframes */
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(30px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-20px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow:0 8px 32px rgba(26,60,110,0.35); }
+      50% { box-shadow:0 8px 48px rgba(26,60,110,0.6); }
+    }
+    @keyframes lineGrow {
+      0%,100% { opacity:1; transform:scaleY(1); }
+      50% { opacity:.4; transform:scaleY(.6); }
+    }
+
+    /* Tablet */
+    @media (max-width:1100px) {
+      .nav-links { gap:1.4rem; }
+      .why-grid {
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+      .why-img {
+        max-height:420px;
+      }
+      .services-grid,
+      .packages-grid {
+        grid-template-columns:1fr 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto;
+      }
+      .gallery-item:first-child {
+        grid-row:auto;
+      }
+      .gallery-item {
+        height:300px;
+      }
+      .contact-grid {
+        grid-template-columns:1fr;
+        gap:40px;
+      }
+      .contact-info {
+        border-left:0;
+        border-top:1px solid var(--light);
+        padding-left:0;
+        padding-top:40px;
+      }
+    }
+
+    @media (max-width:1024px) {
+      .nav-links,
+      .nav-cta {
+        display:none;
+      }
+      .nav-toggle {
+        display:flex;
+      }
+      .about-grid {
+        grid-template-columns:1fr;
+        gap:44px;
+      }
+      .about-accent { display:none; }
+      .counter-grid {
+        grid-template-columns:1fr 1fr;
+        gap:36px;
+      }
+      .reveal.from-left,
+      .reveal.from-right {
+        transform:translateY(44px);
+      }
+      .reveal.visible {
+        transform:translateY(0);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width:640px) {
+      #navbar {
+        padding:0 18px;
+        height:66px;
+      }
+      .nav-logo {
+        font-size:1.55rem;
+      }
+      .mobile-menu {
+        top:76px;
+        left:12px;
+        right:12px;
+        border-radius:18px;
+      }
+      .mobile-menu a {
+        padding:15px 18px;
+        font-size:0.78rem;
+      }
+
+      #hero {
+        min-height:100svh;
+        padding:86px 0 44px;
+      }
+      .hero-inner {
+        padding:0 18px;
+      }
+      .hero-badge {
+        font-size:0.55rem;
+        letter-spacing:0.13em;
+        padding:7px 12px;
+        margin-bottom:20px;
+        max-width:100%;
+      }
+      .hero-h1 {
+        font-size:clamp(2.4rem, 13vw, 3.55rem);
+        line-height:1.06;
+        margin-bottom:18px;
+      }
+      .hero-sub {
+        font-size:0.92rem;
+        line-height:1.7;
+        margin-bottom:28px;
+      }
+      .hero-btns {
+        flex-direction:column;
+        align-items:stretch;
+        max-width:320px;
+        margin:0 auto;
+      }
+      .btn-primary,
+      .btn-outline {
+        width:100%;
+        padding:14px 18px;
+      }
+      .scroll-line {
+        display:none;
+      }
+
+      .section {
+        padding:70px 20px;
+      }
+      .section-title {
+        font-size:clamp(2rem, 11vw, 2.65rem);
+      }
+      .section-sub {
+        max-width:100%;
+      }
+
+      .about-img,
+      .why-img {
+        height:340px;
+        border-radius:18px;
+      }
+      .about-stats {
+        flex-direction:column;
+        gap:22px;
+      }
+
+      .services-grid,
+      .packages-grid,
+      .gallery-grid {
+        grid-template-columns:1fr;
+      }
+      .service-card,
+      .pkg-card {
+        border-radius:18px;
+        box-shadow:0 14px 40px rgba(15,27,45,0.06);
+      }
+      .service-card {
+        padding:36px 26px;
+      }
+      .gallery-grid {
+        gap:14px;
+      }
+      .gallery-item {
+        height:270px;
+        border-radius:18px;
+      }
+      .gallery-overlay {
+        opacity:1;
+      }
+
+      #counter {
+        padding:64px 20px;
+      }
+      .counter-grid {
+        grid-template-columns:1fr 1fr;
+        gap:26px 18px;
+      }
+      .counter-num {
+        font-size:3rem;
+      }
+      .counter-label {
+        font-size:0.62rem;
+      }
+
+      #testimonials {
+        padding:76px 20px;
+      }
+      .testi-mark {
+        font-size:4rem;
+      }
+      .testi-quote {
+        margin:26px 0;
+      }
+
+      .faq-list {
+        margin-top:34px;
+      }
+      details {
+        padding:20px 0;
+      }
+
+      .form-row {
+        grid-template-columns:1fr;
+        gap:0;
+      }
+      .contact-grid {
+        margin-top:36px;
+      }
+      .contact-info {
+        padding-top:30px;
+      }
+
+      .float-btn {
+        right:18px;
+        bottom:18px;
+        width:50px;
+        height:50px;
+        font-size:1.25rem;
+      }
+
+      footer {
+        flex-direction:column;
+        text-align:center;
+        padding:30px 20px;
+      }
+    }
+
+    @media (max-width:380px) {
+      .hero-h1 {
+        font-size:2.3rem;
+      }
+      .section {
+        padding-left:16px;
+        padding-right:16px;
+      }
+      .counter-grid {
+        grid-template-columns:1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Say<span>Homes</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="packages.html">Packages</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <a href="contact.html" class="nav-cta">Request a Call</a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html"><i class="fa-solid fa-house"></i>Home</a>
+    <a href="projects.html"><i class="fa-solid fa-images"></i>Projects</a>
+    <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
+    <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
+    <a href="contact.html"><i class="fa-solid fa-phone"></i>Request a Call</a>
+  </div>
+
+  <!-- Hero -->
+  <section id="hero">
+    <video autoplay muted loop playsinline>
+      <source src="https://videos.pexels.com/video-files/7578552/7578552-uhd_2560_1440_30fps.mp4" type="video/mp4">
+    </video>
+
+    <div class="hero-inner">
+      <span class="hero-badge">Professional Home Construction · Bengaluru</span>
+      <h1 class="hero-h1">Build Your <em>Dream Home</em><br>With SayHomes</h1>
+      <p class="hero-sub">We transform houses into dream homes with expert construction, architecture, interior design, and consultation services.</p>
+
+      <div class="hero-btns">
+        <a href="projects.html" class="btn-primary">View Projects</a>
+        <a href="packages.html" class="btn-outline">Our Packages</a>
+        <a href="about.html" class="btn-outline">About Us</a>
+      </div>
+    </div>
+
+    <div class="scroll-line"><span>Scroll</span></div>
+  </section>
+
+  <a href="https://wa.me/919686326936" class="float-btn" title="WhatsApp Us" aria-label="WhatsApp Us">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="inner">
+      <div class="about-grid">
+        <div class="reveal from-left">
+          <div class="about-img-wrap">
+            <img src="images/about.jpg" class="about-img" alt="About SayHomes">
+            <div class="about-accent"></div>
+          </div>
+        </div>
+
+        <div class="about-text reveal from-right">
+          <span class="section-tag">About Company</span>
+          <h2 class="section-title">Crafting Homes<br>With Purpose</h2>
+          <p>SayHomes is a visionary construction company that transforms houses into dream homes. With a team of passionate architects, skilled craftsmen, and innovative designers, we bring your imagination to life.</p>
+          <p>Our commitment to excellence and attention to detail result in stunning spaces that exude style, functionality, and timeless elegance.</p>
+
+          <div class="about-stats">
+            <div>
+              <div class="about-stat-num">35+</div>
+              <div class="about-stat-label">Happy Clients</div>
+            </div>
+            <div>
+              <div class="about-stat-num">10+</div>
+              <div class="about-stat-label">Years Experience</div>
+            </div>
+            <div>
+              <div class="about-stat-num">5+</div>
+              <div class="about-stat-label">Cities</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="section">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">What We Do</span>
+        <h2 class="section-title">Complete Home Solutions</h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal d1">
+          <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <h3>Building Construction</h3>
+          <p>Complete construction service with quality planning and professional execution from foundation to finish.</p>
+        </div>
+
+        <div class="service-card reveal d2">
+          <div class="service-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+          <h3>Architecture</h3>
+          <p>Smart architectural planning that matches your vision, lifestyle, and future needs seamlessly.</p>
+        </div>
+
+        <div class="service-card reveal d3">
+          <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+          <h3>Interior Design</h3>
+          <p>Elegant interior solutions designed for comfort, beauty, and lasting functional elegance.</p>
+        </div>
+
+        <div class="service-card reveal d4">
+          <div class="service-icon"><i class="fa-solid fa-comments"></i></div>
+          <h3>Consultation</h3>
+          <p>Professional guidance for construction, design, planning, execution, and government approvals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section id="why" class="section">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">Our Benefits</span>
+        <h2 class="section-title">Why Choose SayHomes</h2>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-list">
+          <div class="why-item reveal from-left">
+            <span class="why-num">01</span>
+            <div>
+              <h4>On-Time Project Handover</h4>
+              <p>Timely delivery with structured planning and efficient on-ground execution.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-left d1">
+            <span class="why-num">02</span>
+            <div>
+              <h4>Assured Quality Service</h4>
+              <p>High standards maintained through careful material selection and work checks.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-left d2">
+            <span class="why-num">03</span>
+            <div>
+              <h4>100% Customer Satisfaction</h4>
+              <p>Customer-first approach focused on trust and building lasting relationships.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal scale-in">
+          <img src="images/construction_800.webp" class="why-img" alt="Construction Quality">
+        </div>
+
+        <div class="why-list">
+          <div class="why-item reveal from-right">
+            <span class="why-num">04</span>
+            <div>
+              <h4>Transparent Contracts</h4>
+              <p>Clear contracts and fixed pricing with absolutely no hidden surprises.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-right d1">
+            <span class="why-num">05</span>
+            <div>
+              <h4>In-House Architects & Engineers</h4>
+              <p>Expert team ensures design accuracy and strong, reliable execution.</p>
+            </div>
+          </div>
+
+          <div class="why-item reveal from-right d2">
+            <span class="why-num">06</span>
+            <div>
+              <h4>Flexible Payment Options</h4>
+              <p>Easy and customer-friendly payment plans tailored for your convenience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Counter -->
+  <section id="counter">
+    <div class="counter-grid">
+      <div class="reveal">
+        <div class="counter-num"><span class="count" data-target="35">0</span>+</div>
+        <div class="counter-label">Happy Clients</div>
+      </div>
+      <div class="reveal d1">
+        <div class="counter-num"><span class="count" data-target="35">0</span>+</div>
+        <div class="counter-label">Projects Completed</div>
+      </div>
+      <div class="reveal d2">
+        <div class="counter-num"><span class="count" data-target="10">0</span>+</div>
+        <div class="counter-label">Years of Experience</div>
+      </div>
+      <div class="reveal d3">
+        <div class="counter-num"><span class="count" data-target="5">0</span>+</div>
+        <div class="counter-label">Cities</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="inner">
+      <div class="reveal">
+        <span class="section-tag">Our Work</span>
+        <h2 class="section-title">Project Gallery</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal from-left">
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" alt="Project 1">
+          <div class="gallery-overlay"><span>Mr. Sumer Singh — Nagasandra, Bengaluru</span></div>
+        </div>
+
+        <div class="gallery-item reveal d1">
+          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Project 2">
+          <div class="gallery-overlay"><span>Modern Residence</span></div>
+        </div>
+
+        <div class="gallery-item reveal d2">
+          <img src="https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=600&q=80" alt="Project 3">
+          <div class="gallery-overlay"><span>Luxury Interior</span></div>
+        </div>
+
+        <div class="gallery-item reveal d1">
+          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80" alt="Project 4">
+          <div class="gallery-overlay"><span>Contemporary Design</span></div>
+        </div>
+
+        <div class="gallery-item reveal d2">
+          <img src="https://images.unsplash.com/photo-1600607687644-c7171b42498f?auto=format&fit=crop&w=600&q=80" alt="Project 5">
+          <div class="gallery-overlay"><span>Premium Villa</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Packages -->
+  <section id="packages" class="section">
+    <div class="inner">
+      <div class="reveal">
+        <span class="section-tag">Our Packages</span>
+        <h2 class="section-title">Choose Your Package</h2>
+        <p class="section-sub">Select the right construction package tailored to your needs and budget.</p>
+      </div>
+
+      <div class="packages-grid">
+        <div class="pkg-card reveal d1">
+          <span class="pkg-tag">Starter</span>
+          <div class="pkg-icon"><i class="fa-solid fa-house-chimney"></i></div>
+          <h3>Essential Package</h3>
+          <p>Smart and budget-friendly home construction with quality materials and timely delivery.</p>
+        </div>
+
+        <div class="pkg-card reveal d2">
+          <span class="pkg-tag">Popular</span>
+          <div class="pkg-icon"><i class="fa-solid fa-house-user"></i></div>
+          <h3>Standard Package</h3>
+          <p>Balanced package with premium features, superior finishes, and enhanced designs.</p>
+        </div>
+
+        <div class="pkg-card reveal d3">
+          <span class="pkg-tag">Upgraded</span>
+          <div class="pkg-icon"><i class="fa-solid fa-city"></i></div>
+          <h3>Premium Package</h3>
+          <p>Luxury finish with modern upgrades, bespoke interiors, and dedicated management.</p>
+        </div>
+
+        <div class="pkg-card reveal d4">
+          <span class="pkg-tag">Exclusive</span>
+          <div class="pkg-icon"><i class="fa-solid fa-building"></i></div>
+          <h3>Luxury Package</h3>
+          <p>Premium living crafted with elegance, custom architecture, and world-class finishes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials">
+    <div class="testi-inner reveal">
+      <span class="section-tag" style="color:var(--gold);">Testimonials</span>
+      <div class="testi-mark">"</div>
+      <p class="testi-quote">The process was very smooth. I got the interiors at the best price as compared to market. Designs were unique. We're happy that we've opted SayHomes.</p>
+      <div class="testi-divider"></div>
+      <div class="testi-author">Shivanandha — Happy Customer</div>
+
+      <div class="testi-nav">
+        <div class="testi-dot active"></div>
+        <div class="testi-dot"></div>
+        <div class="testi-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <details class="reveal" open>
+          <summary>Does SayHomes assist in Government Approvals?</summary>
+          <p>Yes, our team provides complete assistance in government approvals and regulatory documentation to make the process seamless for you.</p>
+        </details>
+
+        <details class="reveal d1">
+          <summary>Which services does SayHomes provide?</summary>
+          <p>We offer four core services: Building Construction, Architecture, Interior Design, and Consultation. Each service is handled by dedicated in-house professionals.</p>
+        </details>
+
+        <details class="reveal d2">
+          <summary>How is the construction area calculated?</summary>
+          <p>The slab (roof to roof) area is considered for construction area measurement and pricing.</p>
+        </details>
+
+        <details class="reveal d3">
+          <summary>What cities do you operate in?</summary>
+          <p>We currently operate in 5+ cities, with our primary base in Bengaluru. Contact us to check availability in your area.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="inner">
+      <div class="reveal">
+        <span class="section-tag">Get In Touch</span>
+        <h2 class="section-title">Let's Build Together</h2>
+        <p class="section-sub">Share your details and our team will get back to you within 24 hours.</p>
+      </div>
+
+      <div class="contact-grid">
+        <form class="reveal from-left" onsubmit="return false;">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input class="form-input" type="text" placeholder="Your full name">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input class="form-input" type="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Location</label>
+              <input class="form-input" type="text" placeholder="Your city">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Required</label>
+              <select class="form-input">
+                <option value="">Select a service</option>
+                <option>Building Construction</option>
+                <option>Architecture</option>
+                <option>Interior Design</option>
+                <option>Consultation</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Message</label>
+            <textarea class="form-input" rows="4" placeholder="Tell us about your project..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Submit Enquiry <i class="fa-solid fa-arrow-right"></i></button>
+        </form>
+
+        <div class="contact-info reveal from-right">
+          <div class="contact-item">
+            <span class="contact-item-label">Email</span>
+            <p><i class="fa-solid fa-envelope"></i> contact@sayhomes.co.in</p>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item-label">Office Address</span>
+            <p><i class="fa-solid fa-location-dot"></i> Corbel Group, #14, Talacauvery Layout,<br>Sahakaranagar Post,<br>Bengaluru — 560092</p>
+          </div>
+
+          <div class="contact-item">
+            <span class="contact-item-label">Follow Us</span>
+            <div class="social-links">
+              <a href="#" title="Instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" title="YouTube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#" title="Facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            </div>
+          </div>
+
+          <div class="contact-item" style="margin-top:40px; padding:28px; background:var(--navy);">
+            <span class="contact-item-label" style="color:var(--gold);">Working Hours</span>
+            <p style="color:rgba(255,255,255,0.7);">Monday – Saturday<br>9:00 AM – 6:00 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-grid">
+
+      <div>
+        <div class="footer-logo">Say<span>Homes</span></div>
+        <p class="footer-text">
+          We build modern homes with quality construction, elegant design, transparent pricing, and professional project execution.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="packages.html">Packages</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Projects</h4>
+        <ul class="footer-links">
+          <li><a href="projects.html">All Projects</a></li>
+          <li><a href="interior.html">Interior Projects</a></li>
+          <li><a href="BuildingConstruction.html">Building Construction</a></li>
+          <li><a href="CommercialProjects.html">Commercial Projects</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Follow Us</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919686326936" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+        <div class="footer-social-contact">
+          <div><i class="fa-solid fa-phone"></i> +91 9686326936</div>
+          <div><i class="fa-solid fa-envelope"></i> contact@sayhomes.co.in</div>
+          <div><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2024 SayHomes. All rights reserved.</p>
+      <p>Designed for premium home construction in Bengaluru</p>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const toggleIcon = navToggle.querySelector('i');
+    const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+    const navTargets = new Set([currentPage]);
+
+    if (!currentPage) navTargets.add('index.html');
+    if (['interior.html', 'buildingconstruction.html', 'commercialprojects.html'].includes(currentPage)) {
+      navTargets.add('projects.html');
+    }
+
+    document.querySelectorAll('.nav-links a, #mobileMenu a').forEach((link) => {
+      const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
+      if (navTargets.has(href)) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+
+    function updateNavbar() {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    }
+
+    window.addEventListener('scroll', updateNavbar);
+    window.addEventListener('load', updateNavbar);
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('active');
+      document.body.classList.toggle('menu-open', isOpen);
+      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      toggleIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        toggleIcon.className = 'fa-solid fa-bars';
+      });
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold:0.12, rootMargin:'0px 0px -40px 0px' });
+
+    reveals.forEach(r => revealObserver.observe(r));
+
+    const counts = document.querySelectorAll('.count');
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting && !e.target.dataset.done) {
+          e.target.dataset.done = '1';
+          const target = +e.target.dataset.target;
+          let n = 0;
+          const step = Math.max(1, Math.ceil(target / 40));
+          const timer = setInterval(() => {
+            n = Math.min(n + step, target);
+            e.target.textContent = n;
+            if (n >= target) clearInterval(timer);
+          }, 35);
+        }
+      });
+    }, { threshold:0.5 });
+
+    counts.forEach(c => countObserver.observe(c));
+
+    const dots = document.querySelectorAll('.testi-dot');
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
