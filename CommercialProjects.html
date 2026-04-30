@@ -376,37 +376,31 @@
 
   <script>
     const projects = [
-      ['Office Interior Project','Professional workspace with smart planning, clean interiors, and productive ambience.','https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80'],
-      ['Retail Store Construction','Modern retail space designed for customer flow, visibility, and brand experience.','https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=900&q=80'],
-      ['Commercial Building','Strong commercial structure with efficient layout, durable materials, and clean exterior design.','https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80'],
-      ['Showroom Interior','Premium showroom design with lighting, display zones, and customer-friendly planning.','https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80'],
-      ['Co-working Space','Flexible workspace design with collaborative zones, private cabins, and modern finishes.','https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80'],
-      ['Cafe & Restaurant Space','Commercial hospitality setup with ambience, seating planning, and functional service flow.','https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80'],
-      ['Clinic Interior','Clean and practical clinic interior designed for comfort, circulation, and professional appearance.','https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80'],
-      ['Warehouse Structure','Functional commercial storage structure with practical planning and strong execution.','https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'],
-      ['Corporate Office Setup','Premium corporate office project with reception, cabins, meeting rooms, and workstations.','https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80']
+      ['Office Space Project','Professional workspace with smart planning, clean interiors, and productive ambience.'],
+      ['Retail Store Project','Modern retail space designed for customer flow, visibility, and strong brand experience.'],
+      ['Commercial Building','Strong commercial structure with efficient layout, durable materials, and clean design.'],
+      ['Showroom Project','Premium showroom planning with display zones and customer-friendly circulation.'],
+      ['Corporate Setup','Commercial office setup with reception, workstations, and meeting areas.']
     ];
 
     const baseImages = [
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1604014237800-1c9102c219da?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=900&q=80'
+      'images/comeercial.jpg',
+      'images/comercial2.jpg',
+      'images/comercial3.jpg',
+      'images/commercial4.jpg',
+      'images/commercial5.jpg'
     ];
 
     document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
       <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p[0]}', ${i})">
-        <div class="project-img"><img src="${p[2]}" alt="${p[0]}"><span class="project-badge">Commercial</span></div>
+        <div class="project-img"><img src="${baseImages[i % baseImages.length]}" alt="${p[0]}"><span class="project-badge">Commercial</span></div>
         <div class="project-content"><h3>${p[0]}</h3><p>${p[1]}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
       </div>
     `).join('');
 
-    function openGallery(title, index) {
+    function openGallery(title) {
       document.getElementById('modalTitle').innerText = title;
-      const rotated = baseImages.slice(index % baseImages.length).concat(baseImages.slice(0, index % baseImages.length));
-      document.getElementById('modalImages').innerHTML = rotated.map(src => `<img src="${src}" alt="${title}">`).join('');
+      document.getElementById('modalImages').innerHTML = baseImages.map(src => `<img src="${src}" alt="${title}">`).join('');
       document.getElementById('galleryModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }

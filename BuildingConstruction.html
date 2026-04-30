@@ -376,37 +376,30 @@
 
   <script>
     const projects = [
-      ['Independent House Construction','Premium independent home with strong structure, modern elevation, and planned execution.','https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80'],
-      ['Duplex Home Construction','Spacious duplex construction with smart layout, durable materials, and elegant facade.','https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80'],
-      ['Villa Construction','Luxury villa project with premium elevation, wide spaces, and quality finishing.','https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80'],
-      ['G+1 Residential Project','Efficient G+1 construction with practical planning and strong civil execution.','https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80'],
-      ['G+2 Home Construction','Modern G+2 building designed for space, comfort, and long-term durability.','https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=900&q=80'],
-      ['Modern Elevation Project','Contemporary elevation-focused project with clean lines and premium exterior details.','https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80'],
-      ['Residential Layout Construction','Well-planned residential construction with efficient material usage and site supervision.','https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=900&q=80'],
-      ['Turnkey Home Construction','Complete end-to-end home construction from foundation to final handover.','https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80'],
-      ['Premium House Project','Premium house construction with structural quality, elevation design, and refined finish.','https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80']
+      ['Independent House Construction','Premium independent home with strong structure, modern elevation, and planned execution.'],
+      ['Duplex Home Construction','Spacious duplex construction with smart layout, durable materials, and elegant facade.']
     ];
 
     const baseImages = [
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1600585152915-d208bec867a1?auto=format&fit=crop&w=900&q=80'
+      'images/buildingconsturction.jpg',
+      'images/buildingconstruction1.jpg',
+      'images/buildingconstruction2.jpg',
+      'images/buildingconsturction3.jpg',
+      'images/buildingconstruction4.jpg',
+      'images/buildingconstuction5.jpg',
+      'images/buildingconsturction6.jpg'
     ];
 
     document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
       <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p[0]}', ${i})">
-        <div class="project-img"><img src="${p[2]}" alt="${p[0]}"><span class="project-badge">Construction</span></div>
+        <div class="project-img"><img src="${baseImages[i % baseImages.length]}" alt="${p[0]}"><span class="project-badge">Construction</span></div>
         <div class="project-content"><h3>${p[0]}</h3><p>${p[1]}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
       </div>
     `).join('');
 
-    function openGallery(title, index) {
+    function openGallery(title) {
       document.getElementById('modalTitle').innerText = title;
-      const rotated = baseImages.slice(index % baseImages.length).concat(baseImages.slice(0, index % baseImages.length));
-      document.getElementById('modalImages').innerHTML = rotated.map(src => `<img src="${src}" alt="${title}">`).join('');
+      document.getElementById('modalImages').innerHTML = baseImages.map(src => `<img src="${src}" alt="${title}">`).join('');
       document.getElementById('galleryModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }

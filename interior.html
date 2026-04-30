@@ -377,41 +377,49 @@
 
   <script>
     const projects = [
-      ['Modern Living Room','Elegant living space with warm textures, clean furniture layout, and premium styling.','https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80'],
-      ['Luxury Bedroom','Premium bedroom concept with soft lighting, practical storage, and refined finishes.','https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80'],
-      ['Modular Kitchen','Functional kitchen design with efficient storage, premium surfaces, and clean lighting.','https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=900&q=80'],
-      ['Dining Interior','Comfortable dining setup with elegant lighting, wall accents, and premium ambience.','https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&w=900&q=80'],
-      ['TV Unit Design','Modern entertainment wall with storage, lighting, and balanced living room appeal.','https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=900&q=80'],
-      ['Wardrobe Interior','Smart wardrobe concept with practical sections, clean finish, and premium hardware.','https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80'],
-      ['Kids Room','Bright, functional, and playful room design with safe layout and useful storage.','https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80'],
-      ['Study Room','Focused work and study zone with clean storage, desk planning, and calm ambience.','https://images.unsplash.com/photo-1600494448850-6013c64ba722?auto=format&fit=crop&w=900&q=80'],
-      ['Foyer Design','Premium entry experience with compact storage, décor lighting, and elegant detailing.','https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80'],
-      ['False Ceiling','Elegant ceiling design with layered lighting and modern interior finishing.','https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=80'],
-      ['Bathroom Interior','Modern bathroom design with premium fixtures, clean tiling, and elegant lighting.','https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=900&q=80'],
-      ['Balcony Interior','Relaxed balcony setup with outdoor seating, décor elements, and practical finishing.','https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80'],
-      ['Full Home Interior','Complete home interior execution covering living, bedroom, kitchen, wardrobes, and décor.','https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80']
-    ];
-
-    const baseImages = [
-      'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=900&q=80',
-      'https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80'
+      {
+        title: 'Model Living',
+        description: 'Modern model living space with balanced layout, premium finishes, and comfortable ambience.',
+        cover: 'images/ml.jpg',
+        gallery: ['images/ml.jpg']
+      },
+      {
+        title: 'Luxury Bedroom',
+        description: 'Luxury bedroom interiors with elegant detailing, soft tones, and refined furniture planning.',
+        cover: 'images/LB.jpg',
+        gallery: ['images/LB.jpg', 'images/LB1.jpg', 'images/LB2.jpg']
+      },
+      {
+        title: 'Kitchen Interior',
+        description: 'Functional kitchen designs with smart storage, clean workflow, and stylish finishes.',
+        cover: 'images/KI.jpg',
+        gallery: ['images/KI.jpg', 'images/KI1.jpg', 'images/KI2.jpg', 'images/KI3.jpg', 'images/KI4.jpg']
+      },
+      {
+        title: 'Dining Hall',
+        description: 'Dining hall interiors with warm lighting, elegant seating, and premium visual appeal.',
+        cover: 'images/DI1.jpg',
+        gallery: ['images/DI1.jpg', 'images/DI2.jpg', 'images/DI3.jpg', 'images/DI4.jpg', 'images/DI5.jpg']
+      },
+      {
+        title: 'TV Unit',
+        description: 'TV unit concepts with modern wall composition, display storage, and integrated lighting.',
+        cover: 'images/TV.jpg',
+        gallery: ['images/TV.jpg', 'images/TV1.jpg', 'images/TV2.jpg']
+      }
     ];
 
     document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
-      <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p[0]}', ${i})">
-        <div class="project-img"><img src="${p[2]}" alt="${p[0]}"><span class="project-badge">Interior</span></div>
-        <div class="project-content"><h3>${p[0]}</h3><p>${p[1]}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
+      <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p.title}', ${i})">
+        <div class="project-img"><img src="${p.cover}" alt="${p.title}"><span class="project-badge">Interior</span></div>
+        <div class="project-content"><h3>${p.title}</h3><p>${p.description}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
       </div>
     `).join('');
 
     function openGallery(title, index) {
       document.getElementById('modalTitle').innerText = title;
-      const rotated = baseImages.slice(index % baseImages.length).concat(baseImages.slice(0, index % baseImages.length));
-      document.getElementById('modalImages').innerHTML = rotated.map(src => `<img src="${src}" alt="${title}">`).join('');
+      const selectedProject = projects[index];
+      document.getElementById('modalImages').innerHTML = selectedProject.gallery.map(src => `<img src="${src}" alt="${title}">`).join('');
       document.getElementById('galleryModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
