@@ -203,7 +203,7 @@
     .footer-bottom { max-width: 1200px; width: 100%; margin: 42px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
     .footer-bottom p { margin: 0; font-size: 0.78rem; color: rgba(255,255,255,0.38); letter-spacing: 0.02em; }
     @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 38px; } }
-    @media (max-width: 560px) { .main-footer { padding: 48px 22px 22px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-text { max-width: 100%; } .footer-social { max-width: 230px; } .footer-bottom { margin-top: 34px; } }
+    @media (max-width: 560px) { .main-footer { padding: 48px 22px 22px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; justify-items: start; text-align: left; } .footer-text { max-width: 100%; } .footer-social { max-width: 100%; justify-content: flex-start; } .footer-bottom { margin-top: 34px; align-items: flex-start; text-align: left; } }
 
     /* Unified Navbar (same as index.html) */
     #navbar {
@@ -241,6 +241,30 @@
       box-shadow:0 8px 24px rgba(15,27,45,0.08);
     }
 
+    .float-btn {
+      position:fixed;
+      right:28px;
+      bottom:28px;
+      z-index:200;
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      background:var(--primary);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      box-shadow:0 8px 32px rgba(26,60,110,0.35);
+      text-decoration:none;
+      animation:pulse 2.5s ease infinite;
+    }
+
+    @keyframes pulse {
+      0%,100% { box-shadow:0 8px 32px rgba(26,60,110,0.35); }
+      50% { box-shadow:0 8px 48px rgba(26,60,110,0.6); }
+    }
+
   </style>
 </head>
 <body>
@@ -260,6 +284,10 @@
     <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
     <a href="contact.html"><i class="fa-solid fa-phone"></i>Request a Call</a>
   </div>
+
+  <a href="https://wa.me/919686326936" class="float-btn" title="WhatsApp Us" aria-label="WhatsApp Us">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
 
   <div class="page-hero">
     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" alt="Building Construction Projects">
