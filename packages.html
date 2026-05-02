@@ -78,6 +78,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--te
 .section-sub { font-size:.95rem; color:var(--muted); line-height:1.85; margin-top:16px; }
 
 .packages-section { background:var(--cream); }
+.packages-grid-wrap { min-width:0; }
 .packages-grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:24px; align-items:start; }
 .package-column { min-width:0; }
 .package-title {
@@ -128,7 +129,22 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--te
   .nav-logo { font-size:1.55rem; }
   .mobile-menu { top:76px; }
   .page-hero { height:300px; margin-top:66px; }
-  .packages-grid { grid-template-columns:1fr; gap:28px; }
+  .packages-grid-wrap {
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior-x:contain;
+    margin-inline:-18px;
+    padding-inline:18px;
+    padding-bottom:20px;
+    scroll-snap-type:x proximity;
+  }
+  .packages-grid {
+    grid-template-columns:repeat(4, minmax(258px, 258px));
+    gap:14px;
+    width:max-content;
+    max-width:none;
+  }
+  .package-column { scroll-snap-align:start; min-width:258px; }
   .package-title { min-height:auto; padding:22px 16px; }
   footer { flex-direction:column; gap:12px; text-align:center; }
 }
@@ -451,6 +467,7 @@ body.menu-open .nav-links a.active {
 <h2 class="section-title">Choose the Right Package</h2>
 <p class="section-sub">Compare all four SayHomes construction packages in one premium layout. Expand each section to view detailed specifications.</p>
 </div>
+<div class="packages-grid-wrap">
 <div class="packages-grid">
 <!-- Package 1 -->
 <div class="package-column reveal d1">
@@ -1587,6 +1604,7 @@ body.menu-open .nav-links a.active {
 <p class="detail-line">2. Waterproofing warranty - 5 Years Guarantee &amp; warranty is provided</p>
 </div>
 </details>
+</div>
 </div>
 </div>
 </div>

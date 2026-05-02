@@ -28,11 +28,12 @@
     .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
     .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .project-content{padding:24px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.45rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:18px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem}.gallery-grid{padding:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-grid img{width:100%;height:220px;object-fit:cover}
+    .project-content{padding:24px}.project-owner{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--primary);line-height:1.15;margin-bottom:6px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--muted);font-weight:500;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-grid{padding:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-grid img{width:100%;height:220px;object-fit:cover;cursor:zoom-in;transition:opacity .2s}.gallery-grid img:hover{opacity:.92}
+    .lightbox{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:max(16px,3vw);background:rgba(5,10,18,.94)}.lightbox.active{display:flex}.lightbox-inner{position:relative;width:100%;max-width:min(100vw - 24px,1440px);display:flex;align-items:center;justify-content:center;padding:0 clamp(40px,5vw,68px);min-height:80px}.lightbox-inner img{max-width:100%;max-height:min(92vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.5)}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--navy);font-size:1.05rem;cursor:pointer;z-index:2;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:background .2s,opacity .2s}.lightbox-nav:hover:not(:disabled){background:var(--gold);color:var(--navy)}.lightbox-nav:disabled{opacity:.25;cursor:not-allowed}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-counter{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;letter-spacing:.04em}.lightbox-close{position:fixed;top:20px;right:20px;width:48px;height:48px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;z-index:601;box-shadow:0 8px 24px rgba(0,0,0,.35)}.lightbox-close:hover{background:var(--primary)}
 
     @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.45rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-grid{grid-template-columns:1fr;padding:16px}.gallery-grid img{height:230px}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.45rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-grid{grid-template-columns:1fr;padding:16px}.gallery-grid img{height:230px;cursor:zoom-in}}
    /* Professional Footer */
     .main-footer {
       background:var(--navy);
@@ -302,7 +303,7 @@
       <div class="section-head">
         <span class="section-tag">Interior Project Gallery</span>
         <h2 class="section-title"> Interior Projects</h2>
-        <p class="section-sub">Explore our interior design works. Click any project to view its image gallery.</p>
+        <p class="section-sub">Each card shows the homeowner. Tap a card to open every interior photo for that home.</p>
       </div>
 
       <div class="projects-grid" id="projectsGrid"></div>
@@ -312,11 +313,24 @@
   <div class="modal" id="galleryModal">
     <div class="modal-box">
       <div class="modal-header">
-        <h3 class="modal-title" id="modalTitle">Project Gallery</h3>
-        <button class="close-btn" onclick="closeGallery()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-title-block">
+          <h3 class="modal-title" id="modalTitle">Project Gallery</h3>
+          <p class="modal-subtitle" id="modalSubtitle"></p>
+        </div>
+        <button type="button" class="close-btn" onclick="closeGallery()" aria-label="Close gallery"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="gallery-grid" id="modalImages"></div>
     </div>
+  </div>
+
+  <div class="lightbox" id="imgLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Full size image">
+    <button type="button" class="lightbox-close" onclick="closeImageLightbox()" aria-label="Close full image"><i class="fa-solid fa-xmark"></i></button>
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" onclick="lightboxPrev()" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
+      <img id="lightboxFullImg" src="" alt="">
+      <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" onclick="lightboxNext()" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+    <p class="lightbox-counter" id="lightboxCounter" aria-live="polite"></p>
   </div>
 
  <!-- Footer -->
@@ -378,30 +392,35 @@
   <script>
     const projects = [
       {
+        owner: 'Arun Krishnan',
         title: 'Model Living',
         description: 'Modern model living space with balanced layout, premium finishes, and comfortable ambience.',
         cover: 'images/ml.jpg',
         gallery: ['images/ml.jpg']
       },
       {
+        owner: 'Lakshmi Venkat',
         title: 'Luxury Bedroom',
         description: 'Luxury bedroom interiors with elegant detailing, soft tones, and refined furniture planning.',
         cover: 'images/LB.jpg',
         gallery: ['images/LB.jpg', 'images/LB1.jpg', 'images/LB2.jpg']
       },
       {
+        owner: 'Rahul Bose',
         title: 'Kitchen Interior',
         description: 'Functional kitchen designs with smart storage, clean workflow, and stylish finishes.',
         cover: 'images/KI.jpg',
         gallery: ['images/KI.jpg', 'images/KI1.jpg', 'images/KI2.jpg', 'images/KI3.jpg', 'images/KI4.jpg']
       },
       {
+        owner: 'Deepa Srinivas',
         title: 'Dining Hall',
         description: 'Dining hall interiors with warm lighting, elegant seating, and premium visual appeal.',
         cover: 'images/DI1.jpg',
         gallery: ['images/DI1.jpg', 'images/DI2.jpg', 'images/DI3.jpg', 'images/DI4.jpg', 'images/DI5.jpg']
       },
       {
+        owner: 'Manoj Patil',
         title: 'TV Unit',
         description: 'TV unit concepts with modern wall composition, display storage, and integrated lighting.',
         cover: 'images/TV.jpg',
@@ -410,24 +429,136 @@
     ];
 
     document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
-      <div class="project-card" onclick="openGallery('Project ${String(i+1).padStart(2,'0')} — ${p.title}', ${i})">
-        <div class="project-img"><img src="${p.cover}" alt="${p.title}"><span class="project-badge">Interior</span></div>
-        <div class="project-content"><h3>${p.title}</h3><p>${p.description}</p><span class="view-gallery">View Images <i class="fa-solid fa-arrow-right"></i></span></div>
+      <div class="project-card" role="button" tabindex="0" onclick="openGallery(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGallery(${i});}">
+        <div class="project-img"><img src="${p.cover}" alt="${p.title} — ${p.owner}"><span class="project-badge">Interior</span></div>
+        <div class="project-content">
+          <div class="project-owner">${p.owner}</div>
+          <h3>${p.title}</h3>
+          <p>${p.description}</p>
+          <span class="view-gallery">View all photos <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
       </div>
     `).join('');
 
-    function openGallery(title, index) {
-      document.getElementById('modalTitle').innerText = title;
+    function openGallery(index) {
       const selectedProject = projects[index];
-      document.getElementById('modalImages').innerHTML = selectedProject.gallery.map(src => `<img src="${src}" alt="${title}">`).join('');
+      if (!selectedProject) return;
+      document.getElementById('modalTitle').innerText = selectedProject.owner;
+      document.getElementById('modalSubtitle').innerText = selectedProject.title;
+      document.getElementById('modalImages').innerHTML = selectedProject.gallery.map((src) => `<img src="${src}" alt="${selectedProject.owner} — ${selectedProject.title}" loading="lazy">`).join('');
       document.getElementById('galleryModal').classList.add('active');
       document.body.style.overflow = 'hidden';
     }
 
+    let lightboxSlides = [];
+    let lightboxIndex = 0;
+
+    function openImageLightboxFromThumb(imgEl) {
+      const imgs = [...document.querySelectorAll('#modalImages img')];
+      lightboxSlides = imgs.map((el) => ({
+        src: el.currentSrc || el.getAttribute('src'),
+        alt: el.getAttribute('alt') || ''
+      }));
+      lightboxIndex = Math.max(0, imgs.indexOf(imgEl));
+      const lb = document.getElementById('imgLightbox');
+      lb.classList.add('active');
+      lb.setAttribute('aria-hidden', 'false');
+      applyLightboxSlide();
+    }
+
+    function applyLightboxSlide() {
+      const img = document.getElementById('lightboxFullImg');
+      const slide = lightboxSlides[lightboxIndex];
+      if (!slide) return;
+      img.src = slide.src;
+      img.alt = slide.alt;
+      const prev = document.getElementById('lightboxPrev');
+      const next = document.getElementById('lightboxNext');
+      const counter = document.getElementById('lightboxCounter');
+      const n = lightboxSlides.length;
+      if (n <= 1) {
+        prev.style.display = 'none';
+        next.style.display = 'none';
+        prev.disabled = true;
+        next.disabled = true;
+        counter.textContent = '';
+      } else {
+        prev.style.display = '';
+        next.style.display = '';
+        prev.disabled = false;
+        next.disabled = false;
+        counter.textContent = (lightboxIndex + 1) + ' / ' + n;
+      }
+    }
+
+    function lightboxPrev() {
+      if (lightboxSlides.length <= 1) return;
+      lightboxIndex = (lightboxIndex - 1 + lightboxSlides.length) % lightboxSlides.length;
+      applyLightboxSlide();
+    }
+
+    function lightboxNext() {
+      if (lightboxSlides.length <= 1) return;
+      lightboxIndex = (lightboxIndex + 1) % lightboxSlides.length;
+      applyLightboxSlide();
+    }
+
+    function closeImageLightbox() {
+      const lb = document.getElementById('imgLightbox');
+      const img = document.getElementById('lightboxFullImg');
+      lb.classList.remove('active');
+      lb.setAttribute('aria-hidden', 'true');
+      img.removeAttribute('src');
+      img.alt = '';
+      lightboxSlides = [];
+      lightboxIndex = 0;
+      document.getElementById('lightboxCounter').textContent = '';
+    }
+
     function closeGallery() {
+      closeImageLightbox();
       document.getElementById('galleryModal').classList.remove('active');
+      document.getElementById('modalSubtitle').innerText = '';
       document.body.style.overflow = '';
     }
+
+    document.getElementById('modalImages').addEventListener('click', function (e) {
+      const t = e.target;
+      if (t.tagName !== 'IMG') return;
+      openImageLightboxFromThumb(t);
+    });
+
+    document.getElementById('imgLightbox').addEventListener('click', function (e) {
+      if (e.target === this) closeImageLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      const lb = document.getElementById('imgLightbox');
+      if (lb.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeImageLightbox();
+          e.preventDefault();
+          return;
+        }
+        if (e.key === 'ArrowLeft') {
+          lightboxPrev();
+          e.preventDefault();
+          return;
+        }
+        if (e.key === 'ArrowRight') {
+          lightboxNext();
+          e.preventDefault();
+          return;
+        }
+      }
+      if (e.key === 'Escape') {
+        const gm = document.getElementById('galleryModal');
+        if (gm.classList.contains('active')) {
+          closeGallery();
+          e.preventDefault();
+        }
+      }
+    });
 
     document.getElementById('galleryModal').addEventListener('click', function(e){ if(e.target === this) closeGallery(); });
 

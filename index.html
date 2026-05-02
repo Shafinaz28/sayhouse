@@ -624,6 +624,7 @@
 
     /* Packages */
     #packages { background:#fff; }
+    .packages-grid-wrap { min-width:0; }
     .packages-grid {
       display:grid;
       grid-template-columns:repeat(4, 1fr);
@@ -1087,6 +1088,10 @@
       .packages-grid {
         grid-template-columns:1fr 1fr;
       }
+      .services-grid {
+        gap:20px;
+        background:transparent;
+      }
       .gallery-grid {
         grid-template-columns:1fr 1fr;
         grid-template-rows:auto;
@@ -1120,6 +1125,16 @@
       .about-grid {
         grid-template-columns:1fr;
         gap:44px;
+      }
+      .about-stats {
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:clamp(18px, 5vw, 36px);
+      }
+      .about-stats > div {
+        flex:0 1 auto;
+        text-align:center;
+        min-width:0;
       }
       .about-accent { display:none; }
       .counter-grid {
@@ -1216,19 +1231,34 @@
       .why-item h4 {
         max-width:260px;
       }
-      .about-stats {
-        flex-direction:row;
-        justify-content:space-between;
-        gap:14px;
-      }
-      .about-stats > div {
-        flex:1;
-      }
 
       .services-grid,
-      .packages-grid,
       .gallery-grid {
         grid-template-columns:1fr;
+      }
+      .services-grid {
+        gap:18px;
+        background:transparent;
+      }
+      .packages-grid-wrap {
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        overscroll-behavior-x:contain;
+        margin-inline:-20px;
+        padding-inline:20px;
+        padding-bottom:18px;
+        scroll-snap-type:x proximity;
+      }
+      .packages-grid {
+        grid-template-columns:repeat(4, minmax(240px, 240px));
+        gap:14px;
+        width:max-content;
+        max-width:none;
+        margin-top:40px;
+      }
+      .packages-grid .pkg-card {
+        scroll-snap-align:start;
+        min-width:240px;
       }
       .service-card,
       .pkg-card {
@@ -1394,7 +1424,7 @@
 
           <div class="about-stats">
             <div>
-              <div class="about-stat-num">35+</div>
+              <div class="about-stat-num">66+</div>
               <div class="about-stat-label">Happy Clients</div>
             </div>
             <div>
@@ -1463,7 +1493,7 @@
 
         <div class="why-item reveal d1">
           <div class="why-icon"><i class="fa-solid fa-star"></i></div>
-          <h4>25+ handled projects</h4>
+          <h4>66+ handled projects</h4>
         </div>
 
         <div class="why-item reveal from-right d2">
@@ -1508,11 +1538,11 @@
   <section id="counter">
     <div class="counter-grid">
       <div class="reveal">
-        <div class="counter-num"><span class="count" data-target="35">0</span>+</div>
+        <div class="counter-num"><span class="count" data-target="66">0</span>+</div>
         <div class="counter-label">Happy Clients</div>
       </div>
       <div class="reveal d1">
-        <div class="counter-num"><span class="count" data-target="35">0</span>+</div>
+        <div class="counter-num"><span class="count" data-target="66">0</span>+</div>
         <div class="counter-label">Projects Completed</div>
       </div>
       <div class="reveal d2">
@@ -1572,6 +1602,7 @@
         <p class="section-sub">Select the right construction package tailored to your needs and budget.</p>
       </div>
 
+      <div class="packages-grid-wrap">
       <div class="packages-grid">
         <div class="pkg-card reveal d1">
           <span class="pkg-tag">Starter</span>
@@ -1600,6 +1631,7 @@
           <h3>Luxury Package</h3>
           <p>Premium living crafted with elegance, custom architecture, and world-class finishes.</p>
         </div>
+      </div>
       </div>
     </div>
   </section>
