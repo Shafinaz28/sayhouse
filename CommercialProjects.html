@@ -389,20 +389,34 @@
   </footer>
 
   <script>
-    const baseImages = [
-      'images/comeercial.jpg',
-      'images/comercial2.jpg',
-      'images/comercial3.jpg',
-      'images/commercial4.jpg',
-      'images/commercial5.jpg'
-    ];
-
     const projects = [
-      { owner: 'Vikram Mehta', title: 'Office Space Project', description: 'Professional workspace with smart planning, clean interiors, and productive ambience.', cover: baseImages[0], gallery: [baseImages[0], baseImages[1], baseImages[2]] },
-      { owner: 'Sneha Reddy', title: 'Retail Store Project', description: 'Modern retail space designed for customer flow, visibility, and strong brand experience.', cover: baseImages[1], gallery: [baseImages[1], baseImages[2], baseImages[3]] },
-      { owner: 'Mohammed Irfan', title: 'Commercial Building', description: 'Strong commercial structure with efficient layout, durable materials, and clean design.', cover: baseImages[2], gallery: [baseImages[2], baseImages[3], baseImages[4]] },
-      { owner: 'Priya Nair', title: 'Showroom Project', description: 'Premium showroom planning with display zones and customer-friendly circulation.', cover: baseImages[3], gallery: [baseImages[3], baseImages[4], baseImages[0]] },
-      { owner: 'Karthik Iyer', title: 'Corporate Setup', description: 'Commercial office setup with reception, workstations, and meeting areas.', cover: baseImages[4], gallery: [baseImages[4], baseImages[0], baseImages[1]] }
+      {
+        owner: 'Leaders International School',
+        title: 'Gauribidanur',
+        description: 'Educational campus build at Gauribidanur — strong structure, planned circulation, and durable finishes for daily school use.',
+        cover: 'commercial/lisg.jpg',
+        gallery: [
+          'commercial/lisg.jpg',
+          'commercial/lisg1.jpg',
+          'commercial/lisg2.jpg',
+          'commercial/lisg3.jpg',
+          'commercial/lisg4.jpg'
+        ]
+      },
+      {
+        owner: 'IMA Central',
+        title: 'Chikkaballapura',
+        description: 'Commercial project at IMA Central — elevation, structure, and planned execution in Chikkaballapura.',
+        cover: 'commercial/IMA%20CENTRAL%20Elevation.jpg',
+        gallery: ['commercial/IMA%20CENTRAL%20Elevation.jpg']
+      },
+      {
+        owner: 'GSK Conventional Hall',
+        title: 'Chikkaballapura',
+        description: 'Convention hall build at GSK — large-span planning, durable finishes, and execution in Chikkaballapura.',
+        cover: 'commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg',
+        gallery: ['commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg']
+      }
     ];
 
     document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
