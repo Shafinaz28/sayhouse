@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commercial Work Detail | SayHomes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#0F1B2D;--primary:#1A3C6E;--cream:#FAF7F2;--light:#F0EBE3;--gold:#C9A84C;--logo-blue:#0047AB;--logo-red:#E31837;--logo-blue-on-dark:#93B9E8}
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'DM Sans',sans-serif;background:var(--cream);color:#2c2c2c}
+    .section{padding:70px 24px}
+    .inner{max-width:980px;margin:0 auto}
+    .title{font-family:'Cormorant Garamond',serif;font-size:2.5rem;text-align:center;color:var(--navy)}
+    .label{display:block;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#7a7269;margin:8px 0 16px}
+    .video-box{aspect-ratio:16/9;background:#efefef}
+    .video-box iframe{width:100%;height:100%;border:0}
+    .title2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;text-align:center;color:var(--navy);margin:34px 0 14px}
+    .main-image{width:100%;height:430px;object-fit:cover;background:#f3f3f3}
+    .thumbs{display:flex;gap:8px;overflow-x:auto;padding-top:10px}
+    .thumb{border:2px solid transparent;background:#fff;cursor:pointer;flex:0 0 auto}
+    .thumb.active{border-color:var(--gold)}
+    .thumb img{width:72px;height:48px;object-fit:cover;display:block}
+    @media(max-width:900px){.main-image{height:280px}.title,.title2{font-size:2rem}}
+  </style>
+</head>
+<body>
+  <section class="section">
+    <div class="inner">
+      <h1 class="title" id="titleTop">CAPSTONE HIGH - HOSKOTE</h1>
+      <span class="label">VIDEO</span>
+      <div class="video-box"><iframe id="videoFrame" src="" title="Project video" allowfullscreen loading="lazy"></iframe></div>
+      <h2 class="title2" id="titleBottom">CAPSTONE HIGH - HOSKOTE</h2>
+      <img class="main-image" id="mainImage" src="" alt="">
+      <div class="thumbs" id="thumbs"></div>
+    </div>
+  </section>
+
+  <script>
+    const projects = {
+      capstone: { name: "CAPSTONE HIGH - HOSKOTE", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/lisg.jpg","commercial/lisg1.jpg","commercial/lisg2.jpg","commercial/lisg3.jpg","commercial/lisg4.jpg"] },
+      beverly: { name: "SAMMY'S BEVERLY HILLS", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/lisg2.jpg","commercial/lisg3.jpg","commercial/lisg4.jpg","commercial/lisg.jpg"] },
+      rak: { name: "RAK FELICITY (VENCER)", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/IMA%20CENTRAL%20Elevation.jpg","commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg","commercial/lisg.jpg"] }
+    };
+    const key = new URLSearchParams(window.location.search).get('project') || 'capstone';
+    const p = projects[key] || projects.capstone;
+    document.getElementById('titleTop').textContent = p.name;
+    document.getElementById('titleBottom').textContent = p.name;
+    document.getElementById('videoFrame').src = p.video;
+    const mainImage = document.getElementById('mainImage');
+    const thumbs = document.getElementById('thumbs');
+    let idx = 0;
+    let t = null;
+    function render(){
+      mainImage.src = p.images[idx];
+      thumbs.querySelectorAll('.thumb').forEach((el,i)=>el.classList.toggle('active', i===idx));
+    }
+    function start(){
+      if(t) clearInterval(t);
+      if(p.images.length <= 1) return;
+      t = setInterval(()=>{ idx = (idx+1) % p.images.length; render(); }, 2600);
+    }
+    thumbs.innerHTML = p.images.map((src,i)=>`<button class="thumb ${i===0?'active':''}" type="button" onclick="go(${i})"><img src="${src}" alt="${p.name} image ${i+1}" loading="lazy"></button>`).join('');
+    function go(i){ idx = i; render(); start(); }
+    window.go = go;
+    render();
+    start();
+  </script>
+</body>
+</html>

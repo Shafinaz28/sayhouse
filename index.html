@@ -13,10 +13,15 @@
   <style>
     :root {
       --navy:#0F1B2D;
-      --primary:#1A3C6E;
-      --secondary:#2F5DAA;
+      /* Logo-aligned brand colors (Say = blue, Homes = red) */
+      --logo-blue:#0047AB;
+      --logo-red:#E31837;
+      --primary:var(--logo-blue);
+      --secondary:#2563C7;
       --light-blue:#E6EEF8;
       --gold:#C9A84C;
+      /* Footer / dark backgrounds: readable tint of logo blue */
+      --logo-blue-on-dark:#93B9E8;
       --cream:#FAF7F2;
       --light:#F0EBE3;
       --text:#2C2C2C;
@@ -53,6 +58,14 @@
     .d3 { transition-delay:.3s; }
     .d4 { transition-delay:.4s; }
 
+    #why .why-item.reveal {
+      transform: scale(0.88);
+      transform-origin: center center;
+    }
+    #why .why-item.reveal.visible {
+      transform: scale(1);
+    }
+
     /* Navbar */
     #navbar {
       position:fixed;
@@ -79,17 +92,21 @@
       font-family:'Cormorant Garamond', serif;
       font-size:1.75rem;
       font-weight:700;
-      color:#fff;
+      color:var(--logo-blue);
       letter-spacing:-0.5px;
       text-decoration:none;
       transition:color .35s;
       white-space:nowrap;
+      text-shadow:0 1px 12px rgba(0,0,0,0.45);
     }
-    .nav-logo span { color:var(--gold); }
+    .nav-logo span { color:var(--logo-red); }
     #navbar.scrolled .nav-logo,
-    body.menu-open .nav-logo { color:var(--navy); }
+    body.menu-open .nav-logo {
+      color:var(--logo-blue);
+      text-shadow:none;
+    }
     #navbar.scrolled .nav-logo span,
-    body.menu-open .nav-logo span { color:var(--primary); }
+    body.menu-open .nav-logo span { color:var(--logo-red); }
 
     .nav-links {
       display:flex;
@@ -339,35 +356,6 @@
       border-color:#fff;
     }
 
-    .scroll-line {
-      position:absolute;
-      bottom:36px;
-      left:50%;
-      transform:translateX(-50%);
-      z-index:2;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:8px;
-      animation:fadeUp 1s 1s ease both;
-    }
-
-    .scroll-line span {
-      font-size:0.62rem;
-      letter-spacing:0.18em;
-      text-transform:uppercase;
-      color:rgba(255,255,255,0.5);
-    }
-
-    .scroll-line::after {
-      content:'';
-      display:block;
-      width:1px;
-      height:50px;
-      background:linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-      animation:lineGrow 2s 1.5s ease infinite;
-    }
-
     .float-btn {
       position:fixed;
       right:28px;
@@ -431,16 +419,6 @@
       object-fit:cover;
       display:block;
     }
-    .about-accent {
-      position:absolute;
-      bottom:-24px;
-      right:-24px;
-      width:160px;
-      height:160px;
-      border:2px solid var(--gold);
-      opacity:.4;
-      pointer-events:none;
-    }
     .about-text p {
       font-size:0.97rem;
       color:var(--muted);
@@ -473,30 +451,56 @@
     #services { background:var(--cream); }
     .services-grid {
       display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      gap:2px;
+      grid-template-columns:1fr 1.05fr 1fr;
+      gap:24px;
       margin-top:60px;
-      background:var(--light);
+      align-items:start;
+    }
+    .services-col {
+      display:grid;
+      grid-template-rows:1fr 1fr;
+      gap:24px;
+    }
+    .services-center {
+      border-radius:22px;
+      overflow:hidden;
+      box-shadow:0 20px 52px rgba(15,27,45,0.15);
+      padding:10px;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .services-center img {
+      width:100%;
+      height:auto;
+      max-height:400px;
+      object-fit:contain;
+      display:block;
     }
     .service-card {
       background:#fff;
-      padding:48px 32px;
+      padding:26px 20px;
+      border:1px solid var(--light);
+      border-radius:18px;
+      box-shadow:0 14px 36px rgba(15,27,45,0.06);
       transition:background .35s, transform .35s;
+      text-align:center;
     }
     .service-card:hover {
       background:var(--navy);
       transform:translateY(-4px);
     }
     .service-icon {
-      width:54px;
-      height:54px;
+      width:42px;
+      height:42px;
       border:1px solid rgba(201,168,76,0.65);
-      border-radius:16px;
+      border-radius:12px;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin-bottom:28px;
-      font-size:20px;
+      margin:0 auto 16px;
+      font-size:16px;
       color:var(--primary);
       background:rgba(26,60,110,0.06);
       transition:border-color .3s, background .3s, color .3s;
@@ -543,6 +547,11 @@
       font-size:2rem;
       line-height:1;
       color:var(--primary);
+      transition:color .35s ease, transform .4s cubic-bezier(.22,.61,.36,1);
+      transform: scale(1);
+    }
+    .why-icon i {
+      color:inherit;
     }
     .why-item h4 {
       font-size:1.05rem;
@@ -551,6 +560,14 @@
       line-height:1.35;
       max-width:180px;
       margin:0;
+      transition:color .3s ease;
+    }
+    .why-item:hover .why-icon {
+      transform: scale(1.12);
+    }
+    .why-item:hover .why-icon,
+    .why-item:hover h4 {
+      color:var(--gold);
     }
 
     /* Counter */
@@ -624,6 +641,11 @@
 
     /* Packages */
     #packages { background:#fff; }
+    #packages .reveal { text-align:center; }
+    #packages .section-sub {
+      margin-left:auto;
+      margin-right:auto;
+    }
     .packages-grid-wrap { min-width:0; }
     .packages-grid {
       display:grid;
@@ -632,11 +654,13 @@
       margin-top:56px;
     }
     .pkg-card {
+      display:block;
       border:1px solid var(--light);
       padding:40px 28px;
       position:relative;
       overflow:hidden;
       background:#fff;
+      text-decoration:none;
       transition:border-color .3s, box-shadow .3s, transform .3s;
     }
     .pkg-card::before {
@@ -690,6 +714,75 @@
       display:block;
     }
 
+    /* Brand partners marquee */
+    #brand-partners {
+      background:#fff;
+      padding:88px 0 72px;
+      overflow:hidden;
+      border-top:1px solid var(--light);
+      border-bottom:1px solid var(--light);
+    }
+    #brand-partners .inner { max-width:100%; padding:0 40px; }
+    #brand-partners .section-head-center {
+      max-width:720px;
+      margin:0 auto 40px;
+      padding:0 24px;
+    }
+    #brand-partners .section-title {
+      font-size:clamp(1.65rem, 3vw, 2.35rem);
+    }
+    .brands-marquee {
+      position:relative;
+      mask-image:linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+      -webkit-mask-image:linear-gradient(90deg, transparent 0%, #000 10%, #000 90%, transparent 100%);
+    }
+    .brands-track {
+      display:flex;
+      width:max-content;
+      animation:brandsMarquee 42s linear infinite;
+    }
+    .brands-row {
+      display:flex;
+      align-items:center;
+      gap:clamp(40px, 6vw, 88px);
+      padding:12px 40px;
+      list-style:none;
+      margin:0;
+      flex-shrink:0;
+    }
+    .brands-row li {
+      flex:0 0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .brands-row img {
+      width:180px;
+      height:70px;
+      object-fit:contain;
+      display:block;
+    }
+    @keyframes brandsMarquee {
+      from { transform:translateX(0); }
+      to { transform:translateX(-50%); }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .brands-track {
+        animation:none;
+        width:100%;
+        max-width:960px;
+        margin:0 auto;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+      .brands-row {
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:16px;
+      }
+      .brands-track .brands-row:last-child { display:none; }
+    }
+
     /* Testimonial */
     #testimonials {
       background:var(--navy);
@@ -700,6 +793,16 @@
       margin:0 auto;
       text-align:center;
     }
+    .testi-heading {
+      font-family:'Cormorant Garamond', serif;
+      font-size:clamp(1.25rem, 3vw, 2.9rem);
+      font-weight:600;
+      letter-spacing:0;
+      color:#fff;
+      line-height:1.1;
+      margin-bottom:8px;
+      white-space:nowrap;
+    }
     .testi-quote {
       font-family:'Cormorant Garamond', serif;
       font-size:clamp(1.3rem, 2.5vw, 1.8rem);
@@ -707,7 +810,7 @@
       font-style:italic;
       color:rgba(255,255,255,0.88);
       line-height:1.7;
-      margin:40px 0;
+      margin:18px 0 20px;
     }
     .testi-author {
       font-size:0.78rem;
@@ -715,36 +818,25 @@
       text-transform:uppercase;
       color:var(--gold);
     }
+    .testi-role {
+      margin-top:4px;
+      font-size:0.82rem;
+      color:rgba(255,255,255,0.62);
+      text-transform:lowercase;
+    }
     .testi-divider {
       width:40px;
       height:1px;
       background:var(--gold);
-      margin:20px auto;
+      margin:12px auto 10px;
     }
     .testi-mark {
       font-family:'Cormorant Garamond', serif;
-      font-size:5rem;
+      font-size:3.6rem;
       color:var(--gold);
       opacity:.3;
       line-height:.8;
-    }
-    .testi-nav {
-      display:flex;
-      justify-content:center;
-      gap:12px;
-      margin-top:40px;
-    }
-    .testi-dot {
-      width:8px;
-      height:8px;
-      border-radius:50%;
-      background:rgba(255,255,255,0.2);
-      cursor:pointer;
-      transition:background .3s, transform .3s;
-    }
-    .testi-dot.active {
-      background:var(--gold);
-      transform:scale(1.4);
+      margin:0;
     }
 
     /* FAQ */
@@ -784,6 +876,13 @@
       line-height:1.85;
       padding-top:16px;
     }
+    details p a {
+      color:var(--primary);
+      font-weight:600;
+      text-decoration:underline;
+      text-underline-offset:3px;
+    }
+    details p a:hover { color:var(--secondary); }
 
     /* Contact */
     #contact { background:var(--cream); }
@@ -908,12 +1007,12 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.9);
+  color: var(--logo-blue-on-dark);
   margin-bottom: 14px;
 }
 
 .footer-logo span {
-  color: var(--primary);
+  color: var(--logo-red);
 }
 
 .footer-text {
@@ -1071,10 +1170,6 @@
       0%,100% { box-shadow:0 8px 32px rgba(26,60,110,0.35); }
       50% { box-shadow:0 8px 48px rgba(26,60,110,0.6); }
     }
-    @keyframes lineGrow {
-      0%,100% { opacity:1; transform:scaleY(1); }
-      50% { opacity:.4; transform:scaleY(.6); }
-    }
 
     /* Tablet */
     @media (max-width:1100px) {
@@ -1084,14 +1179,19 @@
         column-gap:42px;
         row-gap:38px;
       }
-      .services-grid,
       .packages-grid {
         grid-template-columns:1fr 1fr;
       }
       .services-grid {
-        gap:20px;
-        background:transparent;
+        grid-template-columns:1fr;
+        gap:18px;
       }
+      .services-col {
+        grid-template-rows:auto;
+        grid-template-columns:1fr 1fr;
+        gap:18px;
+      }
+      .services-center img { max-height:330px; }
       .gallery-grid {
         grid-template-columns:1fr 1fr;
         grid-template-rows:auto;
@@ -1136,7 +1236,6 @@
         text-align:center;
         min-width:0;
       }
-      .about-accent { display:none; }
       .counter-grid {
         grid-template-columns:1fr 1fr;
         gap:36px;
@@ -1205,9 +1304,6 @@
         width:100%;
         padding:14px 18px;
       }
-      .scroll-line {
-        display:none;
-      }
 
       .section {
         padding:70px 20px;
@@ -1232,14 +1328,26 @@
         max-width:260px;
       }
 
-      .services-grid,
       .gallery-grid {
         grid-template-columns:1fr;
       }
       .services-grid {
-        gap:18px;
-        background:transparent;
+        gap:14px;
       }
+      .services-col {
+        grid-template-columns:1fr;
+        gap:14px;
+      }
+      .services-center {
+        order:2;
+      }
+      .services-grid .services-col:first-child {
+        order:1;
+      }
+      .services-grid .services-col:last-child {
+        order:3;
+      }
+      .services-center img { max-height:250px; }
       .packages-grid-wrap {
         overflow-x:auto;
         -webkit-overflow-scrolling:touch;
@@ -1293,14 +1401,29 @@
         font-size:0.62rem;
       }
 
+      #brand-partners {
+        padding:64px 0 56px;
+      }
+      #brand-partners .inner {
+        padding:0 18px;
+      }
+      .brands-row {
+        gap:32px;
+        padding:10px 20px;
+      }
+      .brands-row img {
+        width:145px;
+        height:56px;
+      }
+
       #testimonials {
         padding:76px 20px;
       }
       .testi-mark {
-        font-size:4rem;
+        font-size:3.2rem;
       }
       .testi-quote {
-        margin:26px 0;
+        margin:16px 0 18px;
       }
 
       .faq-list {
@@ -1397,8 +1520,6 @@
         <a href="about.html" class="btn-outline">About Us</a>
       </div>
     </div>
-
-    <div class="scroll-line"><span>Scroll</span></div>
   </section>
 
   <a href="https://wa.me/919686326936" class="float-btn" title="WhatsApp Us" aria-label="WhatsApp Us">
@@ -1412,7 +1533,6 @@
         <div class="reveal from-left">
           <div class="about-img-wrap">
             <img src="images/about.jpg" class="about-img" alt="About SayHomes">
-            <div class="about-accent"></div>
           </div>
         </div>
 
@@ -1450,28 +1570,36 @@
       </div>
 
       <div class="services-grid">
-        <div class="service-card reveal d1">
-          <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
-          <h3>Building Construction</h3>
-          <p>Complete construction service with quality planning and professional execution from foundation to finish.</p>
+        <div class="services-col">
+          <div class="service-card reveal d1">
+            <div class="service-icon"><i class="fa-solid fa-helmet-safety"></i></div>
+            <h3>Building Construction</h3>
+            <p>Complete construction service with quality planning and professional execution from foundation to finish.</p>
+          </div>
+
+          <div class="service-card reveal d2">
+            <div class="service-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+            <h3>Architecture</h3>
+            <p>Smart architectural planning that matches your vision, lifestyle, and future needs seamlessly.</p>
+          </div>
         </div>
 
-        <div class="service-card reveal d2">
-          <div class="service-icon"><i class="fa-solid fa-drafting-compass"></i></div>
-          <h3>Architecture</h3>
-          <p>Smart architectural planning that matches your vision, lifestyle, and future needs seamlessly.</p>
+        <div class="services-center reveal scale-in">
+          <img src="images/construction_800.webp" alt="Complete home solutions visual">
         </div>
 
-        <div class="service-card reveal d3">
-          <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
-          <h3>Interior Design</h3>
-          <p>Elegant interior solutions designed for comfort, beauty, and lasting functional elegance.</p>
-        </div>
+        <div class="services-col">
+          <div class="service-card reveal d3">
+            <div class="service-icon"><i class="fa-solid fa-couch"></i></div>
+            <h3>Interior Design</h3>
+            <p>Elegant interior solutions designed for comfort, beauty, and lasting functional elegance.</p>
+          </div>
 
-        <div class="service-card reveal d4">
-          <div class="service-icon"><i class="fa-solid fa-comments"></i></div>
-          <h3>Consultation</h3>
-          <p>Professional guidance for construction, design, planning, execution, and government approvals.</p>
+          <div class="service-card reveal d4">
+            <div class="service-icon"><i class="fa-solid fa-comments"></i></div>
+            <h3>Consultation</h3>
+            <p>Professional guidance for construction, design, planning, execution, and government approvals.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1567,27 +1695,27 @@
       <div class="gallery-grid">
         <div class="gallery-item reveal from-left">
           <img src="images/ml.jpg" alt="Project 1">
-          <div class="gallery-overlay"><span>Mr. Sumer Singh — Nagasandra, Bengaluru</span></div>
+          <div class="gallery-overlay"><span>Mr. Dheeraj — Amruthalli, Bengaluru</span></div>
         </div>
 
         <div class="gallery-item reveal d1">
           <img src="images/DI1.jpg" alt="Project 2">
-          <div class="gallery-overlay"><span>Modern Residence</span></div>
+          <div class="gallery-overlay"><span>#15A Sky Grades, Richmond Town, Bengaluru</span></div>
         </div>
 
         <div class="gallery-item reveal d2">
-          <img src="images/KI.jpg" alt="Project 3">
+          <img src="images/KI1.jpg" alt="Luxury interior project">
           <div class="gallery-overlay"><span>Luxury Interior</span></div>
         </div>
 
         <div class="gallery-item reveal d1">
-          <img src="images/LB.jpg" alt="Project 4">
+          <img src="images/LB1.jpg" alt="Contemporary design project">
           <div class="gallery-overlay"><span>Contemporary Design</span></div>
         </div>
 
         <div class="gallery-item reveal d2">
-          <img src="images/comeercial.jpg" alt="Project 5">
-          <div class="gallery-overlay"><span>Premium Villa</span></div>
+          <img src="images/comeercial.jpg" alt="Convention center project">
+          <div class="gallery-overlay"><span>Convention Center</span></div>
         </div>
       </div>
     </div>
@@ -1596,7 +1724,7 @@
   <!-- Packages -->
   <section id="packages" class="section">
     <div class="inner">
-      <div class="reveal">
+      <div class="reveal section-head-center">
         <span class="section-tag">Our Packages</span>
         <h2 class="section-title">Choose Your Package</h2>
         <p class="section-sub">Select the right construction package tailored to your needs and budget.</p>
@@ -1604,52 +1732,103 @@
 
       <div class="packages-grid-wrap">
       <div class="packages-grid">
-        <div class="pkg-card reveal d1">
+        <a href="packages.html" class="pkg-card reveal d1">
           <span class="pkg-tag">Starter</span>
           <div class="pkg-icon"><i class="fa-solid fa-house-chimney"></i></div>
           <h3>Essential Package</h3>
           <p>Smart and budget-friendly home construction with quality materials and timely delivery.</p>
-        </div>
+        </a>
 
-        <div class="pkg-card reveal d2">
-          <span class="pkg-tag">Popular</span>
-          <div class="pkg-icon"><i class="fa-solid fa-house-user"></i></div>
-          <h3>Standard Package</h3>
-          <p>Balanced package with premium features, superior finishes, and enhanced designs.</p>
-        </div>
-
-        <div class="pkg-card reveal d3">
+        <a href="packages.html" class="pkg-card reveal d2">
           <span class="pkg-tag">Upgraded</span>
           <div class="pkg-icon"><i class="fa-solid fa-city"></i></div>
           <h3>Premium Package</h3>
           <p>Luxury finish with modern upgrades, bespoke interiors, and dedicated management.</p>
-        </div>
+        </a>
 
-        <div class="pkg-card reveal d4">
+        <a href="packages.html" class="pkg-card reveal d3">
           <span class="pkg-tag">Exclusive</span>
           <div class="pkg-icon"><i class="fa-solid fa-building"></i></div>
           <h3>Luxury Package</h3>
           <p>Premium living crafted with elegance, custom architecture, and world-class finishes.</p>
-        </div>
+        </a>
+
+        <a href="packages.html" class="pkg-card reveal d4">
+          <span class="pkg-tag">Elite</span>
+          <div class="pkg-icon"><i class="fa-solid fa-gem"></i></div>
+          <h3>Luxury Plus</h3>
+          <p>Our most refined tier—signature architecture, imported finishes, white-glove project oversight, and bespoke detailing throughout.</p>
+        </a>
       </div>
       </div>
     </div>
   </section>
 
+  <!-- Brand partners -->
+  <section id="brand-partners" aria-label="Trusted brands">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">Quality Partners</span>
+        <h2 class="section-title">We Choose the Best Brands for You</h2>
+      </div>
+    </div>
+    <div class="brands-marquee">
+      <div class="brands-track">
+        <ul class="brands-row">
+          <li><img src="logo/Aacc.png" alt="Aacc"></li>
+          <li><img src="logo/aditya-birla.png" alt="Aditya Birla"></li>
+          <li><img src="logo/asienpaintes.png" alt="Asian Paints"></li>
+          <li><img src="logo/astral.png" alt="Astral"></li>
+          <li><img src="logo/Berger.png" alt="Berger"></li>
+          <li><img src="logo/drfixit.jpg" alt="Dr. Fixit"></li>
+          <li><img src="logo/europalocks_logo.jpg" alt="Europa Locks"></li>
+          <li><img src="logo/forsoclogo.png" alt="Forsoc"></li>
+          <li><img src="logo/ghore.png" alt="Ghore"></li>
+          <li><img src="logo/godrej.png" alt="Godrej"></li>
+          <li><img src="logo/Jaquar.png" alt="Jaquar"></li>
+          <li><img src="logo/jsw.png" alt="JSW"></li>
+          <li><img src="logo/kajria.png" alt="Kajria"></li>
+          <li><img src="logo/kamdhenu-steel.png" alt="Kamdhenu Steel"></li>
+          <li><img src="logo/legrand.png" alt="Legrand"></li>
+          <li><img src="logo/SUPREMEIND.png" alt="Supreme Industries"></li>
+          <li><img src="logo/Tata_Steel_Logo.png" alt="Tata Steel"></li>
+          <li><img src="logo/Ultratech_Cement_Logo.png" alt="UltraTech Cement"></li>
+        </ul>
+        <ul class="brands-row" aria-hidden="true">
+          <li><img src="logo/Aacc.png" alt=""></li>
+          <li><img src="logo/aditya-birla.png" alt=""></li>
+          <li><img src="logo/asienpaintes.png" alt=""></li>
+          <li><img src="logo/astral.png" alt=""></li>
+          <li><img src="logo/Berger.png" alt=""></li>
+          <li><img src="logo/drfixit.jpg" alt=""></li>
+          <li><img src="logo/europalocks_logo.jpg" alt=""></li>
+          <li><img src="logo/forsoclogo.png" alt=""></li>
+          <li><img src="logo/ghore.png" alt=""></li>
+          <li><img src="logo/godrej.png" alt=""></li>
+          <li><img src="logo/Jaquar.png" alt=""></li>
+          <li><img src="logo/jsw.png" alt=""></li>
+          <li><img src="logo/kajria.png" alt=""></li>
+          <li><img src="logo/kamdhenu-steel.png" alt=""></li>
+          <li><img src="logo/legrand.png" alt=""></li>
+          <li><img src="logo/SUPREMEIND.png" alt=""></li>
+          <li><img src="logo/Tata_Steel_Logo.png" alt=""></li>
+          <li><img src="logo/Ultratech_Cement_Logo.png" alt=""></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Auto-loaded with all files currently in /logo. -->
+  </section>
+
   <!-- Testimonials -->
   <section id="testimonials">
     <div class="testi-inner reveal">
-      <span class="section-tag" style="color:var(--gold);">Testimonials</span>
+      <h2 class="testi-heading">Read what our customers say</h2>
       <div class="testi-mark">"</div>
-      <p class="testi-quote">The process was very smooth. I got the interiors at the best price as compared to market. Designs were unique. We're happy that we've opted SayHomes.</p>
+      <p class="testi-quote" id="testiQuote">The process was very smooth. I got the interiors at the best price as compared to market. Designs were unique. We're happy that we've opted SayHomes.</p>
       <div class="testi-divider"></div>
-      <div class="testi-author">Shivanandha — Happy Customer</div>
+      <div class="testi-author" id="testiAuthor">Shivanandha</div>
+      <div class="testi-role" id="testiRole">client</div>
 
-      <div class="testi-nav">
-        <div class="testi-dot active"></div>
-        <div class="testi-dot"></div>
-        <div class="testi-dot"></div>
-      </div>
     </div>
   </section>
 
@@ -1663,23 +1842,43 @@
 
       <div class="faq-list">
         <details class="reveal" open>
-          <summary>Does SayHomes assist in Government Approvals?</summary>
-          <p>Yes, our team provides complete assistance in government approvals and regulatory documentation to make the process seamless for you.</p>
+          <summary>1. Do SayHomes Team Assist in Govt Approval?</summary>
+          <p>Yes.</p>
         </details>
 
         <details class="reveal d1">
-          <summary>Which services does SayHomes provide?</summary>
-          <p>We offer four core services: Building Construction, Architecture, Interior Design, and Consultation. Each service is handled by dedicated in-house professionals.</p>
+          <summary>2. Which are the services provided by SayHomes?</summary>
+          <p>Building Construction | Architecture | Interior Design | Consultation</p>
         </details>
 
         <details class="reveal d2">
-          <summary>How is the construction area calculated?</summary>
-          <p>The slab (roof to roof) area is considered for construction area measurement and pricing.</p>
+          <summary>3. How area is considered?</summary>
+          <p>Slab (roof to roof) area is considered.</p>
         </details>
 
         <details class="reveal d3">
-          <summary>What cities do you operate in?</summary>
-          <p>We currently operate in 5+ cities, with our primary base in Bengaluru. Contact us to check availability in your area.</p>
+          <summary>4. What does Package includes?</summary>
+          <p>All costs for construction including design &amp; execution. The cost also includes finishing items like sanitary fixtures, doors &amp; windows. Go through our <a href="packages.html">packages here</a> for a better understanding.</p>
+        </details>
+
+        <details class="reveal d4">
+          <summary>5. Who will monitor Site?</summary>
+          <p>By dedicated Civil site Engineer or Execution Manager.</p>
+        </details>
+
+        <details class="reveal d1">
+          <summary>6. Does the package inclusive of tax amount?</summary>
+          <p>Yes, Tax are inclusive.</p>
+        </details>
+
+        <details class="reveal d2">
+          <summary>7. Does Retention amt is added in Payment Schedule?</summary>
+          <p>2% on Total project cost is considered as retention amount and paid After handover.</p>
+        </details>
+
+        <details class="reveal d3">
+          <summary>8. Can Client Customize Packages?</summary>
+          <p>Yes. Upgradation of packages will be charged extra.</p>
         </details>
       </div>
     </div>
@@ -1819,8 +2018,8 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2024 SayHomes. All rights reserved.</p>
-      <p>Designed for premium home construction in Bengaluru</p>
+      <p>© 2026 SayHomes. All rights reserved.</p>
+      <p>Designed for SayHomes in Bangalore</p>
     </div>
   </footer>
 
@@ -1900,13 +2099,66 @@
 
     counts.forEach(c => countObserver.observe(c));
 
-    const dots = document.querySelectorAll('.testi-dot');
-    dots.forEach(dot => {
-      dot.addEventListener('click', () => {
-        dots.forEach(d => d.classList.remove('active'));
-        dot.classList.add('active');
-      });
-    });
+    const testimonials = [
+      {
+        quote: "My home was made in just 7 months. I appreciate the efforts of the company. I'm very much satisfied with the quality of building.",
+        author: "Mr. Mallikarjun",
+        role: "client"
+      },
+      {
+        quote: "The process was very smooth. I got the interiors at the best price as compared to market. Designs were unique. We're happy that we've opted SayHomes.",
+        author: "Mr. Dheeraj",
+        role: "client"
+      },
+      {
+        quote: "I liked the quality of work by SayHomes. They are very professional and the finishing looks awesome.",
+        author: "Mr. Naveen Reddy",
+        role: "client"
+      },
+      {
+        quote: "The project team planned every stage clearly and handed over on schedule with clean finishing quality.",
+        author: "Mr. Yatheesh",
+        role: "client"
+      },
+      {
+        quote: "Good support from design to execution. The team listened to our requirements and delivered exactly as promised.",
+        author: "Mr. Nagaraj",
+        role: "client"
+      },
+      {
+        quote: "Transparent updates, quality materials, and disciplined site management made the whole process stress-free.",
+        author: "Mr. Manik Patil",
+        role: "client"
+      },
+      {
+        quote: "Interior execution and detailing were excellent. We are very happy with the final outcome and service.",
+        author: "Mr. Vinod",
+        role: "client"
+      },
+      {
+        quote: "Professional team and smooth communication throughout. The finishing quality and handover experience were impressive.",
+        author: "Mr. Abhijith",
+        role: "client"
+      }
+    ];
+
+    const testiQuote = document.getElementById('testiQuote');
+    const testiAuthor = document.getElementById('testiAuthor');
+    const testiRole = document.getElementById('testiRole');
+    let activeTestimonial = 1;
+
+    const renderTestimonial = (index) => {
+      activeTestimonial = index;
+      const item = testimonials[index];
+      testiQuote.textContent = item.quote;
+      testiAuthor.textContent = item.author;
+      testiRole.textContent = item.role;
+    };
+
+    setInterval(() => {
+      const next = (activeTestimonial + 1) % testimonials.length;
+      renderTestimonial(next);
+    }, 4500);
   </script>
 </body>
 </html>

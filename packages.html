@@ -12,6 +12,9 @@
 
 :root {
   --navy:#0F1B2D;
+  --logo-blue:#0047AB;
+  --logo-red:#E31837;
+  --logo-blue-on-dark:#93B9E8;
   --primary:#1A3C6E;
   --secondary:#2F5DAA;
   --gold:#C9A84C;
@@ -29,8 +32,8 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--te
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.45s}
 
 #navbar { position:fixed; top:0; width:100%; z-index:100; padding:0 40px; height:72px; display:flex; align-items:center; justify-content:space-between; background:rgba(250,247,242,.97); backdrop-filter:blur(16px); box-shadow:0 1px 0 rgba(0,0,0,.07); }
-.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:700; color:var(--navy); letter-spacing:-.5px; text-decoration:none; }
-.nav-logo span { color:var(--primary); }
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.75rem; font-weight:700; color:var(--logo-blue); letter-spacing:-.5px; text-decoration:none; }
+.nav-logo span { color:var(--logo-red); }
 .nav-links { display:flex; gap:2.5rem; list-style:none; }
 .nav-links a {
   font-size:.82rem;
@@ -183,7 +186,7 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--te
 }
 
 .main-footer .footer-logo span {
-  color:var(--primary);
+  color:var(--logo-red);
 }
 
 .footer-text {
@@ -342,8 +345,8 @@ body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--te
 /* Professional Footer */
 .main-footer { background: var(--navy); color: #fff; padding: 64px 40px 22px; }
 .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 0.8fr 0.9fr 1.4fr; gap: 48px; align-items: flex-start; }
-.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; }
-.footer-logo span { color: var(--primary); }
+.footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--logo-blue-on-dark); margin-bottom: 14px; }
+.footer-logo span { color: var(--logo-red); }
 .footer-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.62); max-width: 260px; }
 .footer-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
 .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
@@ -373,10 +376,10 @@ body.menu-open #navbar {
   box-shadow:0 1px 0 rgba(0,0,0,0.08);
 }
 .nav-logo {
-  color:var(--navy);
+  color:var(--logo-blue);
   transition:color .35s;
 }
-.nav-logo span { color:inherit; }
+.nav-logo span { color:var(--logo-red); }
 .nav-links a {
   color:var(--text);
   padding:8px 14px;
@@ -1666,8 +1669,8 @@ body.menu-open .nav-links a.active {
   </div>
 
   <div class="footer-bottom">
-    <p>© 2024 SayHomes. All rights reserved.</p>
-    <p>Designed for premium home construction in Bengaluru</p>
+    <p>© 2026 SayHomes. All rights reserved.</p>
+    <p>Designed for SayHomes in Bangalore</p>
   </div>
 </footer>
 

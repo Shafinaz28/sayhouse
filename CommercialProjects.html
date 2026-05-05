@@ -11,12 +11,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    :root{--navy:#0F1B2D;--primary:#1A3C6E;--secondary:#2F5DAA;--gold:#C9A84C;--cream:#FAF7F2;--light:#F0EBE3;--text:#2C2C2C;--muted:#7A7269}
+    :root{--navy:#0F1B2D;--logo-blue:#0047AB;--logo-red:#E31837;--logo-blue-on-dark:#93B9E8;--primary:#1A3C6E;--secondary:#2F5DAA;--gold:#C9A84C;--cream:#FAF7F2;--light:#F0EBE3;--text:#2C2C2C;--muted:#7A7269}
     *{margin:0;padding:0;box-sizing:border-box}
     body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden}
     img{max-width:100%;display:block}
     #navbar{position:fixed;top:0;left:0;width:100%;height:72px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(250,247,242,.97);backdrop-filter:blur(16px);box-shadow:0 1px 0 rgba(0,0,0,.07);z-index:100}
-    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--navy);text-decoration:none;white-space:nowrap}.nav-logo span{color:var(--primary)}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:700;color:var(--logo-blue);text-decoration:none;white-space:nowrap}.nav-logo span{color:var(--logo-red)}
     .nav-links{display:flex;gap:2.3rem;list-style:none}.nav-links a{font-size:.8rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text);text-decoration:none}.nav-links a:hover,.nav-links a.active{color:var(--primary)}
     .nav-cta{background:var(--primary);color:#fff;padding:10px 24px;border-radius:3px;font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
     .nav-toggle{display:none;width:44px;height:44px;border:1px solid rgba(15,27,45,.15);background:#fff;color:var(--navy);border-radius:999px;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer}
@@ -26,14 +26,30 @@
     .page-hero-inner{position:relative;z-index:2;text-align:center;padding:0 20px}.page-hero-inner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff}.page-hero-inner h1 em{color:var(--gold);font-style:italic}
     .breadcrumb{display:flex;justify-content:center;gap:8px;margin-top:14px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;flex-wrap:wrap}.breadcrumb a{color:rgba(255,255,255,.58);text-decoration:none}.breadcrumb span{color:var(--gold)}
     .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
-    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
-    .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .project-content{padding:24px}.project-owner{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--primary);line-height:1.15;margin-bottom:6px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--muted);font-weight:500;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-grid{padding:26px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.gallery-grid img{width:100%;height:220px;object-fit:cover;cursor:zoom-in;transition:opacity .2s}.gallery-grid img:hover{opacity:.92}
-    .lightbox{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:max(16px,3vw);background:rgba(5,10,18,.94)}.lightbox.active{display:flex}.lightbox-inner{position:relative;width:100%;max-width:min(100vw - 24px,1440px);display:flex;align-items:center;justify-content:center;padding:0 clamp(40px,5vw,68px);min-height:80px}.lightbox-inner img{max-width:100%;max-height:min(92vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.5)}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--navy);font-size:1.05rem;cursor:pointer;z-index:2;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:background .2s,opacity .2s}.lightbox-nav:hover:not(:disabled){background:var(--gold);color:var(--navy)}.lightbox-nav:disabled{opacity:.25;cursor:not-allowed}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-counter{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;letter-spacing:.04em}.lightbox-close{position:fixed;top:20px;right:20px;width:48px;height:48px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;z-index:601;box-shadow:0 8px 24px rgba(0,0,0,.35)}.lightbox-close:hover{background:var(--primary)}
+    .sector-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+    .sector-card{text-align:center;padding:12px}
+    .sector-card h3{font-size:1.9rem;font-family:'Cormorant Garamond',serif;color:var(--navy);margin-bottom:8px}
+    .sector-card p{font-size:.82rem;line-height:1.75;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+    .works-btn{display:inline-block;margin-top:14px;background:#000;color:#fff;text-decoration:none;padding:12px 30px;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px}
+    .works-btn:hover{background:var(--navy)}
+    .institution-banners{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .inst-card{position:relative;height:220px;overflow:hidden;cursor:pointer}
+    .inst-card img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+    .inst-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.16))}
+    .inst-card h3{position:absolute;z-index:2;left:14px;right:14px;bottom:12px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.2rem;line-height:.9;text-align:center}
+    .inst-card:hover img{transform:scale(1.08)}
+    .gallery-modal{position:fixed;inset:0;background:rgba(15,27,45,.88);display:none;align-items:center;justify-content:center;padding:24px;z-index:500}
+    .gallery-modal.active{display:flex}
+    .gallery-box{width:min(980px,100%);max-height:90vh;background:#fff;overflow:auto}
+    .gallery-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--light)}
+    .gallery-head h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy)}
+    .gallery-close{width:40px;height:40px;border:0;background:var(--navy);color:#fff;cursor:pointer}
+    .gallery-images{padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .gallery-images img{width:100%;height:210px;object-fit:cover}
+    .is-hidden{display:none}
 
-    @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:1fr 1fr}}
-    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-grid{grid-template-columns:1fr;padding:16px}.gallery-grid img{height:230px;cursor:zoom-in}}
+    @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.sector-grid,.institution-banners{grid-template-columns:1fr 1fr}.gallery-images{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.sector-grid,.institution-banners{grid-template-columns:1fr}.inst-card{height:190px}.gallery-images{grid-template-columns:1fr}.gallery-images img{height:220px}}
    /* Professional Footer */
     .main-footer {
       background:var(--navy);
@@ -65,7 +81,7 @@
     }
 
     .main-footer .footer-logo span {
-      color:var(--primary);
+      color:var(--logo-red);
     }
 
     .footer-text {
@@ -188,8 +204,8 @@
     /* Professional Footer */
     .main-footer { background: var(--navy); color: #fff; padding: 64px 40px 22px; }
     .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 0.8fr 0.9fr 1.4fr; gap: 48px; align-items: flex-start; }
-    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: rgba(255,255,255,0.9); margin-bottom: 14px; }
-    .footer-logo span { color: var(--primary); }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 700; color: var(--logo-blue-on-dark); margin-bottom: 14px; }
+    .footer-logo span { color: var(--logo-red); }
     .footer-text { font-size: 0.9rem; line-height: 1.8; color: rgba(255,255,255,0.62); max-width: 260px; }
     .footer-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 18px; }
     .footer-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 11px; }
@@ -218,8 +234,8 @@
       backdrop-filter:blur(16px);
       box-shadow:0 1px 0 rgba(0,0,0,0.08);
     }
-    .nav-logo { color:var(--navy); transition:color .35s; }
-    .nav-logo span { color:var(--primary); }
+    .nav-logo { color:var(--logo-blue); transition:color .35s; }
+    .nav-logo span { color:var(--logo-red); }
     .nav-links a {
       color:var(--text);
       padding:8px 14px;
@@ -300,37 +316,56 @@
 
   <section class="section">
     <div class="inner">
-      <div class="section-head">
-        <span class="section-tag">Commercial Project Gallery</span>
-        <h2 class="section-title">Commercial Projects</h2>
-        <p class="section-sub">Each card highlights the client. Tap a card to open every photo we have for that project.</p>
+      <div class="sector-grid">
+        <div class="sector-card">
+          <h3>Real Estate Developments</h3>
+          <p>Plotted Developments<br>Villa Developments<br>Apartments</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Institutions</h3>
+          <p>Schools<br>Universities</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Residential</h3>
+          <p>Villas<br>Independent Homes<br>Apartments</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Hospitality</h3>
+          <p>Restaurants<br>Botique Hotels<br>5 Star Hotels</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Non Profit Org</h3>
+          <p>Temples<br>NGOs</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Commercial</h3>
+          <p>Retail Outlets<br>Industries<br>Kiosks</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Residential Landscape</h3>
+          <p>&nbsp;</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Parks</h3>
+          <p>&nbsp;</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
+        <div class="sector-card">
+          <h3>Concept Projects</h3>
+          <p>&nbsp;</p>
+          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+        </div>
       </div>
-      <div class="projects-grid" id="projectsGrid"></div>
     </div>
   </section>
 
-  <div class="modal" id="galleryModal">
-    <div class="modal-box">
-      <div class="modal-header">
-        <div class="modal-title-block">
-          <h3 class="modal-title" id="modalTitle">Project Gallery</h3>
-          <p class="modal-subtitle" id="modalSubtitle"></p>
-        </div>
-        <button type="button" class="close-btn" onclick="closeGallery()" aria-label="Close gallery"><i class="fa-solid fa-xmark"></i></button>
-      </div>
-      <div class="gallery-grid" id="modalImages"></div>
-    </div>
-  </div>
-
-  <div class="lightbox" id="imgLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Full size image">
-    <button type="button" class="lightbox-close" onclick="closeImageLightbox()" aria-label="Close full image"><i class="fa-solid fa-xmark"></i></button>
-    <div class="lightbox-inner">
-      <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" onclick="lightboxPrev()" aria-label="Previous photo"><i class="fa-solid fa-chevron-left"></i></button>
-      <img id="lightboxFullImg" src="" alt="">
-      <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" onclick="lightboxNext()" aria-label="Next photo"><i class="fa-solid fa-chevron-right"></i></button>
-    </div>
-    <p class="lightbox-counter" id="lightboxCounter" aria-live="polite"></p>
-  </div>
 
    <!-- Footer -->
   <footer class="main-footer">
@@ -383,175 +418,12 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2024 SayHomes. All rights reserved.</p>
-      <p>Designed for premium home construction in Bengaluru</p>
+      <p>© 2026 SayHomes. All rights reserved.</p>
+      <p>Designed for SayHomes in Bangalore</p>
     </div>
   </footer>
 
   <script>
-    const projects = [
-      {
-        owner: 'Leaders International School',
-        title: 'Gauribidanur',
-        description: 'Educational campus build at Gauribidanur — strong structure, planned circulation, and durable finishes for daily school use.',
-        cover: 'commercial/lisg.jpg',
-        gallery: [
-          'commercial/lisg.jpg',
-          'commercial/lisg1.jpg',
-          'commercial/lisg2.jpg',
-          'commercial/lisg3.jpg',
-          'commercial/lisg4.jpg'
-        ]
-      },
-      {
-        owner: 'IMA Central',
-        title: 'Chikkaballapura',
-        description: 'Commercial project at IMA Central — elevation, structure, and planned execution in Chikkaballapura.',
-        cover: 'commercial/IMA%20CENTRAL%20Elevation.jpg',
-        gallery: ['commercial/IMA%20CENTRAL%20Elevation.jpg']
-      },
-      {
-        owner: 'GSK Conventional Hall',
-        title: 'Chikkaballapura',
-        description: 'Convention hall build at GSK — large-span planning, durable finishes, and execution in Chikkaballapura.',
-        cover: 'commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg',
-        gallery: ['commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg']
-      }
-    ];
-
-    document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
-      <div class="project-card" role="button" tabindex="0" onclick="openGallery(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGallery(${i});}">
-        <div class="project-img"><img src="${p.cover}" alt="${p.title} — ${p.owner}"><span class="project-badge">Commercial</span></div>
-        <div class="project-content">
-          <div class="project-owner">${p.owner}</div>
-          <h3>${p.title}</h3>
-          <p>${p.description}</p>
-          <span class="view-gallery">View all photos <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
-      </div>
-    `).join('');
-
-    function openGallery(index) {
-      const p = projects[index];
-      if (!p) return;
-      document.getElementById('modalTitle').innerText = p.owner;
-      document.getElementById('modalSubtitle').innerText = p.title;
-      document.getElementById('modalImages').innerHTML = p.gallery.map((src) => `<img src="${src}" alt="${p.owner} — ${p.title}" loading="lazy">`).join('');
-      document.getElementById('galleryModal').classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    let lightboxSlides = [];
-    let lightboxIndex = 0;
-
-    function openImageLightboxFromThumb(imgEl) {
-      const imgs = [...document.querySelectorAll('#modalImages img')];
-      lightboxSlides = imgs.map((el) => ({
-        src: el.currentSrc || el.getAttribute('src'),
-        alt: el.getAttribute('alt') || ''
-      }));
-      lightboxIndex = Math.max(0, imgs.indexOf(imgEl));
-      const lb = document.getElementById('imgLightbox');
-      lb.classList.add('active');
-      lb.setAttribute('aria-hidden', 'false');
-      applyLightboxSlide();
-    }
-
-    function applyLightboxSlide() {
-      const img = document.getElementById('lightboxFullImg');
-      const slide = lightboxSlides[lightboxIndex];
-      if (!slide) return;
-      img.src = slide.src;
-      img.alt = slide.alt;
-      const prev = document.getElementById('lightboxPrev');
-      const next = document.getElementById('lightboxNext');
-      const counter = document.getElementById('lightboxCounter');
-      const n = lightboxSlides.length;
-      if (n <= 1) {
-        prev.style.display = 'none';
-        next.style.display = 'none';
-        prev.disabled = true;
-        next.disabled = true;
-        counter.textContent = '';
-      } else {
-        prev.style.display = '';
-        next.style.display = '';
-        prev.disabled = false;
-        next.disabled = false;
-        counter.textContent = (lightboxIndex + 1) + ' / ' + n;
-      }
-    }
-
-    function lightboxPrev() {
-      if (lightboxSlides.length <= 1) return;
-      lightboxIndex = (lightboxIndex - 1 + lightboxSlides.length) % lightboxSlides.length;
-      applyLightboxSlide();
-    }
-
-    function lightboxNext() {
-      if (lightboxSlides.length <= 1) return;
-      lightboxIndex = (lightboxIndex + 1) % lightboxSlides.length;
-      applyLightboxSlide();
-    }
-
-    function closeImageLightbox() {
-      const lb = document.getElementById('imgLightbox');
-      const img = document.getElementById('lightboxFullImg');
-      lb.classList.remove('active');
-      lb.setAttribute('aria-hidden', 'true');
-      img.removeAttribute('src');
-      img.alt = '';
-      lightboxSlides = [];
-      lightboxIndex = 0;
-      document.getElementById('lightboxCounter').textContent = '';
-    }
-
-    function closeGallery() {
-      closeImageLightbox();
-      document.getElementById('galleryModal').classList.remove('active');
-      document.getElementById('modalSubtitle').innerText = '';
-      document.body.style.overflow = '';
-    }
-
-    document.getElementById('modalImages').addEventListener('click', function (e) {
-      const t = e.target;
-      if (t.tagName !== 'IMG') return;
-      openImageLightboxFromThumb(t);
-    });
-
-    document.getElementById('imgLightbox').addEventListener('click', function (e) {
-      if (e.target === this) closeImageLightbox();
-    });
-
-    document.addEventListener('keydown', function (e) {
-      const lb = document.getElementById('imgLightbox');
-      if (lb.classList.contains('active')) {
-        if (e.key === 'Escape') {
-          closeImageLightbox();
-          e.preventDefault();
-          return;
-        }
-        if (e.key === 'ArrowLeft') {
-          lightboxPrev();
-          e.preventDefault();
-          return;
-        }
-        if (e.key === 'ArrowRight') {
-          lightboxNext();
-          e.preventDefault();
-          return;
-        }
-      }
-      if (e.key === 'Escape') {
-        const gm = document.getElementById('galleryModal');
-        if (gm.classList.contains('active')) {
-          closeGallery();
-          e.preventDefault();
-        }
-      }
-    });
-
-    document.getElementById('galleryModal').addEventListener('click', function(e){ if(e.target === this) closeGallery(); });
 
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');

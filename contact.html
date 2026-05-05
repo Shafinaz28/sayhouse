@@ -13,6 +13,9 @@
   <style>
     :root {
       --navy:#0F1B2D;
+      --logo-blue:#0047AB;
+      --logo-red:#E31837;
+      --logo-blue-on-dark:#93B9E8;
       --primary:#1A3C6E;
       --secondary:#2F5DAA;
       --gold:#C9A84C;
@@ -51,12 +54,12 @@
       font-family:'Cormorant Garamond', serif;
       font-size:1.75rem;
       font-weight:700;
-      color:var(--navy);
+      color:var(--logo-blue);
       text-decoration:none;
       letter-spacing:-0.5px;
     }
 
-    .nav-logo span { color:var(--primary); }
+    .nav-logo span { color:var(--logo-red); }
 
     .nav-links {
       display:flex;
@@ -607,7 +610,7 @@
     }
 
     .main-footer .footer-logo span {
-      color:var(--primary);
+      color:var(--logo-red);
     }
 
     .footer-text {
@@ -748,12 +751,12 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 1.8rem;
       font-weight: 700;
-      color: rgba(255,255,255,0.9);
+      color: var(--logo-blue-on-dark);
       margin-bottom: 14px;
     }
 
     .footer-logo span {
-      color: var(--primary);
+      color: var(--logo-red);
     }
 
     .footer-text {
@@ -912,10 +915,10 @@
       box-shadow:0 1px 0 rgba(0,0,0,0.08);
     }
     .nav-logo {
-      color:var(--navy);
+      color:var(--logo-blue);
       transition:color .35s;
     }
-    .nav-logo span { color:inherit; }
+    .nav-logo span { color:var(--logo-red); }
     .nav-links a {
       color:var(--text);
       padding:8px 14px;
@@ -1171,8 +1174,8 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2024 SayHomes. All rights reserved.</p>
-      <p>Designed for premium home construction in Bengaluru</p>
+      <p>© 2026 SayHomes. All rights reserved.</p>
+      <p>Designed for SayHomes in Bangalore</p>
     </div>
   </footer>
 
