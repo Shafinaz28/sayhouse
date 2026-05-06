@@ -1726,15 +1726,38 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
 
+let syncingDetails = false;
+
 document.querySelectorAll('.package-card').forEach(card => {
   const details = card.querySelectorAll('details');
   details.forEach(item => {
-    item.addEventListener('toggle', function() {
-      if (this.open) {
-        details.forEach(other => {
-          if (other !== this) other.removeAttribute('open');
-        });
-      }
+    item.addEventListener('toggle', function () {
+      if (syncingDetails) return;
+
+      const summary = this.querySelector('.package-summary');
+      if (!summary) return;
+
+      const label = summary.childNodes[0]?.textContent?.trim() || '';
+      if (!label) return;
+
+      syncingDetails = true;
+      document.querySelectorAll('.package-card details').forEach(other => {
+        const otherSummary = other.querySelector('.package-summary');
+        const otherLabel = otherSummary?.childNodes[0]?.textContent?.trim() || '';
+
+        if (this.open) {
+          // Open this section in all packages, close all other sections globally
+          if (otherLabel === label) {
+            other.setAttribute('open', '');
+          } else {
+            other.removeAttribute('open');
+          }
+        } else if (otherLabel === label) {
+          // Closing one closes the same section in all packages
+          other.removeAttribute('open');
+        }
+      });
+      syncingDetails = false;
     });
   });
 });
