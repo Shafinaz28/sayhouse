@@ -46,15 +46,17 @@
 
   <script>
     const institutions = [
-      { key:"capstone", name: "Capstone High - Hoskote", cover: "commercial/lisg1.jpg" },
-      { key:"beverly", name: "Sammy's Beverly Hills", cover: "commercial/lisg2.jpg" },
-      { key:"rak", name: "RAK Felicity (Vencer)", cover: "commercial/IMA%20CENTRAL%20Elevation.jpg" }
+      { key:"capstone", name: "Leaders International School, Gauribidanur", cover: "commercial/leaders-1.jpg" },
+      { key:"beverly", name: "ANI Center", cover: "commercial/ani-center.png" },
+      { key:"rak", name: "IMA Convention Center", cover: "commercial/IMA%20CENTRAL%20Elevation.jpg" },
+      { key:"riverbed", name: "Riverbed Technology India Pvt Ltd, Bengaluru", cover: "commercial/riverbed-cover.png" },
+      { key:"lotusOffice", name: "Lotus Builders & Developers Office, Sahakaranagar, Bengaluru", cover: "interior/lotus-1.jpg" }
     ];
     const bannersEl = document.getElementById('institutionBanners');
     bannersEl.innerHTML = institutions.map((item, idx) => `
       <a class="card" href="commercial-work-detail.html?project=${item.key}">
         <img src="${item.cover}" alt="${item.name}">
-        <h3>${item.name}</h3>
+        ${item.hideTitle ? '' : `<h3>${item.name}</h3>`}
       </a>
     `).join('');
   </script>

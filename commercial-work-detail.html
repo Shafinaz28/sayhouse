@@ -18,7 +18,7 @@
     .video-box{aspect-ratio:16/9;background:#efefef}
     .video-box iframe{width:100%;height:100%;border:0}
     .title2{font-family:'Cormorant Garamond',serif;font-size:2.5rem;text-align:center;color:var(--navy);margin:34px 0 14px}
-    .main-image{width:100%;height:430px;object-fit:cover;background:#f3f3f3}
+    .main-image{width:100%;height:430px;object-fit:contain;background:#f3f3f3}
     .thumbs{display:flex;gap:8px;overflow-x:auto;padding-top:10px}
     .thumb{border:2px solid transparent;background:#fff;cursor:pointer;flex:0 0 auto}
     .thumb.active{border-color:var(--gold)}
@@ -40,9 +40,11 @@
 
   <script>
     const projects = {
-      capstone: { name: "CAPSTONE HIGH - HOSKOTE", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/lisg.jpg","commercial/lisg1.jpg","commercial/lisg2.jpg","commercial/lisg3.jpg","commercial/lisg4.jpg"] },
-      beverly: { name: "SAMMY'S BEVERLY HILLS", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/lisg2.jpg","commercial/lisg3.jpg","commercial/lisg4.jpg","commercial/lisg.jpg"] },
-      rak: { name: "RAK FELICITY (VENCER)", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/IMA%20CENTRAL%20Elevation.jpg","commercial/GSK%20Conventional%20Hall%2C%20Chikkaballapura.jpg","commercial/lisg.jpg"] }
+      capstone: { name: "LEADERS INTERNATIONAL SCHOOL, GAURIBIDANUR", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/leaders-1.jpg","commercial/leaders-2.jpg","commercial/leaders-3.jpg","commercial/leaders-4.jpg","commercial/leaders-5.jpg","commercial/leaders-6.jpg","commercial/leaders-7.jpg"] },
+      beverly: { name: "ANI CENTER", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/ani-center.png"] },
+      rak: { name: "IMA CONVENTION CENTER", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/IMA%20CENTRAL%20Elevation.jpg"] },
+      riverbed: { name: "RIVERBED TECHNOLOGY INDIA PVT LTD, BENGALURU", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["commercial/riverbed-1.jpg","commercial/riverbed-2.jpg","commercial/riverbed-3.jpg","commercial/riverbed-4.jpg","commercial/riverbed-5.jpg","commercial/riverbed-6.jpg","commercial/riverbed-7.jpg","commercial/riverbed-8.jpg","commercial/riverbed-9.jpg","commercial/riverbed-10.jpg","commercial/riverbed-11.jpg","commercial/riverbed-12.jpg"] },
+      lotusOffice: { name: "LOTUS BUILDERS & DEVELOPERS OFFICE, SAHAKARANAGAR, BENGALURU", video: "https://www.youtube.com/embed/RRxhaxwYwN8", images: ["interior/lotus-1.jpg","interior/lotus-2.jpg","interior/lotus-3.jpg","interior/lotus-4.jpg","interior/lotus-5.jpg"] }
     };
     const key = new URLSearchParams(window.location.search).get('project') || 'capstone';
     const p = projects[key] || projects.capstone;
