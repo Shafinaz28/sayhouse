@@ -559,6 +559,7 @@
       }
 
       .nav-logo { font-size:1.55rem; }
+      .nav-logo img { height:40px; }
 
       .mobile-menu {
         top:76px;
@@ -819,7 +820,10 @@
     .nav-logo {
       color:var(--logo-blue);
       transition:color .35s;
+      display:flex;
+      align-items:center;
     }
+    .nav-logo img { height:48px; width:auto; display:block; }
     .nav-logo span { color:var(--logo-red); }
     .nav-links a {
       color:var(--text);
@@ -875,7 +879,7 @@
 <body>
 
   <nav id="navbar">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo" style="height:64px;width:auto;display:block;"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
@@ -926,7 +930,7 @@
         <div class="reveal from-right">
           <span class="section-tag">Who We Are</span>
           <h2 class="section-title">Crafting Homes<br>With Purpose</h2>
-          <p class="section-sub">SayHomes is a professional home construction company focused on creating beautiful, functional, and long-lasting homes. We bring together expert architecture, quality construction, elegant interiors, and transparent project execution.</p>
+          <p class="section-sub">SayHomes is a professional building construction company focused on creating beautiful, functional, and long-lasting homes. We bring together expert architecture, quality construction, elegant interiors, and transparent project execution.</p>
           <p>Our commitment to excellence and attention to detail result in stunning spaces that exude style, functionality, and timeless elegance — from the first blueprint to final handover.</p>
 
           <ul class="check-list">
@@ -952,7 +956,7 @@
         <div class="counter-label">Projects Completed</div>
       </div>
       <div class="reveal d1">
-        <div class="counter-num"><span class="count" data-target="12">0</span>k</div>
+        <div class="counter-num"><span class="count" data-target="4">0</span>lac+</div>
         <div class="counter-label">Sqft Delivered</div>
       </div>
       <div class="reveal d2">

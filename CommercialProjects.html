@@ -111,7 +111,7 @@
     .is-hidden{display:none}
 
     @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.sector-grid,.institution-banners{grid-template-columns:1fr 1fr}.gallery-images{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.sector-grid,.institution-banners{grid-template-columns:1fr}.inst-card{height:190px}.gallery-images{grid-template-columns:1fr}.gallery-images img{height:220px}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.nav-logo img{height:40px}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.sector-grid,.institution-banners{grid-template-columns:1fr}.inst-card{height:190px}.gallery-images{grid-template-columns:1fr}.gallery-images img{height:220px}}
    /* Professional Footer */
     .main-footer {
       background:var(--navy);
@@ -296,7 +296,8 @@
       backdrop-filter:blur(16px);
       box-shadow:0 1px 0 rgba(0,0,0,0.08);
     }
-    .nav-logo { color:var(--logo-blue); transition:color .35s; }
+    .nav-logo { color:var(--logo-blue); transition:color .35s; display:flex; align-items:center; }
+    .nav-logo img { height:48px; width:auto; display:block; }
     .nav-logo span { color:var(--logo-red); }
     .nav-links a {
       color:var(--text);
@@ -348,7 +349,7 @@
 </head>
 <body>
   <nav id="navbar">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo" style="height:64px;width:auto;display:block;"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li><li><a href="projects.html" class="active">Projects</a></li><li><a href="packages.html">Packages</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li>
     </ul>

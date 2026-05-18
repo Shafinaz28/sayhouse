@@ -98,6 +98,13 @@
       transition:color .35s;
       white-space:nowrap;
       text-shadow:0 1px 12px rgba(0,0,0,0.45);
+      display:flex;
+      align-items:center;
+    }
+    .nav-logo img {
+      height:48px;
+      width:auto;
+      display:block;
     }
     .nav-logo span { color:var(--logo-red); }
     #navbar.scrolled .nav-logo,
@@ -526,6 +533,184 @@
       transition:color .3s;
     }
     .service-card:hover p { color:rgba(255,255,255,0.62); }
+
+    /* Working Steps */
+    #working-steps { background:#fff; }
+  #working-steps .section-head-center { margin-bottom:48px; }
+  #working-steps .steps-tag {
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.68rem;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:14px;
+  }
+  #working-steps .steps-tag i { color:var(--primary); font-size:0.85rem; }
+  .steps-nav {
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:0;
+    border-bottom:1px solid var(--light);
+    margin-bottom:0;
+  }
+  .step-tab {
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:20px 12px 28px;
+    border:0;
+    background:transparent;
+    cursor:pointer;
+    font-family:inherit;
+    text-align:center;
+    transition:color .25s;
+  }
+  .step-tab::after {
+    content:'';
+    position:absolute;
+    left:8%;
+    right:8%;
+    bottom:0;
+    height:3px;
+    background:var(--primary);
+    transform:scaleX(0);
+    transition:transform .3s ease;
+  }
+  .step-tab.active::after { transform:scaleX(1); }
+  .step-num-bg {
+    position:absolute;
+    top:4px;
+    left:50%;
+    transform:translateX(-50%);
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(2.8rem, 4vw, 4rem);
+    font-weight:300;
+    color:rgba(15,27,45,0.06);
+    line-height:1;
+    pointer-events:none;
+    user-select:none;
+  }
+  .step-icon {
+    position:relative;
+    z-index:1;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    border:2px solid var(--light-blue);
+    background:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.15rem;
+    color:var(--primary);
+    margin-bottom:12px;
+    transition:background .3s, border-color .3s, color .3s, box-shadow .3s;
+  }
+  .step-tab.active .step-icon {
+    background:var(--primary);
+    border-color:var(--primary);
+    color:#fff;
+    box-shadow:0 10px 28px rgba(0,71,171,0.28);
+  }
+  .step-label {
+    position:relative;
+    z-index:1;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--muted);
+    line-height:1.35;
+    max-width:120px;
+    transition:color .25s;
+  }
+  .step-tab.active .step-label { color:var(--navy); }
+  .steps-panels {
+    border-top:1px solid var(--light);
+    background:var(--cream);
+  }
+  .step-panel {
+    display:none;
+    animation:stepFade .4s ease;
+  }
+  .step-panel.active { display:block; }
+  @keyframes stepFade {
+    from { opacity:0; transform:translateY(10px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .step-panel-inner {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    min-height:420px;
+  }
+  .step-panel-img {
+    width:100%;
+    height:100%;
+    min-height:420px;
+    object-fit:cover;
+    display:block;
+  }
+  .step-panel-content {
+    padding:48px 44px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:#fff;
+  }
+  .step-panel-content h3 {
+    font-family:'Cormorant Garamond', serif;
+    font-size:clamp(1.6rem, 2.5vw, 2rem);
+    font-weight:600;
+    color:var(--navy);
+    margin-bottom:16px;
+    line-height:1.2;
+  }
+  .step-panel-content > p {
+    font-size:0.92rem;
+    color:var(--muted);
+    line-height:1.85;
+    margin-bottom:24px;
+  }
+  .step-points {
+    list-style:none;
+    margin-bottom:28px;
+  }
+  .step-points li {
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    font-size:0.88rem;
+    color:var(--text);
+    line-height:1.65;
+    margin-bottom:12px;
+  }
+  .step-points li i {
+    color:var(--primary);
+    margin-top:3px;
+    flex-shrink:0;
+  }
+  .step-know-btn {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    align-self:flex-start;
+    background:var(--primary);
+    color:#fff;
+    padding:12px 26px;
+    font-size:0.78rem;
+    font-weight:700;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    border-radius:3px;
+    transition:background .3s, transform .2s;
+  }
+  .step-know-btn:hover {
+    background:var(--navy);
+    transform:translateY(-1px);
+  }
 
     /* Why */
     #why { background:#fff; }
@@ -1258,6 +1443,9 @@
       .nav-logo {
         font-size:1.55rem;
       }
+      .nav-logo img {
+        height:40px;
+      }
       .mobile-menu {
         top:76px;
         left:12px;
@@ -1348,6 +1536,24 @@
         order:3;
       }
       .services-center img { max-height:250px; }
+      .steps-nav {
+        display:flex;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scroll-snap-type:x proximity;
+        grid-template-columns:none;
+      }
+      .step-tab {
+        flex:0 0 38%;
+        min-width:130px;
+        scroll-snap-align:start;
+      }
+      .step-panel-inner {
+        grid-template-columns:1fr;
+        min-height:0;
+      }
+      .step-panel-img { min-height:260px; }
+      .step-panel-content { padding:32px 24px; }
       .packages-grid-wrap {
         overflow-x:auto;
         -webkit-overflow-scrolling:touch;
@@ -1478,13 +1684,14 @@
 
   <!-- Navbar -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo" style="height:64px;width:auto;display:block;"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
 
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="packages.html">Packages</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="howitwork.html">How It Works</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
@@ -1500,6 +1707,7 @@
     <a href="projects.html"><i class="fa-solid fa-images"></i>Projects</a>
     <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
     <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
+    <a href="howitwork.html"><i class="fa-solid fa-route"></i>How It Works</a>
     <a href="contact.html"><i class="fa-solid fa-phone"></i>Request a Call</a>
   </div>
 
@@ -1510,7 +1718,7 @@
     </video>
 
     <div class="hero-inner">
-      <span class="hero-badge">Professional Home Construction · Bengaluru</span>
+      <span class="hero-badge">Professional Construction · Bengaluru</span>
       <h1 class="hero-h1">Build Your <em>Dream Home</em><br>With SayHomes</h1>
       <p class="hero-sub">We transform houses into dream homes with expert construction, architecture, interior design, and consultation services.</p>
 
@@ -1566,7 +1774,7 @@
     <div class="inner">
       <div class="reveal section-head-center">
         <span class="section-tag">What We Do</span>
-        <h2 class="section-title">Complete Home Solutions</h2>
+        <h2 class="section-title">Complete Building Solutions</h2>
       </div>
 
       <div class="services-grid">
@@ -1601,6 +1809,141 @@
             <p>Professional guidance for construction, design, planning, execution, and government approvals.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Working Steps -->
+  <section id="working-steps" class="section">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="steps-tag"><i class="fa-regular fa-handshake"></i> Working Steps <i class="fa-regular fa-handshake"></i></span>
+        <h2 class="section-title">Your Roadmap to Building the Home of Your Dreams</h2>
+      </div>
+
+      <div class="steps-nav reveal d1" role="tablist" aria-label="Construction process steps">
+        <button type="button" class="step-tab active" role="tab" aria-selected="true" aria-controls="step-panel-0" id="step-tab-0" data-step="0">
+          <span class="step-num-bg" aria-hidden="true">01</span>
+          <span class="step-icon"><i class="fa-solid fa-comments"></i></span>
+          <span class="step-label">Let's Get Started</span>
+        </button>
+        <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-1" id="step-tab-1" data-step="1">
+          <span class="step-num-bg" aria-hidden="true">02</span>
+          <span class="step-icon"><i class="fa-solid fa-pen-ruler"></i></span>
+          <span class="step-label">Design Specification</span>
+        </button>
+        <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-2" id="step-tab-2" data-step="2">
+          <span class="step-num-bg" aria-hidden="true">03</span>
+          <span class="step-icon"><i class="fa-solid fa-file-signature"></i></span>
+          <span class="step-label">Client Agreement</span>
+        </button>
+        <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-3" id="step-tab-3" data-step="3">
+          <span class="step-num-bg" aria-hidden="true">04</span>
+          <span class="step-icon"><i class="fa-solid fa-helmet-safety"></i></span>
+          <span class="step-label">Construction &amp; Updates</span>
+        </button>
+        <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-4" id="step-tab-4" data-step="4">
+          <span class="step-num-bg" aria-hidden="true">05</span>
+          <span class="step-icon"><i class="fa-solid fa-person-walking"></i></span>
+          <span class="step-label">Site Visits</span>
+        </button>
+        <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-5" id="step-tab-5" data-step="5">
+          <span class="step-num-bg" aria-hidden="true">06</span>
+          <span class="step-icon"><i class="fa-solid fa-key"></i></span>
+          <span class="step-label">Completion &amp; Handover</span>
+        </button>
+      </div>
+
+      <div class="steps-panels reveal d2">
+        <article class="step-panel active" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0">
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Consultation and planning meeting" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Let's Get Started</h3>
+              <p>We begin with a detailed discussion about your vision, budget, plot details, and timeline. Our team listens carefully and outlines a clear path for your dream home.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>Free initial consultation and site feasibility review</span></li>
+                <li><i class="fa-solid fa-house"></i><span>Personalized guidance on scope, budget, and timelines</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="step-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" hidden>
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="images/DI1.jpg" alt="Home design and specifications" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Design Specification</h3>
+              <p>Our architects prepare floor plans, 3D elevations, and material specifications tailored to your lifestyle, Vastu preferences, and local regulations.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>2D plans and 3D elevation presentations for approval</span></li>
+                <li><i class="fa-solid fa-house"></i><span>Material, finish, and structural specification finalization</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="step-panel" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" hidden>
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="images/buildingconstruction1.jpg" alt="Signed project agreement" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Client Agreement</h3>
+              <p>Once designs are approved, we share a transparent contract covering scope, milestones, payment schedule, and warranties — so you know exactly what to expect.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>Clear BOQ, timeline, and milestone-based payments</span></li>
+                <li><i class="fa-solid fa-house"></i><span>Written commitments on quality standards and deliverables</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="step-panel" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" hidden>
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="images/construction_800.webp" alt="Construction in progress" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Construction &amp; Updates</h3>
+              <p>Our site team executes each stage with quality checks while you receive regular progress updates, photos, and milestone reports throughout the build.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>Stage-wise execution with documented quality checks</span></li>
+                <li><i class="fa-solid fa-house"></i><span>Regular progress updates via calls, photos, and reports</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="step-panel" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" hidden>
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="residentail%20images/Ylnk2.jpg" alt="Site visit and inspection" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Site Visits</h3>
+              <p>We invite you to visit the site at key milestones — foundation, structure, finishing — so you can see progress firsthand and raise any questions with our team.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>Scheduled walkthroughs at critical construction stages</span></li>
+                <li><i class="fa-solid fa-house"></i><span>On-site support from project managers and engineers</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="step-panel" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" hidden>
+          <div class="step-panel-inner">
+            <img class="step-panel-img" src="images/KI1.jpg" alt="Completed home handover" loading="lazy">
+            <div class="step-panel-content">
+              <h3>Completion &amp; Handover</h3>
+              <p>After final inspection and snag resolution, we hand over your home with documentation, warranties, and a walkthrough of every space and system.</p>
+              <ul class="step-points">
+                <li><i class="fa-solid fa-house"></i><span>Final quality audit and snag-free handover</span></li>
+                <li><i class="fa-solid fa-house"></i><span>Documentation, warranties, and post-handover support</span></li>
+              </ul>
+              <a href="howitwork.html" class="step-know-btn">Know More <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -1800,7 +2143,7 @@
           <li><img src="logo/Ultratech_Cement_Logo.png" alt="UltraTech Cement"></li>
           <li><img src="logo/Century_Plyboards.png" alt="Century Plyboards"></li>
           <li><img src="logo/Green ply.png" alt="Greenply"></li>
-          <li><img src="logo/Ramco_Systems_logo.png" alt="Ramco Systems"></li>
+          <li><img src="logo/RAMCOCEM.png" alt="Ramco Systems"></li>
           <li><img src="logo/varmora.jpg" alt="varmora"></li>
           <li><img src="logo/Haffle.png" alt="Haffle"></li>
           <li><img src="logo/HETTICH.png" alt="HETTICH"></li>
@@ -2016,6 +2359,7 @@
         <ul class="footer-links">
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Us</a></li>
+          <li><a href="howitwork.html">How It Works</a></li>
           <li><a href="packages.html">Packages</a></li>
           <li><a href="contact.html">Contact Us</a></li>
         </ul>
@@ -2191,6 +2535,29 @@
       const next = (activeTestimonial + 1) % testimonials.length;
       renderTestimonial(next);
     }, 4500);
+
+    const stepTabs = document.querySelectorAll('#working-steps .step-tab');
+    const stepPanels = document.querySelectorAll('#working-steps .step-panel');
+
+    function activateStep(index) {
+      stepTabs.forEach((tab, i) => {
+        const active = i === index;
+        tab.classList.toggle('active', active);
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      stepPanels.forEach((panel, i) => {
+        const active = i === index;
+        panel.classList.toggle('active', active);
+        if (active) panel.removeAttribute('hidden');
+        else panel.setAttribute('hidden', '');
+      });
+    }
+
+    stepTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        activateStep(Number(tab.dataset.step) || 0);
+      });
+    });
   </script>
 </body>
 </html>

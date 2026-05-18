@@ -564,6 +564,7 @@
     @media (max-width:640px) {
       #navbar { padding:0 18px; height:66px; }
       .nav-logo { font-size:1.55rem; }
+      .nav-logo img { height:40px; }
       .mobile-menu { top:76px; }
       .page-hero { height:310px; margin-top:66px; }
       .section { padding:68px 18px; }
@@ -917,7 +918,10 @@
     .nav-logo {
       color:var(--logo-blue);
       transition:color .35s;
+      display:flex;
+      align-items:center;
     }
+    .nav-logo img { height:48px; width:auto; display:block; }
     .nav-logo span { color:var(--logo-red); }
     .nav-links a {
       color:var(--text);
@@ -950,7 +954,7 @@
 
   <!-- Navbar -->
   <nav id="navbar">
-    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo" style="height:64px;width:auto;display:block;"></a>
+    <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html">Projects</a></li>

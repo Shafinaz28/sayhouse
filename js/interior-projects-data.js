@@ -1,0 +1,21 @@
+window.INTERIOR_PROJECTS = [
+  { owner: 'Ms. Swathi Deshmanya', title: 'Sarjapura', gallery: ['interior/imgswathi1.jpg','interior/imgswathi2.jpg','interior/imgswathi3.jpg'] },
+  { owner: 'Mrs. Sheela', title: '1BHK, HAL', gallery: ['interior/Sheela.jpg','interior/Sheela1.jpg','interior/Sheela2.jpg','interior/Sheela3.jpg','interior/Sheela4.jpg'] },
+  { owner: 'Mr. Vinod', title: 'Yelahanka', gallery: ['interior/Vinod.jpg','interior/Vinod1.jpg','interior/Vinod2.jpg','interior/Vinod3.jpg','interior/Vinod4.jpg'] },
+  { owner: 'Mr. Abhijith', title: 'Interior, KR Puram', gallery: ['interior/ABHIJITH.jpg','interior/ABHIJITH1.jpg','interior/ABHIJITH2.jpg','interior/ABHIJITH3.jpg','interior/ABHIJITH4.jpg','interior/ABHIJITH5.jpg','interior/ABHIJITH6.jpg','interior/ABHIJITH7.jpg','interior/ABHIJITH8.jpg','interior/ABHIJITH9.jpg'] },
+  { owner: 'Mr. Dheeraj', title: 'Duplex 3BHK, Amruthalli', gallery: ['interior/Dheera.jpg','interior/Dheera1.jpg','interior/Dheera2.jpg','interior/Dheera3.jpg','interior/Dheera4.jpg','interior/Dheera5.jpg','interior/Dheera6.jpg','interior/Dheera7.jpg','interior/Dheera8.jpg','interior/Dheera9.jpg'] },
+  { owner: 'Ms. Sandhya Narendra', title: 'Salarpuria Sattva Anugraha, Magadi Road, Bengaluru', gallery: ['interior/sandhya-1.jpg','interior/sandhya-2.jpg','interior/sandhya-3.jpg','interior/sandhya-4.jpg','interior/sandhya-5.jpg','interior/sandhya-6.jpg','interior/sandhya-7.jpg','interior/sandhya-8.jpg'] },
+  { owner: 'Ms. Smitha Ranganath', title: '3BHK, Kasturi Nagar, Bengaluru', gallery: ['interior/smitha-living.jpg','interior/smitha-dining.jpg','interior/smitha-mandir.jpg','interior/smitha-kitchen-1.jpg','interior/smitha-kitchen-2.jpg','interior/smitha-bedroom-1.jpg','interior/smitha-bedroom-2.jpg','interior/smitha-bedroom-3.jpg','interior/smitha-bedroom-4.jpg'] },
+  { owner: 'Mr. Rakesh', title: '3BHK, Sahakaranagar', gallery: ['interior/Dheera.jpg'] },
+  { owner: 'Mr. Bharath', title: '2BHK, DSR ITPL', gallery: ['interior/Sheela.jpg'] },
+  { owner: 'Panchayat PDO Office', title: 'Vidurashwatha, Gauribidanur', gallery: ['interior/OFFICEpdo.jpg','interior/OFFICEpdo1.jpg','interior/OFFICEpdo2.jpg','interior/OFFICEpdo3.jpg'] },
+  { owner: 'Sky Gardens', title: '4500Sqft Apartments, Richmond Town, Bengaluru', gallery: ['interior/ABHIJITH1.jpg'] },
+  { owner: 'Ms. Rajeshwari Pradeep', title: '3BHK, Salarpuria Sattva OPUS, Jalahalli, Bengaluru', gallery: ['interior/rajeshwari-1.jpg','interior/rajeshwari-2.jpg','interior/rajeshwari-3.jpg','interior/rajeshwari-4.jpg','interior/rajeshwari-5.jpg','interior/rajeshwari-6.jpg','interior/rajeshwari-7.jpg','interior/rajeshwari-8.jpg','interior/rajeshwari-9.jpg','interior/rajeshwari-10.jpg'] },
+  { owner: 'Ms Priya Mahesh', title: '5BHK Triplex, RR Nagar, Bengaluru', gallery: ['interior/imgswathi1.jpg'] },
+  { owner: 'Mr. Narendra', title: 'Luxury Penthouse, Davangere', gallery: ['interior/Vinod.jpg'] },
+  { owner: 'Mr. Mithun', title: '2BHK, Janapriya Apts, Bengaluru', gallery: ['interior/Sheela.jpg'] },
+  { owner: 'Mr. Anurag', title: 'Duplex, Chandra Layout', gallery: ['interior/Dheera.jpg'] },
+  { owner: 'Lotus Builders Head Office', title: 'Sahakaranagar, Bengaluru', gallery: ['interior/lotus-1.jpg','interior/lotus-2.jpg','interior/lotus-3.jpg','interior/lotus-4.jpg','interior/lotus-5.jpg'] },
+  { owner: 'Sri Kotureshwara Benne Dose', title: 'Davanagere', gallery: ['interior/ABHIJITH1.jpg'] },
+  { owner: 'Ms. Shilpa Anjaneya', title: '4BHK, Rajanukunte', gallery: ['interior/shilpa-1.jpg','interior/shilpa-2.jpg','interior/shilpa-3.jpg','interior/shilpa-4.jpg','interior/shilpa-5.jpg','interior/Sah handovers_20241125_151559_0000.png'] }
+];
