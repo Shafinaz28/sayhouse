@@ -38,6 +38,19 @@
     });
   }
 
+  function mergeGalleries(...imageLists) {
+    const seen = new Set();
+    const merged = [];
+    imageLists.forEach((list) => {
+      (list || []).forEach((src) => {
+        if (!src || seen.has(src)) return;
+        seen.add(src);
+        merged.push(src);
+      });
+    });
+    return merged;
+  }
+
   function escapeHtml(str) {
     return String(str || '')
       .replace(/&/g, '&amp;')
@@ -58,7 +71,8 @@
     const imgs = uniqueImages(images);
     if (!imgs.length) return '';
 
-    const altBase = escapeHtml(owner + ' — ' + title);
+    const altBase = escapeHtml(owner + (title ? ' — ' + title : ''));
+    const heading = title ? `<h4 class="gallery-section-title">${escapeHtml(title)}</h4>` : '';
     const sub = subtitle ? `<p class="gallery-section-sub">${escapeHtml(subtitle)}</p>` : '';
 
     const thumbs = imgs
@@ -70,9 +84,11 @@
 
     return `
       <div class="gallery-section" data-viewer="${id}">
-        <h4 class="gallery-section-title">${escapeHtml(title)}</h4>
+        ${heading}
         ${sub}
-        <img class="viewer-main" src="${escapeHtml(imgs[0])}" alt="${altBase}" loading="lazy" role="button" tabindex="0" title="Tap to enlarge">
+        <section class="viewer-main-frame">
+          <img class="viewer-main" src="${escapeHtml(imgs[0])}" alt="${altBase}" loading="lazy" role="button" tabindex="0" title="Tap to enlarge">
+        </section>
         <div class="viewer-thumbs">${thumbs}</div>
       </div>`;
   }
@@ -384,37 +400,37 @@
         subtitleEl.innerText = currentProject.title || '';
       }
 
-      let html = '';
-      let viewerIndex = 0;
+      const allImages = mergeGalleries(
+        hasInterior ? interior.gallery : [],
+        hasBuilding ? building.gallery : []
+      );
 
-      if (hasInterior) {
-        html += createViewerSection(
-          'viewer-' + viewerIndex++,
-          'Interior Design',
-          interior.title,
-          interior.gallery,
-          owner
-        );
-      }
-      if (hasBuilding) {
-        html += createViewerSection(
-          'viewer-' + viewerIndex++,
-          'Building Construction',
-          building.title,
-          building.gallery,
-          owner
-        );
+      let sectionTitle = '';
+      let sectionSub = '';
+
+      if (hasInterior && hasBuilding) {
+        sectionSub = [interior.title, building.title].filter(Boolean).join(' · ');
+      } else if (hasInterior) {
+        sectionTitle = 'Interior Design';
+        sectionSub = interior.title || '';
+      } else if (hasBuilding) {
+        sectionTitle = 'Building Construction';
+        sectionSub = building.title || '';
+      } else {
+        sectionTitle = pageType === 'building' ? 'Building Construction' : 'Interior Design';
+        sectionSub = currentProject.title || '';
       }
 
-      if (!html) {
-        html = createViewerSection(
-          'viewer-0',
-          pageType === 'building' ? 'Building Construction' : 'Interior Design',
-          currentProject.title,
-          currentProject.gallery,
-          owner
-        );
-      }
+      const html =
+        allImages.length > 0
+          ? createViewerSection('viewer-0', sectionTitle, sectionSub, allImages, owner)
+          : createViewerSection(
+              'viewer-0',
+              pageType === 'building' ? 'Building Construction' : 'Interior Design',
+              currentProject.title,
+              currentProject.gallery,
+              owner
+            );
 
       imagesEl.innerHTML = html;
       initViewers(imagesEl);

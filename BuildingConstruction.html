@@ -31,11 +31,11 @@
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
     .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
     .project-content{padding:24px}.project-owner{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--primary);line-height:1.15;margin-bottom:6px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--muted);font-weight:500;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-viewer-body{padding:28px 32px 36px}.gallery-section{margin-bottom:42px}.gallery-section:last-child{margin-bottom:0}.gallery-section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.65rem,3vw,2.1rem);text-align:center;color:var(--navy);font-weight:600;margin-bottom:8px}.gallery-section-sub{text-align:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;line-height:1.45}.viewer-main{width:100%;height:min(430px,52vh);object-fit:contain;background:#f3f3f3;display:block}.viewer-thumbs{display:flex;gap:8px;overflow-x:auto;padding-top:12px;scrollbar-width:thin}.viewer-thumb{border:2px solid transparent;background:#fff;cursor:pointer;flex:0 0 auto;padding:0}.viewer-thumb.active{border-color:var(--gold)}.viewer-thumb img{width:72px;height:48px;object-fit:cover;display:block}.viewer-main{cursor:zoom-in}
+    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--gold);font-weight:600;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-viewer-body{padding:28px 32px 36px}.gallery-section{margin-bottom:42px}.gallery-section:last-child{margin-bottom:0}.gallery-section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.65rem,3vw,2.1rem);text-align:center;color:var(--navy);font-weight:600;margin-bottom:8px}.gallery-section-sub{text-align:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;line-height:1.45}.viewer-main-frame{width:100%;height:min(480px,52vh);min-height:280px;background:#e8e8e8;overflow:hidden;border-radius:6px;position:relative}.viewer-main{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}.viewer-thumbs{display:flex;justify-content:center;flex-wrap:nowrap;gap:10px;overflow-x:auto;padding:14px 4px 4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.viewer-thumb{border:2px solid transparent;border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;flex:0 0 auto;padding:0;transition:border-color .2s,opacity .2s}.viewer-thumb:hover{opacity:.9}.viewer-thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.viewer-thumb img{width:88px;height:58px;object-fit:cover;display:block}
     .lightbox{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:max(16px,3vw);background:rgba(5,10,18,.94)}.lightbox.active{display:flex}.lightbox-inner{position:relative;width:100%;max-width:min(100vw - 24px,1440px);display:flex;align-items:center;justify-content:center;padding:0 clamp(40px,5vw,68px);min-height:80px}.lightbox-inner img{max-width:100%;max-height:min(92vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.5)}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--navy);font-size:1.05rem;cursor:pointer;z-index:2;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:background .2s,opacity .2s}.lightbox-nav:hover:not(:disabled){background:var(--gold);color:var(--navy)}.lightbox-nav:disabled{opacity:.25;cursor:not-allowed}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-counter{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;letter-spacing:.04em}.lightbox-close{position:fixed;top:20px;right:20px;width:48px;height:48px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;z-index:601;box-shadow:0 8px 24px rgba(0,0,0,.35)}.lightbox-close:hover{background:var(--primary)}
 
-    @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.viewer-main{height:min(360px,45vh)}}
-    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.nav-logo img{height:40px}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-viewer-body{padding:16px 18px 24px}.viewer-main{height:min(260px,42vh)}.viewer-thumb img{width:64px;height:44px}}
+    @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.viewer-main-frame{height:min(360px,45vh);min-height:220px}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.nav-logo img{height:40px}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.35rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-viewer-body{padding:16px 18px 24px}.viewer-main-frame{height:min(280px,42vh);min-height:180px}.viewer-thumb img{width:72px;height:48px}}
    /* Professional Footer */
     .main-footer {
       background:var(--navy);
@@ -371,10 +371,9 @@
       <div>
         <h4 class="footer-title">Follow Us</h4>
         <div class="footer-social">
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="https://www.instagram.com/sayhomes_official?igshid=MmU2YjMzNjRlOQ%3D%3D" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/people/SayHomes/100093634495664/?mibextid=ZbWKwL" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@sayhomes" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
           <a href="https://wa.me/919686326936" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
         <div class="footer-social-contact">
@@ -426,14 +425,7 @@
         ]
       },
       
-      {
-        owner: 'Mr. Anjaneya',
-        title: '30x40 G+3',
-        description: 'Full home build at Basaveshwaranagar, Bengaluru with planned execution and durable specifications.',
-        gallery: [
-         
-        ]
-      },
+      
       {
         owner: 'Mr. Anurag',
         title: '30x40, G+4, Chandra Layout',
@@ -585,17 +577,7 @@
          
       ]
       },
-      {
-        owner: 'Mr. Muniraju',
-        title: '45x60 G+2, Nelamangala',
-        description: 'Home construction at Nelamangala with spacious planning and modern elevation design.',
-        gallery: [
-          './residentail%20images/Muniraju.jpg',
-          './residentail%20images/Muniraju1.jpg',
-          './residentail%20images/Muniraju2.jpg',
-          './residentail%20images/Muniraju3.jpg',
-        ]
-      },
+      
       {
         owner: 'Mr. Manoj',
         title: '30x40 G+1, Bidadi',
