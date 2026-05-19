@@ -535,7 +535,10 @@
     .service-card:hover p { color:rgba(255,255,255,0.62); }
 
     /* Working Steps */
-    #working-steps { background:#fff; }
+    #working-steps {
+      background:#fff;
+      --steps-icon-size:72px;
+    }
   #working-steps .section-head-center { margin-bottom:48px; }
   #working-steps .steps-tag {
     display:inline-flex;
@@ -549,11 +552,24 @@
   }
   #working-steps .steps-tag i { color:var(--primary); font-size:0.85rem; }
   .steps-nav {
+    position:relative;
     display:grid;
     grid-template-columns:repeat(6, 1fr);
     gap:0;
     border-bottom:1px solid var(--light);
     margin-bottom:0;
+  }
+  .steps-nav::before {
+    content:'';
+    position:absolute;
+    left:calc(100% / 12);
+    right:calc(100% / 12);
+    top:calc(20px + 2rem + 8px + var(--steps-icon-size) / 2);
+    transform:translateY(-50%);
+    height:2px;
+    background:linear-gradient(90deg, var(--light-blue) 0%, #b8cfe8 50%, var(--light-blue) 100%);
+    z-index:0;
+    pointer-events:none;
   }
   .step-tab {
     position:relative;
@@ -580,40 +596,47 @@
     transition:transform .3s ease;
   }
   .step-tab.active::after { transform:scaleX(1); }
-  .step-num-bg {
-    position:absolute;
-    top:4px;
-    left:50%;
-    transform:translateX(-50%);
+  .step-num {
+    display:block;
     font-family:'Cormorant Garamond', serif;
-    font-size:clamp(2.8rem, 4vw, 4rem);
-    font-weight:300;
-    color:rgba(15,27,45,0.06);
+    font-size:clamp(1.75rem, 2.5vw, 2.25rem);
+    font-weight:600;
+    color:rgba(15,27,45,0.22);
     line-height:1;
+    margin-bottom:8px;
     pointer-events:none;
     user-select:none;
+    transition:color .25s;
+  }
+  .step-tab.active .step-num {
+    color:var(--primary);
   }
   .step-icon {
     position:relative;
-    z-index:1;
-    width:56px;
-    height:56px;
+    z-index:2;
+    width:var(--steps-icon-size);
+    height:var(--steps-icon-size);
     border-radius:50%;
-    border:2px solid var(--light-blue);
+    border:3px solid var(--light-blue);
     background:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:1.15rem;
+    font-size:1.5rem;
     color:var(--primary);
     margin-bottom:12px;
-    transition:background .3s, border-color .3s, color .3s, box-shadow .3s;
+    transition:background .3s, border-color .3s, color .3s, box-shadow .3s, transform .3s;
+  }
+  .step-tab:hover .step-icon {
+    transform:scale(1.04);
+    border-color:var(--secondary);
   }
   .step-tab.active .step-icon {
     background:var(--primary);
     border-color:var(--primary);
     color:#fff;
-    box-shadow:0 10px 28px rgba(0,71,171,0.28);
+    box-shadow:0 12px 32px rgba(0,71,171,0.32);
+    transform:scale(1.05);
   }
   .step-label {
     position:relative;
@@ -1543,10 +1566,19 @@
         scroll-snap-type:x proximity;
         grid-template-columns:none;
       }
+      .steps-nav::before {
+        display:none;
+      }
+      #working-steps {
+        --steps-icon-size:64px;
+      }
       .step-tab {
         flex:0 0 38%;
         min-width:130px;
         scroll-snap-align:start;
+      }
+      .step-icon {
+        font-size:1.3rem;
       }
       .step-panel-inner {
         grid-template-columns:1fr;
@@ -1823,32 +1855,32 @@
 
       <div class="steps-nav reveal d1" role="tablist" aria-label="Construction process steps">
         <button type="button" class="step-tab active" role="tab" aria-selected="true" aria-controls="step-panel-0" id="step-tab-0" data-step="0">
-          <span class="step-num-bg" aria-hidden="true">01</span>
+          <span class="step-num" aria-hidden="true">1</span>
           <span class="step-icon"><i class="fa-solid fa-comments"></i></span>
           <span class="step-label">Let's Get Started</span>
         </button>
         <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-1" id="step-tab-1" data-step="1">
-          <span class="step-num-bg" aria-hidden="true">02</span>
+          <span class="step-num" aria-hidden="true">2</span>
           <span class="step-icon"><i class="fa-solid fa-pen-ruler"></i></span>
           <span class="step-label">Design Specification</span>
         </button>
         <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-2" id="step-tab-2" data-step="2">
-          <span class="step-num-bg" aria-hidden="true">03</span>
+          <span class="step-num" aria-hidden="true">3</span>
           <span class="step-icon"><i class="fa-solid fa-file-signature"></i></span>
           <span class="step-label">Client Agreement</span>
         </button>
         <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-3" id="step-tab-3" data-step="3">
-          <span class="step-num-bg" aria-hidden="true">04</span>
+          <span class="step-num" aria-hidden="true">4</span>
           <span class="step-icon"><i class="fa-solid fa-helmet-safety"></i></span>
           <span class="step-label">Construction &amp; Updates</span>
         </button>
         <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-4" id="step-tab-4" data-step="4">
-          <span class="step-num-bg" aria-hidden="true">05</span>
+          <span class="step-num" aria-hidden="true">5</span>
           <span class="step-icon"><i class="fa-solid fa-person-walking"></i></span>
           <span class="step-label">Site Visits</span>
         </button>
         <button type="button" class="step-tab" role="tab" aria-selected="false" aria-controls="step-panel-5" id="step-tab-5" data-step="5">
-          <span class="step-num-bg" aria-hidden="true">06</span>
+          <span class="step-num" aria-hidden="true">6</span>
           <span class="step-icon"><i class="fa-solid fa-key"></i></span>
           <span class="step-label">Completion &amp; Handover</span>
         </button>
@@ -1857,7 +1889,7 @@
       <div class="steps-panels reveal d2">
         <article class="step-panel active" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0">
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Consultation and planning meeting" loading="lazy">
+            <img class="step-panel-img" src="images/Get Started.jpg" alt="Consultation and planning meeting" loading="lazy">
             <div class="step-panel-content">
               <h3>Let's Get Started</h3>
               <p>We begin with a detailed discussion about your vision, budget, plot details, and timeline. Our team listens carefully and outlines a clear path for your dream home.</p>
@@ -1872,7 +1904,7 @@
 
         <article class="step-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/DI1.jpg" alt="Home design and specifications" loading="lazy">
+            <img class="step-panel-img" src="images/discussing-blueprint.jpg" alt="Home design and specifications" loading="lazy">
             <div class="step-panel-content">
               <h3>Design Specification</h3>
               <p>Our architects prepare floor plans, 3D elevations, and material specifications tailored to your lifestyle, Vastu preferences, and local regulations.</p>
@@ -1887,7 +1919,7 @@
 
         <article class="step-panel" id="step-panel-2" role="tabpanel" aria-labelledby="step-tab-2" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/buildingconstruction1.jpg" alt="Signed project agreement" loading="lazy">
+            <img class="step-panel-img" src="images/contract.jpg" alt="Signed project agreement" loading="lazy">
             <div class="step-panel-content">
               <h3>Client Agreement</h3>
               <p>Once designs are approved, we share a transparent contract covering scope, milestones, payment schedule, and warranties — so you know exactly what to expect.</p>
@@ -1902,7 +1934,7 @@
 
         <article class="step-panel" id="step-panel-3" role="tabpanel" aria-labelledby="step-tab-3" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/construction_800.webp" alt="Construction in progress" loading="lazy">
+            <img class="step-panel-img" src="images/architecture.jpg" alt="Construction in progress" loading="lazy">
             <div class="step-panel-content">
               <h3>Construction &amp; Updates</h3>
               <p>Our site team executes each stage with quality checks while you receive regular progress updates, photos, and milestone reports throughout the build.</p>
@@ -1917,7 +1949,7 @@
 
         <article class="step-panel" id="step-panel-4" role="tabpanel" aria-labelledby="step-tab-4" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="residentail%20images/Ylnk2.jpg" alt="Site visit and inspection" loading="lazy">
+            <img class="step-panel-img" src="images/Site Visits.jpg" alt="Site visit and inspection" loading="lazy">
             <div class="step-panel-content">
               <h3>Site Visits</h3>
               <p>We invite you to visit the site at key milestones — foundation, structure, finishing — so you can see progress firsthand and raise any questions with our team.</p>
@@ -1932,7 +1964,7 @@
 
         <article class="step-panel" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/KI1.jpg" alt="Completed home handover" loading="lazy">
+            <img class="step-panel-img" src="images/Completion & Handover.jpg" alt="Completed home handover" loading="lazy">
             <div class="step-panel-content">
               <h3>Completion &amp; Handover</h3>
               <p>After final inspection and snag resolution, we hand over your home with documentation, warranties, and a walkthrough of every space and system.</p>
@@ -2140,11 +2172,11 @@
           <li><img src="logo/meenakshisteel.png" alt="Meenakshi Steel"></li>
           <li><img src="logo/SUPREMEIND.png" alt="Supreme Industries"></li>
           <li><img src="logo/Tata_Steel_Logo.png" alt="Tata Steel"></li>
-          <li><img src="logo/Ultratech_Cement_Logo.png" alt="UltraTech Cement"></li>
+          <li><img src="logo/Ultratech.png" alt="UltraTech Cement"></li>
           <li><img src="logo/Century_Plyboards.png" alt="Century Plyboards"></li>
           <li><img src="logo/Green ply.png" alt="Greenply"></li>
           <li><img src="logo/RAMCOCEM.png" alt="Ramco Systems"></li>
-          <li><img src="logo/varmora.jpg" alt="varmora"></li>
+          <li><img src="logo/varmora.png" alt="varmora"></li>
           <li><img src="logo/Haffle.png" alt="Haffle"></li>
           <li><img src="logo/HETTICH.png" alt="HETTICH"></li>
           <li><img src="logo/EBCO.png" alt="ebco"></li>
