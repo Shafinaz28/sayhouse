@@ -22,16 +22,16 @@
     .nav-toggle{display:none;width:44px;height:44px;border:1px solid rgba(15,27,45,.15);background:#fff;color:var(--navy);border-radius:999px;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer}
     .mobile-menu{position:fixed;top:82px;left:16px;right:16px;z-index:99;background:rgba(255,255,255,.98);border:1px solid rgba(15,27,45,.08);border-radius:22px;box-shadow:0 24px 70px rgba(15,27,45,.18);overflow:hidden;opacity:0;transform:translateY(-12px);pointer-events:none;visibility:hidden;transition:.3s}
     .mobile-menu.active{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible}.mobile-menu a{display:flex;align-items:center;gap:12px;padding:16px 20px;color:var(--navy);text-decoration:none;font-size:.84rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--light)}.mobile-menu a i{color:var(--primary);width:18px}.mobile-menu a:last-child{background:var(--primary);color:#fff;justify-content:center}.mobile-menu a:last-child i{color:#fff}
-    .page-hero{position:relative;height:380px;margin-top:72px;display:flex;align-items:center;justify-content:center;overflow:hidden}.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,35,.72),rgba(10,20,35,.58))}
+    .page-hero{position:relative;height:380px;margin-top:72px;display:flex;align-items:center;justify-content:center;overflow:hidden}.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,35,.72),rgba(10,20,35,.58))}
     .page-hero-inner{position:relative;z-index:2;text-align:center;padding:0 20px}.page-hero-inner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff}.page-hero-inner h1 em{color:var(--gold);font-style:italic}
     .breadcrumb{display:flex;justify-content:center;gap:8px;margin-top:14px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;flex-wrap:wrap}.breadcrumb a{color:rgba(255,255,255,.58);text-decoration:none}.breadcrumb span{color:var(--gold)}
     .hero-back-btn{display:none;align-items:center;gap:8px;margin:0 auto 14px;padding:8px 16px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.1);color:#fff;font-family:inherit;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;cursor:pointer;text-decoration:none}
     @media(max-width:1024px){.hero-back-btn{display:inline-flex}}
     .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
-    .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:contain;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
     .project-content{padding:24px}.project-owner{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--primary);line-height:1.15;margin-bottom:6px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
-    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--gold);font-weight:600;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-viewer-body{padding:28px 32px 36px}.gallery-section{margin-bottom:42px}.gallery-section:last-child{margin-bottom:0}.gallery-section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.65rem,3vw,2.1rem);text-align:center;color:var(--navy);font-weight:600;margin-bottom:8px}.gallery-section-sub{text-align:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;line-height:1.45}.viewer-main-frame{width:100%;height:min(480px,52vh);min-height:280px;background:#e8e8e8;overflow:hidden;border-radius:6px;position:relative}.viewer-main{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}.viewer-thumbs{display:flex;justify-content:center;flex-wrap:nowrap;gap:10px;overflow-x:auto;padding:14px 4px 4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.viewer-thumb{border:2px solid transparent;border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;flex:0 0 auto;padding:0;transition:border-color .2s,opacity .2s}.viewer-thumb:hover{opacity:.9}.viewer-thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.viewer-thumb img{width:88px;height:58px;object-fit:cover;display:block}
+    .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--gold);font-weight:600;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-viewer-body{padding:28px 32px 36px}.gallery-section{margin-bottom:42px}.gallery-section:last-child{margin-bottom:0}.gallery-section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.65rem,3vw,2.1rem);text-align:center;color:var(--navy);font-weight:600;margin-bottom:8px}.gallery-section-sub{text-align:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;line-height:1.45}.viewer-main-frame{width:100%;height:min(480px,52vh);min-height:280px;background:#e8e8e8;overflow:hidden;border-radius:6px;position:relative}.viewer-main{width:100%;height:100%;object-fit:contain;object-position:center;display:block;cursor:zoom-in}.viewer-thumbs{display:flex;justify-content:center;flex-wrap:nowrap;gap:10px;overflow-x:auto;padding:14px 4px 4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.viewer-thumb{border:2px solid transparent;border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;flex:0 0 auto;padding:0;transition:border-color .2s,opacity .2s}.viewer-thumb:hover{opacity:.9}.viewer-thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.viewer-thumb img{width:88px;height:58px;object-fit:contain;display:block}
     .lightbox{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:max(16px,3vw);background:rgba(5,10,18,.94)}.lightbox.active{display:flex}.lightbox-inner{position:relative;width:100%;max-width:min(100vw - 24px,1440px);display:flex;align-items:center;justify-content:center;padding:0 clamp(40px,5vw,68px);min-height:80px}.lightbox-inner img{max-width:100%;max-height:min(92vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.5)}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--navy);font-size:1.05rem;cursor:pointer;z-index:2;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:background .2s,opacity .2s}.lightbox-nav:hover:not(:disabled){background:var(--gold);color:var(--navy)}.lightbox-nav:disabled{opacity:.25;cursor:not-allowed}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-counter{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;letter-spacing:.04em}.lightbox-close{position:fixed;top:20px;right:20px;width:48px;height:48px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;z-index:601;box-shadow:0 8px 24px rgba(0,0,0,.35)}.lightbox-close:hover{background:var(--primary)}
 
     @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.viewer-main-frame{height:min(360px,45vh);min-height:220px}}
@@ -425,10 +425,13 @@
         description: 'Residential interiors at Yelahanka with balanced spaces and premium material choices.',
         gallery: [
           'interior/Vinod.jpg',
-          'interior/Vinod1.jpg',
+          
           'interior/Vinod2.jpg',
           'interior/Vinod3.jpg',
-          'interior/Vinod4.jpg'
+          'interior/Vinod4.jpg',
+          'interior/Vinod5.jpg',
+          'interior/Vinod6.jpg',
+          'interior/Vinod7.jpg',
         ]
       },
        {
@@ -527,7 +530,13 @@
         title: '3BHK, Sahakaranagar',
         description: 'Complete 3BHK interior execution at Sahakaranagar with coordinated finishes and lighting.',
         gallery: [
-          'interior/'
+          'interior/rakesh.jpg',
+          'interior/rakesh1.jpg',
+          'interior/rakesh2.jpg',
+          'interior/rakesh3.jpg',
+          'interior/rakesh4.jpg',
+          'interior/rakesh5.jpg'
+          
         ]
       },
 
@@ -657,6 +666,17 @@
         title: '5BHK Triplex, RR Nagar, Bengaluru',
         description: '5BHK triplex interiors at RR Nagar, Bengaluru with premium finishes and spacious planning across levels.',
         gallery: [
+          'interior/priyam.png',
+          'interior/priyam1.png',
+          'interior/priyam2.png',
+          'interior/priyam3.png',
+          'interior/priyam4.png',
+          'interior/priyam5.png',
+          'interior/priyam6.png',
+          'interior/priyam7.png',
+          'interior/priyam8.png',
+          'interior/priyam9.png',
+          'interior/priyam10.png',
           
         ]
       },
@@ -665,7 +685,15 @@
         title: 'Luxury Penthouse, Davangere',
         description: 'Luxury penthouse interiors in Davangere with bespoke finishes and high-end detailing.',
         gallery: [
-          
+          'interior/Narendra.png',
+          'interior/Narendra1.png',
+          'interior/Narendra2.png',
+          'interior/Narendra3.png',
+          'interior/Narendra4.png',
+          'interior/Narendra5.png',
+          'interior/Narendra6.png',
+          'interior/Narendra7.png',
+          'interior/Narendra8.png',
         ]
       },
       {
@@ -673,7 +701,7 @@
         title: '2BHK, Janapriya Apts, Bengaluru',
         description: '2BHK apartment interiors at Janapriya Apartments, Bengaluru with efficient storage and modern styling.',
         gallery: [
-          'interior/Sheela.jpg'
+          
         ]
       },
       {
@@ -732,11 +760,11 @@
         title: 'HSR Layout, Bengaluru',
         description: 'HSR layout apartment interiors with a modern and functional design.',
         gallery: [
-          'interior/pramod.png',
-          'interior/pramod1.png',
-          'interior/pramod2.png',
-          'interior/pramod3.png',
-          'interior/pramod4.png',
+          'interior/pramod.jpg',
+          'interior/pramod1.jpg',
+          'interior/pramod2.jpg',
+          'interior/pramod3.jpg',
+          'interior/pramod4.jpg',
         ]
       },
 
@@ -745,7 +773,15 @@
         title: 'Davanagere',
         description: 'Interior branding and fit-out for Sri Kotureshwara Benne Dose in Davanagere.',
         gallery: [
-          'interior/ABHIJITH1.jpg'
+          'commercial/Sriguru.png',
+        'commercial/Sriguru1.png',
+        'commercial/Sriguru2.png',
+        'commercial/Sriguru3.png',
+        'commercial/Sriguru4.png',
+        'commercial/Sriguru5.png',
+        'commercial/Sriguru6.png',
+        'commercial/Sriguru7.png',
+        'commercial/Sriguru8.png',
         ]
       },
       {

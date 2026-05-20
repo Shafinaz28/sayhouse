@@ -22,26 +22,29 @@
     .nav-toggle{display:none;width:44px;height:44px;border:1px solid rgba(15,27,45,.15);background:#fff;color:var(--navy);border-radius:999px;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer}
     .mobile-menu{position:fixed;top:82px;left:16px;right:16px;z-index:99;background:rgba(255,255,255,.98);border:1px solid rgba(15,27,45,.08);border-radius:22px;box-shadow:0 24px 70px rgba(15,27,45,.18);overflow:hidden;opacity:0;transform:translateY(-12px);pointer-events:none;visibility:hidden;transition:.3s}
     .mobile-menu.active{opacity:1;transform:translateY(0);pointer-events:auto;visibility:visible}.mobile-menu a{display:flex;align-items:center;gap:12px;padding:16px 20px;color:var(--navy);text-decoration:none;font-size:.84rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid var(--light)}.mobile-menu a i{color:var(--primary);width:18px}.mobile-menu a:last-child{background:var(--primary);color:#fff;justify-content:center}.mobile-menu a:last-child i{color:#fff}
-    .page-hero{position:relative;height:380px;margin-top:72px;display:flex;align-items:center;justify-content:center;overflow:hidden}.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,35,.72),rgba(10,20,35,.58))}
+    .page-hero{position:relative;height:380px;margin-top:72px;display:flex;align-items:center;justify-content:center;overflow:hidden}.page-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}.page-hero:after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,20,35,.72),rgba(10,20,35,.58))}
     .page-hero-inner{position:relative;z-index:2;text-align:center;padding:0 20px}.page-hero-inner h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff}.page-hero-inner h1 em{color:var(--gold);font-style:italic}
     .breadcrumb{display:flex;justify-content:center;gap:8px;margin-top:14px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;flex-wrap:wrap}.breadcrumb a{color:rgba(255,255,255,.58);text-decoration:none}.breadcrumb span{color:var(--gold)}
     .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
     .sector-grid{
       display:grid;
       grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:22px;
+      gap:24px;
       align-items:stretch;
     }
     .sector-card{
       position:relative;
+      display:flex;
+      flex-direction:column;
+      min-height:248px;
       background:#fff;
-      border:1px solid rgba(15,27,45,.08);
-      border-radius:18px;
-      padding:24px 22px 22px;
+      border:1px solid rgba(15,27,45,.06);
+      border-radius:20px;
+      padding:28px 26px 26px;
       text-align:left;
-      box-shadow:0 14px 34px rgba(15,27,45,.08);
+      box-shadow:0 12px 36px rgba(15,27,45,.07);
       overflow:hidden;
-      transition:transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      transition:transform .28s ease, box-shadow .28s ease;
     }
     .sector-card::before{
       content:'';
@@ -49,54 +52,58 @@
       top:0;
       left:0;
       right:0;
-      height:4px;
-      background:linear-gradient(90deg,var(--gold),var(--primary));
+      height:3px;
+      background:linear-gradient(90deg,var(--navy) 0%,var(--primary) 42%,var(--gold) 100%);
     }
     .sector-card:hover{
-      transform:translateY(-5px);
-      border-color:rgba(26,60,110,.22);
-      box-shadow:0 22px 48px rgba(15,27,45,.14);
+      transform:translateY(-4px);
+      box-shadow:0 20px 44px rgba(15,27,45,.12);
     }
     .sector-card h3{
-      font-size:1.7rem;
+      font-size:clamp(1.55rem,2.2vw,1.85rem);
       font-family:'Cormorant Garamond',serif;
+      font-weight:600;
       color:var(--navy);
-      margin-bottom:10px;
-      line-height:1.1;
+      margin:0 0 16px;
+      line-height:1.12;
     }
-    .sector-card p{
-      font-size:.78rem;
-      line-height:1.85;
+    .sector-card .sector-list{
+      flex:1;
+      margin:0 0 20px;
+      padding:0;
+      font-size:.72rem;
+      line-height:1.95;
       color:var(--muted);
-      letter-spacing:.12em;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      min-height:70px;
+      font-weight:500;
     }
     .works-btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      margin-top:16px;
-      background:var(--primary);
+      align-self:flex-start;
+      margin-top:auto;
+      background:var(--navy);
       color:#fff;
       text-decoration:none;
-      padding:11px 20px;
+      padding:12px 22px;
       font-size:.68rem;
       font-weight:700;
-      letter-spacing:.16em;
+      letter-spacing:.14em;
       text-transform:uppercase;
       border-radius:999px;
-      border:1px solid var(--primary);
-      transition:background .24s ease, color .24s ease, transform .24s ease;
+      border:0;
+      transition:background .24s ease, transform .24s ease, box-shadow .24s ease;
     }
     .works-btn:hover{
-      background:#fff;
-      color:var(--primary);
+      background:var(--primary);
       transform:translateY(-2px);
+      box-shadow:0 8px 20px rgba(15,27,45,.18);
     }
     .institution-banners{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     .inst-card{position:relative;height:220px;overflow:hidden;cursor:pointer}
-    .inst-card img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+    .inst-card img{width:100%;height:100%;object-fit:contain;transition:transform .45s ease}
     .inst-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),rgba(0,0,0,.16))}
     .inst-card h3{position:absolute;z-index:2;left:14px;right:14px;bottom:12px;color:#fff;font-family:'Cormorant Garamond',serif;font-size:2.2rem;line-height:.9;text-align:center}
     .inst-card:hover img{transform:scale(1.08)}
@@ -107,7 +114,7 @@
     .gallery-head h3{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy)}
     .gallery-close{width:40px;height:40px;border:0;background:var(--navy);color:#fff;cursor:pointer}
     .gallery-images{padding:16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .gallery-images img{width:100%;height:210px;object-fit:cover}
+    .gallery-images img{width:100%;height:210px;object-fit:contain}
     .is-hidden{display:none}
 
     @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.sector-grid,.institution-banners{grid-template-columns:1fr 1fr}.gallery-images{grid-template-columns:repeat(2,1fr)}}
@@ -382,39 +389,38 @@
       <div class="sector-grid">
         <div class="sector-card">
           <h3>Real Estate Developments</h3>
-          <p>Plotted Developments<br>Villa Developments<br>Apartments</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Plotted Developments<br>Villa Developments<br>Apartments</p>
+          <a class="works-btn" href="projects.html">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>Institutions</h3>
-          <p>Schools<br>Universities</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Schools<br>Universities</p>
+          <a class="works-btn" href="commercial-works.html?sector=institutions">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>Residential</h3>
-          <p>Villas<br>Independent Homes<br>Apartments</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Villas<br>Independent Homes<br>Apartments</p>
+          <a class="works-btn" href="BuildingConstruction.html">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>Hospitality</h3>
-          <p>Restaurants<br>5 Star Hotels</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Restaurants<br>5 Star Hotels</p>
+          <a class="works-btn" href="commercial-works.html?sector=hospitality">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>Non Profit Org</h3>
-          <p>Temples<br>NGOs</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Temples<br>NGOs</p>
+          <a class="works-btn" href="commercial-works.html?sector=nonprofit">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>Commercial</h3>
-          <p>Retail Outlets<br>Industries</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Retail Outlets<br>Industries</p>
+          <a class="works-btn" href="commercial-works.html?sector=commercial">See Our Works</a>
         </div>
         <div class="sector-card">
           <h3>PEB</h3>
-          <p>Pre Engineered Buildings<br>Warehouses<br
-            Industrial godown</p>
-          <a class="works-btn" href="commercial-works.html">See Our Works</a>
+          <p class="sector-list">Pre Engineered Buildings<br>Warehouses</p>
+          <a class="works-btn" href="commercial-works.html?sector=peb">See Our Works</a>
         </div>
       </div>
     </div>

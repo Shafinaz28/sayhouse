@@ -423,7 +423,7 @@
     .about-img {
       width:100%;
       height:520px;
-      object-fit:cover;
+      object-fit:contain;
       display:block;
     }
     .about-text p {
@@ -672,7 +672,7 @@
     width:100%;
     height:100%;
     min-height:420px;
-    object-fit:cover;
+    object-fit:contain;
     display:block;
   }
   .step-panel-content {
@@ -824,7 +824,7 @@
     .gallery-item img {
       width:100%;
       height:100%;
-      object-fit:cover;
+      object-fit:contain;
       display:block;
       transition:transform .7s cubic-bezier(.22,.61,.36,1);
     }
@@ -1145,6 +1145,20 @@
       text-transform:uppercase;
       transition:background .3s, transform .2s;
     }
+    .btn-spinner {
+      display:inline-block;
+      width:16px;
+      height:16px;
+      border:2px solid rgba(255,255,255,.35);
+      border-top-color:#fff;
+      border-radius:50%;
+      animation:leadSpin .7s linear infinite;
+      vertical-align:middle;
+      margin-left:8px;
+    }
+    .hidden { display:none !important; }
+    @keyframes leadSpin { to { transform:rotate(360deg); } }
+
     .submit-btn:hover {
       background:var(--primary);
       transform:translateY(-1px);
@@ -2300,49 +2314,54 @@
       </div>
 
       <div class="contact-grid">
-        <form class="reveal from-left" onsubmit="return false;">
+        <form class="reveal from-left lead-form" data-source="SayHomes Home Page" novalidate>
+          <input type="hidden" name="source" value="SayHomes Home Page">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Full Name</label>
-              <input class="form-input" type="text" placeholder="Your full name">
+              <label class="form-label" for="home-name">Full Name</label>
+              <input class="form-input" id="home-name" name="name" type="text" placeholder="Your full name" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label">Phone Number</label>
-              <input class="form-input" type="tel" placeholder="+91 XXXXX XXXXX">
+              <label class="form-label" for="home-phone">Phone Number</label>
+              <input class="form-input" id="home-phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Email Address</label>
-            <input class="form-input" type="email" placeholder="you@example.com">
+            <label class="form-label" for="home-email">Email Address</label>
+            <input class="form-input" id="home-email" name="email" type="email" placeholder="you@example.com" required>
           </div>
 
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Location</label>
-              <input class="form-input" type="text" placeholder="Your city">
+              <label class="form-label" for="home-location">Location</label>
+              <input class="form-input" id="home-location" name="location" type="text" placeholder="Your city">
             </div>
 
             <div class="form-group">
-              <label class="form-label">Service Required</label>
-              <select class="form-input">
+              <label class="form-label" for="home-service">Service Required</label>
+              <select class="form-input" id="home-service" name="service" required>
                 <option value="">Select a service</option>
-                <option>Building Construction</option>
-                <option>PEB (Pre Engineered Buildings)</option>
-                <option>Architecture</option>
-                <option>Interior Design</option>
-                <option>Consultation</option>
+                <option value="Building Construction">Building Construction</option>
+                <option value="PEB (Pre Engineered Buildings)">PEB (Pre Engineered Buildings)</option>
+                <option value="Architecture">Architecture</option>
+                <option value="Interior Design">Interior Design</option>
+                <option value="Consultation">Consultation</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label">Message</label>
-            <textarea class="form-input" rows="4" placeholder="Tell us about your project..."></textarea>
+            <label class="form-label" for="home-message">Message</label>
+            <textarea class="form-input" id="home-message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
           </div>
 
-          <button type="submit" class="submit-btn">Submit Enquiry <i class="fa-solid fa-arrow-right"></i></button>
+          <button type="submit" class="submit-btn" data-submit-btn>
+            <span data-btn-text>Submit Enquiry</span>
+            <i class="fa-solid fa-arrow-right" data-btn-icon></i>
+            <span class="btn-spinner hidden" data-btn-spinner aria-hidden="true"></span>
+          </button>
         </form>
 
         <div class="contact-info reveal from-right">
@@ -2590,5 +2609,7 @@
       });
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/lead-form.js"></script>
 </body>
 </html>
