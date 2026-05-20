@@ -1,0 +1,205 @@
+/**
+ * Full-width image frames with object-fit: cover (fills box, same size).
+ */
+
+/* —— Project cards —— */
+.project-img {
+  width: 100%;
+  height: 280px;
+  min-height: 280px;
+  max-height: 280px;
+  overflow: hidden;
+  position: relative;
+  background: #e8eaed;
+  display: block;
+}
+
+.project-img img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+/* —— Gallery modal (interior / building) —— */
+.viewer-main-frame {
+  width: 100%;
+  overflow: hidden;
+  background: #e8eaed;
+  display: block;
+}
+
+.viewer-main {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100%;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+.viewer-thumb {
+  width: 88px;
+  height: 58px;
+  padding: 0;
+  overflow: hidden;
+  background: #e8eaed;
+}
+
+.viewer-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+/* —— Commercial work detail —— */
+.commercial-work-detail .viewer-main-frame,
+.commercial-work-detail .main-image {
+  width: 100%;
+}
+
+.commercial-work-detail .main-image {
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+}
+
+.commercial-work-detail .thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+}
+
+/* —— Commercial works grid cards —— */
+.commercial-works .card {
+  width: 100%;
+  height: 220px;
+  min-height: 220px;
+  overflow: hidden;
+  background: #e8eaed;
+  display: block;
+}
+
+.commercial-works .card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+/* —— Homepage gallery —— */
+.gallery-item {
+  width: 100%;
+  overflow: hidden;
+  background: #e8eaed;
+  min-height: 260px;
+}
+
+.gallery-item img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+/* —— Projects page —— */
+.project-banner {
+  width: 100%;
+  height: 200px;
+  min-height: 200px;
+  overflow: hidden;
+  background: #e8eaed;
+}
+
+.project-banner img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+.projects-grid .project-img img,
+.section .project-img img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* —— How it works —— */
+.step-img {
+  width: 100% !important;
+  aspect-ratio: 4 / 3;
+  min-height: 220px;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+  background: #e8eaed;
+}
+
+/* —— Index working steps + about —— */
+.step-panel-img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+.about-img {
+  width: 100% !important;
+  height: 520px;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+/* —— Commercial projects cards —— */
+.inst-card {
+  width: 100%;
+  overflow: hidden;
+  background: #e8eaed;
+}
+
+.inst-card img,
+.gallery-images img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center;
+  display: block;
+}
+
+.gallery-images img {
+  height: 210px;
+}
+
+/* Lightbox — full image when zoomed (not cropped) */
+.lightbox-inner img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: min(92vh, 1000px);
+  object-fit: contain !important;
+}
+
+@media (max-width: 640px) {
+  .project-img {
+    height: 240px;
+    min-height: 240px;
+    max-height: 240px;
+  }
+
+  .viewer-thumb {
+    width: 72px;
+    height: 48px;
+  }
+}

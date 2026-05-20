@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/uniform-images.css">
   <style>
     :root{--navy:#0F1B2D;--primary:#1A3C6E;--cream:#FAF7F2;--light:#F0EBE3;--gold:#C9A84C}
     *{margin:0;padding:0;box-sizing:border-box}
@@ -16,11 +17,11 @@
     .inner{max-width:980px;margin:0 auto}
     .title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,2.5rem);text-align:center;color:var(--navy);line-height:1.15;margin-bottom:20px}
     .viewer-main-frame{width:100%;height:min(480px,52vh);min-height:280px;background:#e8e8e8;overflow:hidden;border-radius:6px;margin-bottom:12px}
-    .main-image{width:100%;height:100%;object-fit:contain;object-position:center;display:block;cursor:zoom-in}
+    .main-image{width:100%;height:100%;object-fit:cover;object-position:center;display:block;cursor:zoom-in}
     .thumbs{display:flex;justify-content:center;flex-wrap:nowrap;gap:10px;overflow-x:auto;padding:4px 4px 28px;scrollbar-width:thin}
     .thumb{border:2px solid transparent;border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;flex:0 0 auto;padding:0}
     .thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}
-    .thumb img{width:88px;height:58px;object-fit:contain;display:block}
+    .thumb img{width:88px;height:58px;object-fit:cover;display:block}
     .label{display:block;text-align:center;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:#7a7269;margin:8px 0 12px}
     .video-box{aspect-ratio:16/9;background:#1a1a1a;border-radius:6px;overflow:hidden}
     .video-box iframe{width:100%;height:100%;border:0}
