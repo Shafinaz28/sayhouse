@@ -20,6 +20,26 @@
   }
 }
 
+/* Page hero banners — full width, edge-to-edge cover (all inner pages) */
+.page-hero {
+  width: 100%;
+  max-width: 100%;
+  background: #0f1b2d;
+  overflow: hidden;
+}
+
+.page-hero img {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  display: block;
+}
+
 /* —— Project cards —— */
 .project-img {
   width: 100%;
