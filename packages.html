@@ -340,6 +340,13 @@
       min-width: 0;
     }
 
+    .packages-loading {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
     .packages-grid {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1101,7 +1108,8 @@
           section to view detailed specifications.</p>
       </div>
       <div class="packages-grid-wrap">
-        <div class="packages-grid">
+        <p id="packagesLoading" class="packages-loading" hidden>Loading packages from Google Sheet…</p>
+        <div class="packages-grid" id="packagesGrid">
           <!-- Package 1 -->
           <div class="package-column reveal d1">
             <h2 class="package-title"><span class="plan-name">Essential</span><span class="plan-price"><span
@@ -1109,7 +1117,7 @@
                   sqft</span></span></h2>
             <div class="package-card">
               <!-- Essential - Design & Drawings -->
-              <details class="package-detail" open="">
+              <details class="package-detail">
                 <summary class="package-summary">
                   Design &amp; Drawings
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
@@ -1434,7 +1442,7 @@
                   sqft</span></span></h2>
             <div class="package-card">
               <!-- Premium - Design & Drawings -->
-              <details class="package-detail" open="">
+              <details class="package-detail">
                 <summary class="package-summary">
                   Design &amp; Drawings
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
@@ -1740,7 +1748,7 @@
                   sqft</span></span></h2>
             <div class="package-card">
               <!-- Luxury - Design & Drawings -->
-              <details class="package-detail" open="">
+              <details class="package-detail">
                 <summary class="package-summary">
                   Design &amp; Drawings
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
@@ -2055,7 +2063,7 @@
                   class="old-price">₹2900</span> <span class="new-price">₹2750</span><span class="price-unit"> /
                   sqft</span></span></h2>
             <div class="package-card">
-              <details class="package-detail" open="">
+              <details class="package-detail">
                 <summary class="package-summary">
                   Design &amp; Drawings
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
@@ -2435,6 +2443,7 @@
   </footer>
 
 
+  <script src="js/packages-loader.js"></script>
   <script>
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');
@@ -2486,41 +2495,36 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
 
-    let syncingDetails = false;
-
-    document.querySelectorAll('.package-card').forEach(card => {
-      const details = card.querySelectorAll('details');
-      details.forEach(item => {
-        item.addEventListener('toggle', function () {
-          if (syncingDetails) return;
-
-          const summary = this.querySelector('.package-summary');
-          if (!summary) return;
-
-          const label = summary.childNodes[0]?.textContent?.trim() || '';
-          if (!label) return;
-
-          syncingDetails = true;
-          document.querySelectorAll('.package-card details').forEach(other => {
-            const otherSummary = other.querySelector('.package-summary');
-            const otherLabel = otherSummary?.childNodes[0]?.textContent?.trim() || '';
-
-            if (this.open) {
-              // Open this section in all packages, close all other sections globally
-              if (otherLabel === label) {
-                other.setAttribute('open', '');
-              } else {
+    if (window.SayHomesPackages) {
+      SayHomesPackages.initPackageDetailSync();
+      SayHomesPackages.observeReveals();
+    } else {
+      let syncingDetails = false;
+      document.querySelectorAll('.package-card').forEach(card => {
+        const details = card.querySelectorAll('details');
+        details.forEach(item => {
+          item.addEventListener('toggle', function () {
+            if (syncingDetails) return;
+            const summary = this.querySelector('.package-summary');
+            if (!summary) return;
+            const label = summary.childNodes[0]?.textContent?.trim() || '';
+            if (!label) return;
+            syncingDetails = true;
+            document.querySelectorAll('.package-card details').forEach(other => {
+              const otherSummary = other.querySelector('.package-summary');
+              const otherLabel = otherSummary?.childNodes[0]?.textContent?.trim() || '';
+              if (this.open) {
+                if (otherLabel === label) other.setAttribute('open', '');
+                else other.removeAttribute('open');
+              } else if (otherLabel === label) {
                 other.removeAttribute('open');
               }
-            } else if (otherLabel === label) {
-              // Closing one closes the same section in all packages
-              other.removeAttribute('open');
-            }
+            });
+            syncingDetails = false;
           });
-          syncingDetails = false;
         });
       });
-    });
+    }
   </script>
 
 </body>
