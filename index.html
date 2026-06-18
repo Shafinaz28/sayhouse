@@ -1478,6 +1478,50 @@
       .reveal.visible {
         transform:translateY(0);
       }
+      .steps-nav {
+        display:flex;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scroll-snap-type:x mandatory;
+        grid-template-columns:none;
+        gap:0;
+        padding-bottom:6px;
+        scrollbar-width:thin;
+      }
+      .steps-nav::before {
+        display:none;
+      }
+      #working-steps {
+        --steps-icon-size:62px;
+      }
+      .step-tab {
+        flex:0 0 22%;
+        min-width:118px;
+        max-width:150px;
+        scroll-snap-align:start;
+        padding:16px 8px 24px;
+      }
+      .step-num {
+        font-size:1.5rem;
+        margin-bottom:6px;
+      }
+      .step-label {
+        font-size:0.66rem;
+        max-width:100%;
+        line-height:1.3;
+      }
+      .step-panel-inner {
+        grid-template-columns:1fr;
+        min-height:0;
+      }
+      .step-panel-img {
+        min-height:280px;
+        max-height:380px;
+        height:auto;
+      }
+      .step-panel-content {
+        padding:36px 32px;
+      }
     }
 
     /* Mobile */

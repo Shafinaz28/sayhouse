@@ -136,14 +136,44 @@
 }
 
 @media (max-width: 1024px) {
+  .project-hero {
+    padding: 40px 32px 56px;
+  }
+
   .project-hero-inner {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
+    max-width: 680px;
+  }
+
+  .project-hero-sub {
+    max-width: none;
   }
 
   .project-hero-visual {
-    max-height: 380px;
-    aspect-ratio: 16 / 11;
+    max-height: 400px;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-hero {
+    padding: 36px 24px 48px;
+  }
+
+  .project-hero-inner {
+    max-width: 100%;
+    gap: 28px;
+  }
+
+  .project-hero-title {
+    font-size: clamp(2rem, 6vw, 2.6rem);
+  }
+
+  .project-hero-visual {
+    max-height: 340px;
+    aspect-ratio: 4 / 3;
   }
 }
 

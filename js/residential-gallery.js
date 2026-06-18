@@ -357,79 +357,28 @@
     lightboxNext,
 
     openCombined(owner, currentProject, pageType) {
-      const interiorList = window.INTERIOR_PROJECTS || [];
-      const buildingList = window.BUILDING_PROJECTS || [];
-      const interior =
-        pageType === 'interior' ? currentProject : findByOwner(interiorList, owner);
-      const building =
-        pageType === 'building' ? currentProject : findByOwner(buildingList, owner);
-
       const titleEl = document.getElementById('modalTitle');
       const subtitleEl = document.getElementById('modalSubtitle');
       const imagesEl = document.getElementById('modalImages');
       const modal = document.getElementById('galleryModal');
-      if (!titleEl || !imagesEl || !modal) return;
+      if (!titleEl || !imagesEl || !modal || !currentProject) return;
 
       destroyViewers();
 
+      const isBuilding = pageType === 'building';
+      const sectionTitle = isBuilding ? 'Building Construction' : 'Interior Design';
+      const pageLabel = isBuilding ? 'Building Construction' : 'Interior Projects';
+
       titleEl.innerText = owner;
+      subtitleEl.innerText = [pageLabel, currentProject.title].filter(Boolean).join(' · ');
 
-      const hasInterior = interior && interior.gallery?.length;
-      const hasBuilding = building && building.gallery?.length;
-
-      if (hasInterior && hasBuilding) {
-        subtitleEl.innerText = 'Interior & Building Construction — All Projects';
-      } else if (hasInterior) {
-        subtitleEl.innerText = interior.title || 'Interior — All Projects';
-      } else if (hasBuilding) {
-        subtitleEl.innerText = building.title || 'Building Construction — All Projects';
-      } else {
-        subtitleEl.innerText = currentProject.title || '';
-      }
-
-      let html = '';
-
-      if (hasInterior && hasBuilding) {
-        html =
-          createViewerSection(
-            'viewer-interior',
-            'Interior Design',
-            interior.title || '',
-            interior.gallery,
-            owner
-          ) +
-          createViewerSection(
-            'viewer-building',
-            'Building Construction',
-            building.title || '',
-            building.gallery,
-            owner
-          );
-      } else if (hasInterior) {
-        html = createViewerSection(
-          'viewer-0',
-          'Interior Design',
-          interior.title || '',
-          interior.gallery,
-          owner
-        );
-      } else if (hasBuilding) {
-        html = createViewerSection(
-          'viewer-0',
-          'Building Construction',
-          building.title || '',
-          building.gallery,
-          owner
-        );
-      } else {
-        html = createViewerSection(
-          'viewer-0',
-          pageType === 'building' ? 'Building Construction' : 'Interior Design',
-          currentProject.title,
-          currentProject.gallery,
-          owner
-        );
-      }
+      const html = createViewerSection(
+        'viewer-0',
+        sectionTitle,
+        '',
+        currentProject.gallery,
+        owner
+      );
 
       imagesEl.innerHTML = html;
       initViewers(imagesEl);
