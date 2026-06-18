@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/uniform-images.css">
+  <link rel="stylesheet" href="css/project-hero.css">
+  <link rel="stylesheet" href="css/enquiry-popup.css">
 
   <style>
     :root{--navy:#0F1B2D;--logo-blue:#0047AB;--logo-red:#E31837;--logo-blue-on-dark:#93B9E8;--primary:#1A3C6E;--secondary:#2F5DAA;--gold:#C9A84C;--cream:#FAF7F2;--light:#F0EBE3;--text:#2C2C2C;--muted:#7A7269}
@@ -296,14 +298,25 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <div class="page-hero">
-    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80" alt="Building Construction Projects">
-    <div class="page-hero-inner">
-      <a href="projects.html" class="hero-back-btn"><i class="fa-solid fa-arrow-left"></i> All Projects</a>
-      <h1>Building <em>Construction</em></h1>
-      <div class="breadcrumb"><a href="projects.html">Projects</a><span>/</span><span>Building Construction</span></div>
+  <header class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-hero-content">
+        <a href="projects.html" class="project-hero-back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Projects</a>
+        <div class="project-hero-tags">
+          <span class="project-hero-tag">Residential</span>
+          <span class="project-hero-tag">Construction</span>
+        </div>
+        <p class="project-hero-kicker">Our Projects</p>
+        <h1 class="project-hero-title">Building Construction</h1>
+        <p class="project-hero-sub">Quality homes built from foundation to handover with transparent execution, milestone updates, and professional site management.</p>
+        <a href="contact.html" class="project-hero-cta">Request a Call <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="project-hero-visual">
+        <img src="residentail images/DIrphan.jpg" alt="SayHomes building construction project">
+        <span class="project-hero-location">Bengaluru, India</span>
+      </div>
     </div>
-  </div>
+  </header>
 
   <section class="section">
     <div class="inner">
@@ -742,5 +755,8 @@
       });
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/lead-form.js"></script>
+  <script src="js/enquiry-popup.js"></script>
 </body>
 </html>

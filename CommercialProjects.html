@@ -12,6 +12,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/uniform-images.css">
+  <link rel="stylesheet" href="css/project-hero.css">
+  <link rel="stylesheet" href="css/enquiry-popup.css">
 
   <style>
     :root{--navy:#0F1B2D;--logo-blue:#0047AB;--logo-red:#E31837;--logo-blue-on-dark:#93B9E8;--primary:#1A3C6E;--secondary:#2F5DAA;--gold:#C9A84C;--cream:#FAF7F2;--light:#F0EBE3;--text:#2C2C2C;--muted:#7A7269}
@@ -379,13 +381,25 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-  <div class="page-hero">
-    <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1600&q=80" alt="Commercial Projects">
-    <div class="page-hero-inner">
-      <h1>Commercial <em>Projects</em></h1>
-      <div class="breadcrumb"><a href="projects.html">Projects</a><span>/</span><span>Commercial Projects</span></div>
+  <header class="project-hero">
+    <div class="project-hero-inner">
+      <div class="project-hero-content">
+        <a href="projects.html" class="project-hero-back"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to Projects</a>
+        <div class="project-hero-tags">
+          <span class="project-hero-tag">Commercial</span>
+          <span class="project-hero-tag">Institutions</span>
+        </div>
+        <p class="project-hero-kicker">Our Projects</p>
+        <h1 class="project-hero-title">Commercial Projects</h1>
+        <p class="project-hero-sub">Real estate developments, institutions, and convention spaces delivered with engineering precision and end-to-end project execution.</p>
+        <a href="contact.html" class="project-hero-cta">Request a Call <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+      </div>
+      <div class="project-hero-visual">
+        <img src="commercial/GSK%20Conventional%20Hall,%20Chikkaballapura.jpg" alt="SayHomes commercial project">
+        <span class="project-hero-location">Chikkaballapura, India</span>
+      </div>
     </div>
-  </div>
+  </header>
 
   <section class="section">
     <div class="inner">
@@ -527,5 +541,8 @@
       });
     });
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="js/lead-form.js"></script>
+  <script src="js/enquiry-popup.js"></script>
 </body>
 </html>

@@ -90,6 +90,7 @@
         form.reset();
         if (sourceField) sourceField.value = defaultSource;
         setLoading(form, false);
+        form.dispatchEvent(new CustomEvent('leadform:success', { bubbles: true }));
         fireSuccess();
       } catch (err) {
         if (typeof Swal !== 'undefined' && Swal.isVisible()) Swal.close();
@@ -103,6 +104,8 @@
   function boot() {
     document.querySelectorAll('form.lead-form').forEach(initLeadForm);
   }
+
+  window.initLeadForm = initLeadForm;
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);
