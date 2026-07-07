@@ -9,9 +9,7 @@
   <title>Packages | SayHomes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <style>
     :root {
@@ -57,21 +55,10 @@
       transform: translate(0) scale(1);
     }
 
-    .d1 {
-      transition-delay: .1s
-    }
-
-    .d2 {
-      transition-delay: .2s
-    }
-
-    .d3 {
-      transition-delay: .3s
-    }
-
-    .d4 {
-      transition-delay: .45s
-    }
+    .d1 { transition-delay: .1s }
+    .d2 { transition-delay: .2s }
+    .d3 { transition-delay: .3s }
+    .d4 { transition-delay: .45s }
 
     #navbar {
       position: fixed;
@@ -528,37 +515,16 @@
     }
 
     @keyframes pulse {
-
-      0%,
-      100% {
-        box-shadow: 0 8px 32px rgba(26, 60, 110, .35)
-      }
-
-      50% {
-        box-shadow: 0 8px 48px rgba(26, 60, 110, .6)
-      }
-    }
-
-
-
-    @media (max-width:1180px) {
-      .packages-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      0%, 100% { box-shadow: 0 8px 32px rgba(26, 60, 110, .35) }
+      50% { box-shadow: 0 8px 48px rgba(26, 60, 110, .6) }
     }
 
     @media (max-width:1024px) {
-
-      .nav-links,
-      .nav-cta {
-        display: none;
-      }
-
-      .nav-toggle {
-        display: flex;
-      }
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
     }
 
+    /* Fixed Responsive Mobile Styles for Vertical Package Layout */
     @media (max-width:640px) {
       .section {
         padding: 68px 18px;
@@ -587,25 +553,23 @@
       }
 
       .packages-grid-wrap {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior-x: contain;
-        margin-inline: -18px;
-        padding-inline: 18px;
-        padding-bottom: 20px;
-        scroll-snap-type: x proximity;
+        overflow-x: visible;
+        margin-inline: 0;
+        padding-inline: 0;
+        padding-bottom: 0;
+        scroll-snap-type: none;
       }
 
       .packages-grid {
-        grid-template-columns: repeat(4, minmax(258px, 258px));
-        gap: 14px;
-        width: max-content;
-        max-width: none;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
       }
-
+      
       .package-column {
-        scroll-snap-align: start;
-        min-width: 258px;
+        scroll-snap-align: none;
+        width: 100%;
+        min-width: 100%;
       }
 
       .package-title {
@@ -619,9 +583,6 @@
         text-align: center;
       }
     }
-
-
-
 
     /* Clean Professional Footer */
     .main-footer {
@@ -671,7 +632,7 @@
       gap: 10px;
       color: rgba(255, 255, 255, 0.62);
       font-size: 0.86rem;
-      line-height: 1.5;
+      line-6height: 1.5;
     }
 
     .footer-social-contact div {
@@ -812,7 +773,7 @@
       }
     }
 
-    /* Professional Footer */
+    /* Professional Footer Additional Styles */
     .main-footer {
       background: var(--navy);
       color: #fff;
@@ -1046,8 +1007,6 @@
 
 <body>
 
-
-  <!-- Navbar -->
   <!-- Navbar -->
   <nav id="navbar">
     <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
@@ -1081,13 +1040,8 @@
     <i class="fa-brands fa-whatsapp"></i>
   </a>
 
-
-
-
-
   <div class="page-hero">
-    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80"
-      alt="SayHomes Packages">
+    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="SayHomes Packages">
     <div class="page-hero-inner">
       <h1>Our <em>Packages</em></h1>
       <p>Transparent construction packages crafted for different budgets, specifications, and lifestyle needs.</p>
@@ -1110,17 +1064,14 @@
       <div class="section-head reveal">
         <span class="section-tag">Construction Packages</span>
         <h2 class="section-title">Choose the Right Package</h2>
-        <p class="section-sub">Compare all four SayHomes construction packages in one premium layout. Expand each
-          section to view detailed specifications.</p>
+        <p class="section-sub">Compare all four SayHomes construction packages in one premium layout. Expand each section to view detailed specifications.</p>
       </div>
       <div class="packages-grid-wrap">
         <p id="packagesLoading" class="packages-loading" hidden>Loading packages from Google Sheet…</p>
         <div class="packages-grid" id="packagesGrid">
           <!-- Package 1 -->
           <div class="package-column reveal d1">
-            <h2 class="package-title"><span class="plan-name">Essential</span><span class="plan-price"><span
-                  class="old-price">₹2060</span> <span class="new-price">₹1990</span><span class="price-unit"> /
-                  sqft</span></span></h2>
+            <h2 class="package-title"><span class="plan-name">Essential</span><span class="plan-price"><span class="old-price">₹2060</span> <span class="new-price">₹1990</span><span class="price-unit"> / sqft</span></span></h2>
             <div class="package-card">
               <!-- Essential - Design & Drawings -->
               <details class="package-detail">
@@ -1132,8 +1083,7 @@
                   <p class="detail-line">1. 2D – Floor Plans</p>
                   <p class="detail-line">2. 3D Elevation Design</p>
                   <p class="detail-line">3. Design Development</p>
-                  <p class="detail-line">4. Visual site survey &amp; drawing on the basis of measurement provided by
-                    client</p>
+                  <p class="detail-line">4. Visual site survey &amp; drawing on the basis of measurement provided by client</p>
                   <p class="detail-line">5. Soil testing and reporting - Not included</p>
                 </div>
               </details>
@@ -1146,18 +1096,14 @@
                   <p class="detail-line">1. Floor to floor height - 9’6</p>
                   <p class="detail-line">2. Steel 500 TMT Bars - Bhuwalka / INDIA GOLD / VRKP</p>
                   <p class="detail-line">3. Cement Grade 53 - Priya / Chettinad / Penna / Sagar</p>
-                  <p class="detail-line">4. UG Sump built with solid blocks of 6” thickness &amp; waterproof plastered
-                  </p>
+                  <p class="detail-line">4. UG Sump built with solid blocks of 6” thickness &amp; waterproof plastered</p>
                   <p class="detail-line">5. Concrete - M20 grade RMC</p>
                   <p class="detail-line">6. Solid Block walls - 6” &amp; 4” thickness</p>
-                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken
-                    mesh</p>
-                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline
-                    waterproofing</p>
+                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken mesh</p>
+                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline waterproofing</p>
                   <p class="detail-line">9. Cinder filling in sunken toilets, Heat &amp; Waterproofing in Terrace</p>
                   <p class="detail-line">10. Steel / concrete lofts - Not included</p>
-                  <p class="detail-line">11. Lintel beams will be provided only wherever required above door and window
-                    openings</p>
+                  <p class="detail-line">11. Lintel beams will be provided only wherever required above door and window openings</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1219,15 +1165,11 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Living, Kitchen, Dining : Vitrified tiles – Rs.50/- per Sqft</p>
-                  <p class="detail-line">2. Bedrooms, Balcony, Sit-out &amp; Passage Areas : Anti-skid tiles – Rs.40/-
-                    per Sqft
-                  </p>
+                  <p class="detail-line">2. Bedrooms, Balcony, Sit-out &amp; Passage Areas : Anti-skid tiles – Rs.40/- per Sqft</p>
                   <p class="detail-line">3. Toilet Flooring : Anti-skid tiles – Rs.40/- per Sqft</p>
                   <p class="detail-line">4. Toilet Wall Dado 7ft height : Highlighting Tiles – Rs.40/- per Sqft</p>
                   <p class="detail-line">5. Kitchen counter top : Granite – Rs.100/- per Sqft</p>
-                  <p class="detail-line">6. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.40/- per
-                    Sqft (2’
-                    x 2’ maximum tile size)</p>
+                  <p class="detail-line">6. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.40/- per Sqft (2’ x 2’ maximum tile size)</p>
                   <p class="detail-line">7. Setback area tiles – not included</p>
                   <p class="detail-line">8. Puja Room : Granite slab – Rs.100/- per Sqft</p>
                 </div>
@@ -1238,9 +1180,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest Tractor
-                    emulsion paint
-                  </p>
+                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest Tractor emulsion paint</p>
                   <p class="detail-line">2. External walls : primer coat + Ace weather proof paint</p>
                   <p class="detail-line">3. Brand : Asian / Berger / Dulux</p>
                 </div>
@@ -1255,8 +1195,7 @@
                   <p class="detail-line">2. Geyser points – All bathrooms</p>
                   <p class="detail-line">3. AC provision – Any 1 room</p>
                   <p class="detail-line">4. Conduits – Good quality, hidden in slabs and walls</p>
-                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is not
-                    included</p>
+                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is not included</p>
                   <p class="detail-line">6. Switches &amp; Plates – Anchor Roma make</p>
                   <p class="detail-line">7. A main DB &amp; MCB – IndoAsian / Siemens / Equivalent make</p>
                 </div>
@@ -1267,18 +1206,12 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet
-                    from
-                    corporation</p>
-                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site
-                    boundary</p>
+                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet from corporation</p>
+                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site boundary</p>
                   <p class="detail-line">3. Class B CPVC pipes – Ashirwad / Astral make Solar &amp; Geyser Provision</p>
                   <p class="detail-line">4. Rain water harvesting facility – Ground water recharge - not included</p>
-                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre
-                  </p>
-                  <p class="detail-line">6. Plumbing – GI/RCC Chamber covers shall be provided for IC Separate sewage
-                    &amp;
-                    drainage lines</p>
+                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre</p>
+                  <p class="detail-line">6. Plumbing – GI/RCC Chamber covers shall be provided for IC Separate sewage &amp; drainage lines</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1288,9 +1221,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Kitchen sink : SS/Granite/Carysil – Rs. 2,500/- per sink</p>
-                  <p class="detail-line">2. Kitchen accessories – Rs. 1,250/- CP &amp; Sanitary fixtures such as Wash
-                    Basin, WC,
-                    Taps and other accessories like bottle trap, gratings etc.</p>
+                  <p class="detail-line">2. Kitchen accessories – Rs. 1,250/- CP &amp; Sanitary fixtures such as Wash Basin, WC, Taps and other accessories like bottle trap, gratings etc.</p>
                   <p class="detail-line">3. Jaquar/Hindware – Rs. 15,000/- per bathroom attached toilet.</p>
                   <p class="detail-line">4. Electrical Fixtures – Not included</p>
                 </div>
@@ -1301,19 +1232,14 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware –
-                    Rs.40,000/-</p>
-                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware –
-                    Rs.7,000/- per
-                    door</p>
+                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware – Rs.40,000/-</p>
+                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware – Rs.7,000/- per door</p>
                   <p class="detail-line">3. Internal door frames &amp; shutter – Painted only</p>
                   <p class="detail-line">4. Main, Puja Door – Polished with melamine spray</p>
-                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.7,000/- per door
-                  </p>
+                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.7,000/- per door</p>
                   <p class="detail-line">6. Door Hardware – Ozone / Europa / Dorma make</p>
                   <p class="detail-line">7. Door Hinges – SS hinges</p>
-                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation
-                    etc.</p>
+                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation etc.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1323,11 +1249,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Aluminium windows – 4mm clear glass with MS Grills Basic price</p>
-                  <p class="detail-line">2. Aluminium with MS grill – Rs.450/- per Sqft If required, upgrade to wooden
-                    windows
-                    can be made at an additional cost per Sqft, measured on built-up area. The
-                    additional cost can be calculated based on the wooden material chosen by the Client.
-                  </p>
+                  <p class="detail-line">2. Aluminium with MS grill – Rs.450/- per Sqft If required, upgrade to wooden windows can be made at an additional cost per Sqft, measured on built-up area. The additional cost can be calculated based on the wooden material chosen by the Client.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1337,8 +1259,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Main Gate: Designer Gate – Rs. 250/- per Sqft</p>
-                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 600/- per Rft
-                  </p>
+                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 600/- per Rft</p>
                   <p class="detail-line">3. Internal staircase railing</p>
                   <p class="detail-line">4. SS Railing – Rs. 840/- per Rft</p>
                   <p class="detail-line">5. Utility grill – Not included</p>
@@ -1361,8 +1282,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. This proposal includes aesthetically pleasing elevation.</p>
-                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.
-                  </p>
+                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1371,52 +1291,25 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. A design if needed to be modified more than thrice shall be charged for
-                    accordingly</p>
+                  <p class="detail-line">1. A design if needed to be modified more than thrice shall be charged for accordingly</p>
                   <p class="detail-line">2. Government fees for the liaison bodies to be paid directly by the client</p>
-                  <p class="detail-line">3. The complete fee payment for plan sanction in Panchayat limits need to be
-                    borne by
-                    client</p>
-                  <p class="detail-line">4. Assuming the site &amp; road level to be equal, if the ground level needs to
-                    be raised
-                    above 18”, it shall be charged for accordingly</p>
-                  <p class="detail-line">5. Hard rock/soft rock excavation, if it arises shall be charged for
-                    accordingly</p>
-                  <p class="detail-line">6. Buying new earth/sending existing earth for excavation/backfilling purpose
-                    shall
-                    be charged on actual</p>
-                  <p class="detail-line">7. Basic price of Cement is Rs.380/- per bag &amp; Steel is Rs.60,000/- per MT.
-                    Any
-                    increase in these prices shall be charged accordingly</p>
-                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 22% of built up area Maximum
-                  </p>
-                  <p class="detail-line">9. Any work not mentioned within this package or outside the site boundary
-                    shall be
-                    charged for accordingly</p>
-                  <p class="detail-line">10. One point of Electricity &amp; water needs to be provided by the client
-                    free of cost
-                    to facilitate construction</p>
-                  <p class="detail-line">11. SBC of soil is considered at 180 KN/M2 and depth of the foundation
-                    considered at
-                    5 Feet, any increase in depth shall be charged accordingly on actuals upon site
-                    conditions</p>
-                  <p class="detail-line">12. If there are constraints in material delivery or stocking place and
-                    materials to
-                    be order in small quantities, the additional charges for the same shall be charged
-                    on actuals</p>
-                  <p class="detail-line">13. A specific area to construct labour and material shed needs to be provided
-                    within
-                    50 feet from the construction place by the client</p>
-                  <p class="detail-line">14. Any road cutting charges for the connection of Electricity and Sewage lines
-                    is
-                    not included, such works shall be charged additionally</p>
+                  <p class="detail-line">3. The complete fee payment for plan sanction in Panchayat limits need to be borne by client</p>
+                  <p class="detail-line">4. Assuming the site &amp; road level to be equal, if the ground level needs to be raised above 18”, it shall be charged for accordingly</p>
+                  <p class="detail-line">5. Hard rock/soft rock excavation, if it arises shall be charged for accordingly</p>
+                  <p class="detail-line">6. Buying new earth/sending existing earth for excavation/backfilling purpose shall be charged on actual</p>
+                  <p class="detail-line">7. Basic price of Cement is Rs.380/- per bag &amp; Steel is Rs.60,000/- per MT. Any increase in these prices shall be charged accordingly</p>
+                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 22% of built up area Maximum</p>
+                  <p class="detail-line">9. Any work not mentioned within this package or outside the site boundary shall be charged for accordingly</p>
+                  <p class="detail-line">10. One point of Electricity &amp; water needs to be provided by the client free of cost to facilitate construction</p>
+                  <p class="detail-line">11. SBC of soil is considered at 180 KN/M2 and depth of the foundation considered at 5 Feet, any increase in depth shall be charged accordingly on actuals upon site conditions</p>
+                  <p class="detail-line">12. If there are constraints in material delivery or stocking place and materials to be order in small quantities, the additional charges for the same shall be charged on actuals</p>
+                  <p class="detail-line">13. A specific area to construct labour and material shed needs to be provided within 50 feet from the construction place by the client</p>
+                  <p class="detail-line">14. Any road cutting charges for the connection of Electricity and Sewage lines is not included, such works shall be charged additionally</p>
                   <p class="detail-line">15. Soil testing is not included in package</p>
                   <p class="detail-line">16. Interiors are not included in package</p>
                   <p class="detail-line">17. Electrical and Meter Box are not included.</p>
                   <p class="detail-line">18. Borewell is not included in package.</p>
-                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the
-                    inclusion or
-                    the exclusion of the same shall vary depending on the floor plan.</p>
+                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the inclusion or the exclusion of the same shall vary depending on the floor plan.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1425,8 +1318,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">A customized payment schedule will be shared based on the project
-                    specifications.</p>
+                  <p class="detail-line">A customized payment schedule will be shared based on the project specifications.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1443,9 +1335,7 @@
           </div>
           <!-- Package 2 -->
           <div class="package-column reveal d2">
-            <h2 class="package-title"><span class="plan-name">Premium</span><span class="plan-price"><span
-                  class="old-price">₹2280</span> <span class="new-price">₹2230</span><span class="price-unit"> /
-                  sqft</span></span></h2>
+            <h2 class="package-title"><span class="plan-name">Premium</span><span class="plan-price"><span class="old-price">₹2280</span> <span class="new-price">₹2230</span><span class="price-unit"> / sqft</span></span></h2>
             <div class="package-card">
               <!-- Premium - Design & Drawings -->
               <details class="package-detail">
@@ -1457,8 +1347,7 @@
                   <p class="detail-line">1. 2D – Floor Plans</p>
                   <p class="detail-line">2. 3D Elevation Designs</p>
                   <p class="detail-line">3. Design Development</p>
-                  <p class="detail-line">4. Site survey by surveyor with instruments &amp; drawing on the basis of
-                    survey</p>
+                  <p class="detail-line">4. Site survey by surveyor with instruments &amp; drawing on the basis of survey</p>
                   <p class="detail-line">5. Internal Isometric Views all rooms, open areas etc.</p>
                   <p class="detail-line">6. Soil testing and reporting - Included</p>
                 </div>
@@ -1472,18 +1361,14 @@
                   <p class="detail-line">1. Floor to floor height - 10’</p>
                   <p class="detail-line">2. Steel 500 TMT Bars - Meenakshi / Bhuwalka / Kamadhenu</p>
                   <p class="detail-line">3. Cement Grade 53 - ACC / Birla Shakti / Ramco / Zuari</p>
-                  <p class="detail-line">4. UG Sump built with solid blocks of 6” thickness &amp; waterproof plastered
-                  </p>
+                  <p class="detail-line">4. UG Sump built with solid blocks of 6” thickness &amp; waterproof plastered</p>
                   <p class="detail-line">5. Concrete - M20 grade RMC</p>
                   <p class="detail-line">6. Solid Block walls - 6” &amp; 4” thickness</p>
-                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken
-                    mesh</p>
-                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline
-                    waterproofing</p>
+                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken mesh</p>
+                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline waterproofing</p>
                   <p class="detail-line">9. Cinder filling in sunken toilets, Heat &amp; Waterproofing in Terrace</p>
                   <p class="detail-line">10. Steel / concrete lofts - Not included</p>
-                  <p class="detail-line">11. Lintel beams will be provided only wherever required above door and window
-                    openings</p>
+                  <p class="detail-line">11. Lintel beams will be provided only wherever required above door and window openings</p>
                   <p class="detail-line">12. Ledge wall for incorporating concealed sanitary parts - Included</p>
                 </div>
               </details>
@@ -1546,24 +1431,17 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Living Room, Dining : Marble finished vitrified tiles – Rs.80/- per Sqft</p>
-                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Vitrified Tiles – Rs.60/- per Sqft (Maximum tile
-                    size 2’ x
-                    2’)</p>
+                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Vitrified Tiles – Rs.60/- per Sqft (Maximum tile size 2’ x 2’)</p>
                   <p class="detail-line">3. Staircase : Granite – Rs.100/- per Sqft</p>
-                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.50/- per
-                    Sqft</p>
+                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.50/- per Sqft</p>
                   <p class="detail-line">5. Toilet Floor : Anti-skid tiles – Rs.55/- per Sqft</p>
-                  <p class="detail-line">6. Toilet Wall Dado Up to 7ft height : Light &amp; Highlighting tiles – Rs.60/-
-                    per Sqft
-                  </p>
+                  <p class="detail-line">6. Toilet Wall Dado Up to 7ft height : Light &amp; Highlighting tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">7. Parking Area : Parking tiles – Rs.45/- per Sqft</p>
                   <p class="detail-line">8. Kitchen counter top : Granite – Rs.135/- per Sqft</p>
-                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.60/- per
-                    Sqft</p>
+                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">10. Puja Room Wall tiling – Not Included</p>
                   <p class="detail-line">11. Puja Room Granite slab – Rs.130/- per Sqft</p>
-                  <p class="detail-line">12. Setback area tiles of 40 per sqft will be provided if setback area is
-                    charged</p>
+                  <p class="detail-line">12. Setback area tiles of 40 per sqft will be provided if setback area is charged</p>
                   <p class="detail-line">13. Tile grouting with spacer joint &amp; with epoxy grout in bathrooms</p>
                 </div>
               </details>
@@ -1573,8 +1451,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor
-                    Shine’</p>
+                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor Shine’</p>
                   <p class="detail-line">2. External walls : primer coat + external Apex weather proof paint</p>
                   <p class="detail-line">3. Brand : Asian / Berger / Dulux</p>
                 </div>
@@ -1589,8 +1466,7 @@
                   <p class="detail-line">2. Geyser points – All bathrooms</p>
                   <p class="detail-line">3. AC provision – Any 2 rooms</p>
                   <p class="detail-line">4. Conduits – Good quality, hidden in slabs and walls</p>
-                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is not
-                    included</p>
+                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is not included</p>
                   <p class="detail-line">6. Switches &amp; Plates – Anchor Roma / GM make</p>
                   <p class="detail-line">7. A main DB &amp; MCB – IndoAsian / Siemens / Equivalent make</p>
                   <p class="detail-line">8. Electric provision for Car charging – Parking area</p>
@@ -1602,18 +1478,12 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet
-                    from
-                    corporation</p>
-                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site
-                    boundary</p>
+                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet from corporation</p>
+                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site boundary</p>
                   <p class="detail-line">3. Class B CPVC pipes – Ashirwad / Astral make Solar &amp; Geyser Provision</p>
                   <p class="detail-line">4. Rain water harvesting facility – Ground water recharge - not included</p>
-                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre
-                  </p>
-                  <p class="detail-line">6. Plumbing – GI/RCC Chamber covers shall be provided for IC Separate sewage
-                    &amp;
-                    drainage lines</p>
+                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre</p>
+                  <p class="detail-line">6. Plumbing – GI/RCC Chamber covers shall be provided for IC Separate sewage &amp; drainage lines</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1623,9 +1493,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Kitchen sink : SS/Granite/Carysil – Rs. 5,000/- per sink</p>
-                  <p class="detail-line">2. Kitchen accessories – Rs. 3,000/- CP &amp; Sanitary fixtures such as Wash
-                    Basin, WC,
-                    Taps and other accessories like bottle trap, gratings etc.</p>
+                  <p class="detail-line">2. Kitchen accessories – Rs. 3,000/- CP &amp; Sanitary fixtures such as Wash Basin, WC, Taps and other accessories like bottle trap, gratings etc.</p>
                   <p class="detail-line">3. Jaquar/Hindware – Rs. 30,000/- per bathroom attached toilet.</p>
                   <p class="detail-line">4. Electrical Fixtures – Not included</p>
                 </div>
@@ -1636,19 +1504,14 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware –
-                    Rs.60,000/-</p>
-                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware –
-                    Rs.10,000/-
-                    per door</p>
+                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware – Rs.60,000/-</p>
+                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware – Rs.10,000/- per door</p>
                   <p class="detail-line">3. Internal door frames &amp; shutter – Painted only</p>
                   <p class="detail-line">4. Main, Puja Door – Polished with melamine spray</p>
-                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.8,000/- per door
-                  </p>
+                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.8,000/- per door</p>
                   <p class="detail-line">6. Door Hardware – Ozone / Europa / Dorma make</p>
                   <p class="detail-line">7. Door Hinges – SS hinges</p>
-                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation
-                    etc.</p>
+                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation etc.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1658,10 +1521,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. UPVC windows – 4mm clear glass with MS Grills Basic price</p>
-                  <p class="detail-line">2. uPVC with MS grill – Rs.550/- per Sqft If required, upgrade to wooden
-                    windows can
-                    be made at an additional cost per Sqft, measured on built-up area. The additional
-                    cost can be calculated based on the wooden material chosen by the Client.</p>
+                  <p class="detail-line">2. uPVC with MS grill – Rs.550/- per Sqft If required, upgrade to wooden windows can be made at an additional cost per Sqft, measured on built-up area. The additional cost can be calculated based on the wooden material chosen by the Client.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1671,8 +1531,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Main Gate: Designer Gate – Rs. 300/- per Sqft</p>
-                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 600/- per Rft
-                  </p>
+                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 600/- per Rft</p>
                   <p class="detail-line">3. Internal staircase railing</p>
                   <p class="detail-line">4. SS Railing – Rs. 900/- per Rft</p>
                   <p class="detail-line">5. Utility grill – Not included</p>
@@ -1686,8 +1545,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Compound wall – Solid block walls of 4” thickness to suit the elevation.</p>
-                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM
-                  </p>
+                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM</p>
                   <p class="detail-line">3. Height of Compound wall – 4 Feet from Plinth Levels</p>
                   <p class="detail-line">4. Compound wall – Plastered &amp; Painted</p>
                 </div>
@@ -1699,8 +1557,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. This proposal includes aesthetically pleasing elevation.</p>
-                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.
-                  </p>
+                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1710,19 +1567,14 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1 to 6. Same as Package 1</p>
-                  <p class="detail-line">7. Basic price of Cement is Rs.400/- per bag &amp; Steel is Rs.65,000/- per MT.
-                    Any
-                    increase in these prices shall be charged accordingly</p>
-                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 24% of built up area Maximum
-                  </p>
+                  <p class="detail-line">7. Basic price of Cement is Rs.400/- per bag &amp; Steel is Rs.65,000/- per MT. Any increase in these prices shall be charged accordingly</p>
+                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 24% of built up area Maximum</p>
                   <p class="detail-line">9 to 14. Same as Package 1</p>
                   <p class="detail-line">15. Soil testing is included in package</p>
                   <p class="detail-line">16. Interiors are not included in package</p>
                   <p class="detail-line">17. Electrical and Meter Box are not included.</p>
                   <p class="detail-line">18. Borewell is not included in package.</p>
-                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the
-                    inclusion or
-                    the exclusion of the same shall vary depending on the floor plan.</p>
+                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the inclusion or the exclusion of the same shall vary depending on the floor plan.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1731,8 +1583,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">A customized payment schedule will be shared based on the project
-                    specifications.</p>
+                  <p class="detail-line">A customized payment schedule will be shared based on the project specifications.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1766,9 +1617,7 @@
                   <p class="detail-line">4. Site survey by surveyor with instruments &amp; drawing on the basis of
                     survey</p>
                   <p class="detail-line">5. Premium 2D &amp; 3D – Floor Plans Luxury 3D Elevation</p>
-                  <p class="detail-line">6. Designs of all views Internal Isometric Views all rooms, open areas etc
-                    &amp; detailed
-                    renders for each segment of the home for better understanding of the design</p>
+                  <p class="detail-line">6. Designs of all views Internal Isometric Views all rooms, open areas etc &amp; detailed renders for each segment of the home for better understanding of the design</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1784,10 +1633,8 @@
                   </p>
                   <p class="detail-line">5. Concrete - M20 grade RMC</p>
                   <p class="detail-line">6. Solid Block walls - 6” &amp; 4” thickness</p>
-                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken
-                    mesh</p>
-                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline
-                    waterproofing</p>
+                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken mesh</p>
+                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline waterproofing</p>
                   <p class="detail-line">9. Cinder filling in sunken toilets, Heat &amp; Waterproofing in Terrace</p>
                   <p class="detail-line">10. Steel / concrete lofts - Not included</p>
                   <p class="detail-line">11. Lintel beams - Thru lintel will be provided</p>
@@ -1846,34 +1693,24 @@
                   <p class="detail-line">3. Plumbing Drainage Line Layout</p>
                 </div>
               </details>
-              <!-- Package 3 -->
               <details class="package-detail">
                 <summary class="package-summary">
                   Flooring &amp; Wall Tiling
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Living Room, Dining : Granite/Marble finished vitrified tiles – Rs.100/- per
-                    Sqft
-                  </p>
-                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Granite/Vitrified Tiles – Rs.90/- per Sqft (Maximum
-                    tile size
-                    2’ x 4’)</p>
+                  <p class="detail-line">1. Living Room, Dining : Granite/Marble finished vitrified tiles – Rs.100/- per Sqft</p>
+                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Granite/Vitrified Tiles – Rs.90/- per Sqft (Maximum tile size 2’ x 4’)</p>
                   <p class="detail-line">3. Staircase : Granite – Rs.130/- per Sqft</p>
-                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.60/- per
-                    Sqft</p>
+                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">5. Toilet Floor : Anti-skid tiles – Rs.55/- per Sqft</p>
-                  <p class="detail-line">6. Toilet Wall Dado Up to 7ft height : Light &amp; Highlighting tiles – Rs.60/-
-                    per Sqft
-                  </p>
+                  <p class="detail-line">6. Toilet Wall Dado Up to 7ft height : Light &amp; Highlighting tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">7. Parking Area : Parking tiles – Rs.55/- per Sqft</p>
                   <p class="detail-line">8. Kitchen counter top : Granite – Rs.150/- per Sqft</p>
-                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.70/- per
-                    Sqft</p>
+                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.70/- per Sqft</p>
                   <p class="detail-line">10. Puja Room Wall tiling – up to 7’ – Rs.50/- per Sqft</p>
                   <p class="detail-line">11. Puja Room Granite slab – Rs.150/- per Sqft</p>
-                  <p class="detail-line">12. Setback area tiles of 45 per sqft will be provided if setback area is
-                    charged</p>
+                  <p class="detail-line">12. Setback area tiles of 45 per sqft will be provided if setback area is charged</p>
                   <p class="detail-line">13. Tile grouting with spacer joint &amp; with epoxy grout in bathrooms</p>
                 </div>
               </details>
@@ -1883,8 +1720,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor
-                    Shine’</p>
+                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor Shine’</p>
                   <p class="detail-line">2. External walls : primer coat + external Apex weather proof paint</p>
                   <p class="detail-line">3. Brand : Asian / Berger / Dulux</p>
                 </div>
@@ -1899,9 +1735,7 @@
                   <p class="detail-line">2. Geyser points – All bathrooms</p>
                   <p class="detail-line">3. AC provision – Any 2 rooms</p>
                   <p class="detail-line">4. Conduits – Good quality, hidden in slabs and walls</p>
-                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is
-                    included
-                  </p>
+                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is included</p>
                   <p class="detail-line">6. Switches &amp; Plates – Anchor Roma make</p>
                   <p class="detail-line">7. A main DB &amp; MCB – IndoAsian / Siemens / Equivalent make</p>
                   <p class="detail-line">8. Electric Car charging point – Parking area</p>
@@ -1913,18 +1747,12 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet
-                    from
-                    corporation</p>
-                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site
-                    boundary</p>
+                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet from corporation</p>
+                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site boundary</p>
                   <p class="detail-line">3. Class B CPVC pipes – Ashirwad / Astral make Solar &amp; Geyser Provision</p>
                   <p class="detail-line">4. Rain water harvesting facility – Ground water recharge</p>
-                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre
-                  </p>
-                  <p class="detail-line">6. Plumbing – FRP Chamber covers shall be provided for IC Separate sewage &amp;
-                    drainage
-                    lines</p>
+                  <p class="detail-line">5. PVC Overhead Tank – Ganga or Equivalent make of basic price Rs 7 per litre</p>
+                  <p class="detail-line">6. Plumbing – FRP Chamber covers shall be provided for IC Separate sewage &amp; drainage lines</p>
                   <p class="detail-line">7. FRP Chamber covers shall be provided for IC</p>
                   <p class="detail-line">8. Separate hot &amp; cold water lines for sink</p>
                 </div>
@@ -1936,12 +1764,8 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Kitchen sink : SS/Granite/Carysil – Rs. 6,000/- per sink</p>
-                  <p class="detail-line">2. Kitchen accessories – Rs. 4,000/- CP &amp; Sanitary fixtures such as Wash
-                    Basin, WC,
-                    Taps and other accessories like bottle trap, gratings etc.</p>
-                  <p class="detail-line">3. Jaquar/Hindware – Rs. 40,000/- per bathroom attached toilet and Rs. 10,000/-
-                    per
-                    powder room</p>
+                  <p class="detail-line">2. Kitchen accessories – Rs. 4,000/- CP &amp; Sanitary fixtures such as Wash Basin, WC, Taps and other accessories like bottle trap, gratings etc.</p>
+                  <p class="detail-line">3. Jaquar/Hindware – Rs. 40,000/- per bathroom attached toilet and Rs. 10,000/- per powder room</p>
                   <p class="detail-line">4. Electrical Fixtures – Not included</p>
                 </div>
               </details>
@@ -1951,19 +1775,14 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware –
-                    Rs.90,000/-</p>
-                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware –
-                    Rs.11,000/-
-                    per door</p>
+                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware – Rs.90,000/-</p>
+                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware – Rs.11,000/- per door</p>
                   <p class="detail-line">3. Internal door frames &amp; shutter – Painted only</p>
                   <p class="detail-line">4. Main, Puja Door – Polished with melamine spray</p>
-                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.9,000/- per door
-                  </p>
+                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.9,000/- per door</p>
                   <p class="detail-line">6. Door Hardware – Ozone / Europa / Dorma make</p>
                   <p class="detail-line">7. Door Hinges – SS hinges</p>
-                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation
-                    etc.</p>
+                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation etc.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1973,10 +1792,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. UPVC windows – 4mm clear glass with MS Grills Basic price</p>
-                  <p class="detail-line">2. uPVC with MS grill – Rs.600/- per Sqft If required, upgrade to wooden
-                    windows can
-                    be made at an additional cost per Sqft, measured on built-up area. The additional
-                    cost can be calculated based on the wooden material chosen by the Client.</p>
+                  <p class="detail-line">2. uPVC with MS grill – Rs.600/- per Sqft If required, upgrade to wooden windows can be made at an additional cost per Sqft, measured on built-up area. The additional cost can be calculated based on the wooden material chosen by the Client.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -1986,12 +1802,9 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Main Gate: Designer Gate with Shera boards – Rs. 400/- per Sqft</p>
-                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 660/- per Rft
-                  </p>
+                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 660/- per Rft</p>
                   <p class="detail-line">3. Internal staircase railing : SS Railing – Rs.1000/- per Rft</p>
-                  <p class="detail-line">4. Utility grill shall be provided up to 120 Sqft in any one floor home only at
-                    a
-                    basic price of 180 per Sqft</p>
+                  <p class="detail-line">4. Utility grill shall be provided up to 120 Sqft in any one floor home only at a basic price of 180 per Sqft</p>
                   <p class="detail-line">5. Waterproofing is included for Utility &amp; balcony portions</p>
                 </div>
               </details>
@@ -2002,8 +1815,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Compound wall – Solid block walls of 4” thickness to suit the elevation.</p>
-                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM
-                  </p>
+                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM</p>
                   <p class="detail-line">3. Height of Compound wall – 4 Feet from Plinth Levels</p>
                   <p class="detail-line">4. Compound wall – Plastered &amp; Painted</p>
                 </div>
@@ -2015,8 +1827,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. This proposal includes aesthetically pleasing elevation.</p>
-                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.
-                  </p>
+                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2026,19 +1837,14 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1 to 6. Same as Package 1</p>
-                  <p class="detail-line">7. Basic price of Cement is Rs.420/- per bag &amp; Steel is Rs.70,000/- per MT.
-                    Any
-                    increase in these prices shall be charged accordingly</p>
-                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 26% of built up area Maximum
-                  </p>
+                  <p class="detail-line">7. Basic price of Cement is Rs.420/- per bag &amp; Steel is Rs.70,000/- per MT. Any increase in these prices shall be charged accordingly</p>
+                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 28% of built up area Maximum</p>
                   <p class="detail-line">9 to 14. Same as Package 1</p>
                   <p class="detail-line">15. Soil testing is included in package</p>
                   <p class="detail-line">16. Interiors are not included in package</p>
                   <p class="detail-line">17. Electrical and Meter Box are not included.</p>
                   <p class="detail-line">18. Borewell is not included in package.</p>
-                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the
-                    inclusion or
-                    the exclusion of the same shall vary depending on the floor plan.</p>
+                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the inclusion or the exclusion of the same shall vary depending on the floor plan.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2047,8 +1853,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">A customized payment schedule will be shared based on the project
-                    specifications.</p>
+                  <p class="detail-line">A customized payment schedule will be shared based on the project specifications.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2081,9 +1886,7 @@
                   <p class="detail-line">4. Site survey by surveyor with instruments &amp; drawing on the basis of
                     survey</p>
                   <p class="detail-line">5. Premium 2D &amp; 3D – Floor Plans Luxury 3D Elevation</p>
-                  <p class="detail-line">6. Designs of all views Internal Isometric Views all rooms, open areas etc
-                    &amp; detailed
-                    renders for each segment of the home for better understanding of the design</p>
+                  <p class="detail-line">6. Designs of all views Internal Isometric Views all rooms, open areas etc &amp; detailed renders for each segment of the home for better understanding of the design</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2095,23 +1898,16 @@
                   <p class="detail-line">1. Floor to floor height - 11’</p>
                   <p class="detail-line">2. Steel 500 TMT Bars - JSW / Shyam / TATA</p>
                   <p class="detail-line">3. Cement Grade 53 - ACC / Ultratech / Birla Super</p>
-                  <p class="detail-line">4. UG Sump built with solid blocks of 8” thick brick masonry or discount RCC
-                    &amp;
-                    waterproof plastered</p>
+                  <p class="detail-line">4. UG Sump built with solid blocks of 8” thick brick masonry or discount RCC &amp; waterproof plastered</p>
                   <p class="detail-line">5. Concrete - M25 grade RMC</p>
-                  <p class="detail-line">6. Solid Block walls of Aparna / Jyothi or similar grade A blocks - 6”
-                    thickness</p>
-                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken
-                    mesh</p>
-                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline
-                    waterproofing</p>
+                  <p class="detail-line">6. Solid Block walls of Aparna / Jyothi or similar grade A blocks - 6” thickness</p>
+                  <p class="detail-line">7. Internal, external and toilet wall column joints plastering with chicken mesh</p>
+                  <p class="detail-line">8. Waterproofing compound - Dr.Fixit / FOSROC for external walls Crystalline waterproofing</p>
                   <p class="detail-line">9. Cinder filling in sunken toilets, Heat &amp; Waterproofing in Terrace</p>
                   <p class="detail-line">10. Steel / concrete lofts - Included if necessary</p>
                   <p class="detail-line">11. Lintel beams - Thru lintel will be provided</p>
                   <p class="detail-line">12. Ledge wall for incorporating concealed sanitary parts - Included</p>
-                  <p class="detail-line">13. Internal courtyards, skylights &amp; other designer architectural elements
-                    are
-                    included upto 25 sqft</p>
+                  <p class="detail-line">13. Internal courtyards, skylights &amp; other designer architectural elements are included upto 25 sqft</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2172,27 +1968,18 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Living Room, Dining : Granite/Marble/Engineered Marble tiles – Rs.400/- per
-                    Sqft
-                  </p>
-                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Granite/Vitrified Tiles – Rs.120/- per Sqft
-                    (Maximum tile
-                    size 2’ x 4’)</p>
+                  <p class="detail-line">1. Living Room, Dining : Granite/Marble/Engineered Marble tiles – Rs.400/- per Sqft</p>
+                  <p class="detail-line">2. Kitchen &amp; Bedrooms : Granite/Vitrified Tiles – Rs.120/- per Sqft (Maximum tile size 2’ x 4’)</p>
                   <p class="detail-line">3. Staircase : Granite – Rs.140/- per Sqft</p>
-                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.60/- per
-                    Sqft</p>
+                  <p class="detail-line">4. Balcony, Sit-out, Passage &amp; Common areas : Anti-skid tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">5. Toilet Floor : Anti-skid tiles – Rs.55/- per Sqft</p>
-                  <p class="detail-line">6. Toilet Wall Dado Up to ceiling height : Light &amp; Highlighting tiles –
-                    Rs.60/- per
-                    Sqft</p>
+                  <p class="detail-line">6. Toilet Wall Dado Up to ceiling height : Light &amp; Highlighting tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">7. Parking Area : Parking tiles – Rs.60/- per Sqft</p>
                   <p class="detail-line">8. Kitchen counter top : Granite – Rs.200/- per Sqft</p>
-                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.90/- per
-                    Sqft</p>
+                  <p class="detail-line">9. Kitchen Wall Dado Up to 2’ above counter : Backsplash tiles – Rs.90/- per Sqft</p>
                   <p class="detail-line">10. Puja Room Wall tiling – up to ceiling – Rs.60/- per Sqft</p>
                   <p class="detail-line">11. Puja Room Granite slab – Rs.150/- per Sqft</p>
-                  <p class="detail-line">12. Setback area tiles of 45 per sqft will be provided if setback area is
-                    charged</p>
+                  <p class="detail-line">12. Setback area tiles of 45 per sqft will be provided if setback area is charged</p>
                   <p class="detail-line">13. Tile grouting with spacer joint &amp; with epoxy grout in bathrooms</p>
                 </div>
               </details>
@@ -2202,8 +1989,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor
-                    Shine’</p>
+                  <p class="detail-line">1. Internal wall &amp; ceiling : wall putty + primer coat + latest ‘Tractor Shine’</p>
                   <p class="detail-line">2. External walls : primer coat + external Apex weather proof paint</p>
                   <p class="detail-line">3. Brand : Asian / Berger / Dulux</p>
                 </div>
@@ -2218,9 +2004,7 @@
                   <p class="detail-line">2. Geyser points – All bathrooms</p>
                   <p class="detail-line">3. AC provision – All rooms &amp; living</p>
                   <p class="detail-line">4. Conduits – Good quality, hidden in slabs and walls</p>
-                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is
-                    included
-                  </p>
+                  <p class="detail-line">5. Fire proof copper wire – Finolex or Polycab. External electrification is included</p>
                   <p class="detail-line">6. Switches &amp; Plates – Legrand Britzy or equivalent make</p>
                   <p class="detail-line">7. A main DB &amp; MCB – ABB / Schneider / Legrand make</p>
                   <p class="detail-line">8. Electric provision for Car charging – Parking area</p>
@@ -2231,19 +2015,12 @@
                   Plumbing <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet
-                    from
-                    corporation</p>
-                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site
-                    boundary</p>
+                  <p class="detail-line">1. Water supply system – Internal &amp; External Connection for water inlet from corporation</p>
+                  <p class="detail-line">2. External sewage system – Inspection chambers &amp; sewage outlet to site boundary</p>
                   <p class="detail-line">3. Class B CPVC pipes – Ashirwad / Astral make Solar &amp; Geyser Provision</p>
                   <p class="detail-line">4. Rain water harvesting facility – Ground water recharge - Included</p>
-                  <p class="detail-line">5. PVC Overhead Tank – Sintex / Ganga / Kaveri or Equivalent make of basic
-                    price Rs 7
-                    per litre</p>
-                  <p class="detail-line">6. Plumbing – FRP Chamber covers shall be provided for IC Separate sewage &amp;
-                    drainage
-                    lines</p>
+                  <p class="detail-line">5. PVC Overhead Tank – Sintex / Ganga / Kaveri or Equivalent make of basic price Rs 7 per litre</p>
+                  <p class="detail-line">6. Plumbing – FRP Chamber covers shall be provided for IC Separate sewage &amp; drainage lines</p>
                   <p class="detail-line">7. FRP Chamber covers shall be provided for IC</p>
                   <p class="detail-line">8. Separate hot &amp; cold water lines for sink</p>
                 </div>
@@ -2255,12 +2032,8 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Kitchen sink : SS/Granite/Carysil – Rs. 8,000/- per sink</p>
-                  <p class="detail-line">2. Kitchen accessories – Rs. 4,000/- CP &amp; Sanitary fixtures such as Wash
-                    Basin, WC,
-                    Taps and other accessories like bottle trap, gratings etc.</p>
-                  <p class="detail-line">3. Jaquar/Hindware – Rs. 50,000/- per bathroom attached toilet and Rs. 10,000/-
-                    per
-                    powder room</p>
+                  <p class="detail-line">2. Kitchen accessories – Rs. 4,000/- CP &amp; Sanitary fixtures such as Wash Basin, WC, Taps and other accessories like bottle trap, gratings etc.</p>
+                  <p class="detail-line">3. Jaquar/Hindware – Rs. 50,000/- per bathroom attached toilet and Rs. 10,000/- per powder room</p>
                   <p class="detail-line">4. Electrical Fixtures – Not included</p>
                 </div>
               </details>
@@ -2270,20 +2043,14 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware –
-                    Rs.1,10,000/-
-                  </p>
-                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware –
-                    Rs.12,000/-
-                    per door</p>
+                  <p class="detail-line">1. Main &amp; Puja Door – Teak Wood frame &amp; shutter including hardware – Rs.1,10,000/-</p>
+                  <p class="detail-line">2. Internal Door – Sal wood frame &amp; flush shutter including hardware – Rs.12,000/- per door</p>
                   <p class="detail-line">3. Internal door frames &amp; shutter – Painted only</p>
                   <p class="detail-line">4. Main, Puja Door – Polished with melamine spray</p>
-                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.9,000/- per door
-                  </p>
+                  <p class="detail-line">5. Bathroom Door – Frame &amp; shutter including hardware – Rs.9,000/- per door</p>
                   <p class="detail-line">6. Door Hardware – Ozone / Europa / Dorma make</p>
                   <p class="detail-line">7. Door Hinges – SS hinges</p>
-                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation
-                    etc.</p>
+                  <p class="detail-line">8. Door &amp; Door Frame cost – Inclusive of planing, rebate, transportation etc.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2293,10 +2060,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. UPVC windows – 4mm clear glass with MS Grills Basic price</p>
-                  <p class="detail-line">2. uPVC with MS grill – Rs.650/- per Sqft If required, upgrade to wooden
-                    windows can
-                    be made at an additional cost per Sqft, measured on built-up area. The additional
-                    cost can be calculated based on the wooden material chosen by the Client.</p>
+                  <p class="detail-line">2. uPVC with MS grill – Rs.650/- per Sqft If required, upgrade to wooden windows can be made at an additional cost per Sqft, measured on built-up area. The additional cost can be calculated based on the wooden material chosen by the Client.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2306,12 +2070,9 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Main Gate: Designer Gate with Shera boards – Rs. 450/- per Sqft</p>
-                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 660/- per Rft
-                  </p>
+                  <p class="detail-line">2. External staircase &amp; balcony railing : MS Railing – Rs. 660/- per Rft</p>
                   <p class="detail-line">3. Internal staircase railing : SS Railing – Rs.1000/- per Rft</p>
-                  <p class="detail-line">4. Utility grill shall be provided up to 120 Sqft in any one floor home only at
-                    a
-                    basic price of 180 per Sqft</p>
+                  <p class="detail-line">4. Utility grill shall be provided up to 120 Sqft in any one floor home only at a basic price of 180 per Sqft</p>
                   <p class="detail-line">5. Waterproofing is included for Utility &amp; balcony portions</p>
                 </div>
               </details>
@@ -2322,8 +2083,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. Compound wall – Solid block walls of 4” thickness to suit the elevation.</p>
-                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM
-                  </p>
+                  <p class="detail-line">2. Excavation, Foundation, PCC, Size Stone Masonry with DPC course above SSM</p>
                   <p class="detail-line">3. Height of Compound wall – 4 Feet from Plinth Levels</p>
                   <p class="detail-line">4. Compound wall – Plastered &amp; Painted</p>
                 </div>
@@ -2335,8 +2095,7 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1. This proposal includes aesthetically pleasing elevation.</p>
-                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.
-                  </p>
+                  <p class="detail-line">2. A 3D elevation is presented for client to choose from &amp; design further.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2346,19 +2105,14 @@
                 </summary>
                 <div class="package-detail-body">
                   <p class="detail-line">1 to 6. Same as Package 1</p>
-                  <p class="detail-line">7. Basic price of Cement is Rs.420/- per bag &amp; Steel is Rs.70,000/- per MT.
-                    Any
-                    increase in these prices shall be charged accordingly</p>
-                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 28% of built up area Maximum
-                  </p>
+                  <p class="detail-line">7. Basic price of Cement is Rs.420/- per bag &amp; Steel is Rs.70,000/- per MT. Any increase in these prices shall be charged accordingly</p>
+                  <p class="detail-line">8. Percentage of opening for doors &amp; windows – 28% of built up area Maximum</p>
                   <p class="detail-line">9 to 14. Same as Package 1</p>
                   <p class="detail-line">15. Soil testing is included in package</p>
                   <p class="detail-line">16. Interiors are not included in package</p>
                   <p class="detail-line">17. Electrical and Meter Box are not included.</p>
                   <p class="detail-line">18. Borewell is not included in package.</p>
-                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the
-                    inclusion or
-                    the exclusion of the same shall vary depending on the floor plan.</p>
+                  <p class="detail-line">NOTE: The above mentioned material specifications are generalized, the inclusion or the exclusion of the same shall vary depending on the floor plan.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2367,8 +2121,7 @@
                   <i class="fa-solid fa-chevron-down arrow text-sm text-slate-500 transition"></i>
                 </summary>
                 <div class="package-detail-body">
-                  <p class="detail-line">A customized payment schedule will be shared based on the project
-                    specifications.</p>
+                  <p class="detail-line">A customized payment schedule will be shared based on the project specifications.</p>
                 </div>
               </details>
               <details class="package-detail">
@@ -2388,21 +2141,14 @@
     </div>
   </section>
 
-
-
-
-
   <!-- Footer -->
   <footer class="main-footer">
     <div class="footer-grid">
-
       <div>
         <div class="footer-logo"><img src="images/logo.png" alt="SayHomes logo" style="height:72px;width:auto;display:block;"></div>
         <p class="footer-text">
-          We build modern homes with quality construction, elegant design, transparent pricing, and professional project
-          execution.
+          We build modern homes with quality construction, elegant design, transparent pricing, and professional project execution.
         </p>
-
       </div>
 
       <div>
@@ -2439,7 +2185,6 @@
           <div><i class="fa-solid fa-location-dot"></i> Bengaluru, India</div>
         </div>
       </div>
-
     </div>
 
     <div class="footer-bottom">
@@ -2447,7 +2192,6 @@
       <p>Designed for SayHomes in Bangalore</p>
     </div>
   </footer>
-
 
   <script src="js/packages-loader.js"></script>
   <script>
@@ -2538,5 +2282,4 @@
   <script src="js/enquiry-popup.js"></script>
 
 </body>
-
 </html>
