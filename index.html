@@ -188,6 +188,11 @@
       transition:all .3s;
     }
 
+    @media (max-width:1024px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: flex; }
+    }
+
     #navbar.scrolled .nav-toggle,
     body.menu-open .nav-toggle {
       color:var(--navy);
@@ -1770,6 +1775,8 @@
         padding:30px 20px;
       }
     }
+
+    
 
     @media (max-width:380px) {
       .hero-h1 {

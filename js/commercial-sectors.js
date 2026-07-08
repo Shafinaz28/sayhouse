@@ -154,6 +154,7 @@
   window.SayHomesCommercial = {
     PROJECTS,
     SECTORS,
+    projectCard,
     sectorProjects,
     getProject,
   };

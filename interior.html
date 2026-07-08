@@ -34,13 +34,13 @@
     @media(max-width:1024px){.hero-back-btn{display:inline-flex}}
     .section{padding:96px 40px}.inner{max-width:1200px;margin:0 auto}.section-head{max-width:760px;margin:0 auto 52px;text-align:center}.section-tag{font-size:.68rem;letter-spacing:.25em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;display:block}.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:600;color:var(--navy);line-height:1.1}.section-sub{font-size:.95rem;color:var(--muted);line-height:1.85;margin-top:16px}
     .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.project-card{background:#fff;border:1px solid rgba(15,27,45,.08);box-shadow:0 18px 50px rgba(15,27,45,.08);overflow:hidden;cursor:pointer;transition:.35s}.project-card:hover{transform:translateY(-6px);box-shadow:0 26px 70px rgba(15,27,45,.14)}
-    .project-img{height:250px;overflow:hidden;position:relative}.project-img img{width:100%;height:100%;object-fit:cover;transition:.65s}.project-card:hover .project-img img{transform:scale(1.07)}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+    .project-img{height:280px;min-height:280px;max-height:280px;overflow:hidden;position:relative;background:#eef4fc;display:flex;align-items:center;justify-content:center}.project-img img{width:100%;height:100%;object-fit:contain!important;object-position:center;display:block}.project-badge{position:absolute;left:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:7px 14px;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;z-index:2}
     .project-content{padding:24px}.project-owner{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:600;color:var(--primary);line-height:1.15;margin-bottom:6px}.project-content h3{font-family:'Cormorant Garamond',serif;font-size:1.12rem;color:var(--navy);margin-bottom:8px;font-weight:600}.project-content p{color:var(--muted);font-size:.88rem;line-height:1.75}.view-gallery{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:var(--primary);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
     .modal{position:fixed;inset:0;background:rgba(15,27,45,.92);z-index:500;display:none;align-items:center;justify-content:center;padding:30px}.modal.active{display:flex}.modal-box{width:min(1100px,100%);max-height:90vh;background:#fff;overflow:auto;position:relative}.modal-header{padding:24px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:1px solid var(--light);position:sticky;top:0;background:#fff;z-index:10}.modal-title-block{flex:1;min-width:0}.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--navy);font-weight:600;line-height:1.15}.modal-subtitle{margin-top:8px;font-size:.84rem;color:var(--gold);font-weight:600;line-height:1.45}.close-btn{width:42px;height:42px;border:0;background:var(--navy);color:#fff;cursor:pointer;font-size:1.1rem;flex-shrink:0}.gallery-viewer-body{padding:28px 32px 36px}.gallery-section{margin-bottom:42px}.gallery-section:last-child{margin-bottom:0}.gallery-section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.65rem,3vw,2.1rem);text-align:center;color:var(--navy);font-weight:600;margin-bottom:8px}.gallery-section-sub{text-align:center;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;line-height:1.45}.viewer-main-frame{width:100%;height:min(480px,52vh);min-height:280px;background:#e8e8e8;overflow:hidden;border-radius:6px;position:relative;display:flex;align-items:center;justify-content:center}.viewer-main{width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;object-position:center;display:block;cursor:zoom-in}.viewer-thumbs{display:flex;justify-content:center;flex-wrap:nowrap;gap:10px;overflow-x:auto;padding:14px 4px 4px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}.viewer-thumb{border:2px solid transparent;border-radius:4px;overflow:hidden;background:#fff;cursor:pointer;flex:0 0 auto;padding:0;transition:border-color .2s,opacity .2s}.viewer-thumb:hover{opacity:.9}.viewer-thumb.active{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold)}.viewer-thumb img{width:88px;height:58px;object-fit:cover;display:block}
     .lightbox{position:fixed;inset:0;z-index:600;display:none;align-items:center;justify-content:center;padding:max(16px,3vw);background:rgba(5,10,18,.94)}.lightbox.active{display:flex}.lightbox-inner{position:relative;width:100%;max-width:min(100vw - 24px,1440px);display:flex;align-items:center;justify-content:center;padding:0 clamp(40px,5vw,68px);min-height:80px}.lightbox-inner img{max-width:100%;max-height:min(92vh,1000px);width:auto;height:auto;object-fit:contain;border-radius:6px;box-shadow:0 24px 80px rgba(0,0,0,.5)}.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:50px;height:50px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:var(--navy);font-size:1.05rem;cursor:pointer;z-index:2;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:background .2s,opacity .2s}.lightbox-nav:hover:not(:disabled){background:var(--gold);color:var(--navy)}.lightbox-nav:disabled{opacity:.25;cursor:not-allowed}.lightbox-prev{left:0}.lightbox-next{right:0}.lightbox-counter{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.9);font-size:.82rem;font-weight:600;letter-spacing:.04em}.lightbox-close{position:fixed;top:20px;right:20px;width:48px;height:48px;border:0;border-radius:50%;background:var(--navy);color:#fff;font-size:1.15rem;cursor:pointer;z-index:601;box-shadow:0 8px 24px rgba(0,0,0,.35)}.lightbox-close:hover{background:var(--primary)}
 
     @media(max-width:1024px){.nav-links,.nav-cta{display:none}.nav-toggle{display:flex}.projects-grid{grid-template-columns:1fr 1fr}.viewer-main-frame{height:min(360px,45vh);min-height:220px}}
-    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.nav-logo img{height:40px}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.45rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:220px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-viewer-body{padding:16px 18px 24px}.viewer-main-frame{height:min(280px,42vh);min-height:180px}.viewer-thumb img{width:72px;height:48px}}
+    @media(max-width:640px){#navbar{height:66px;padding:0 18px}.nav-logo{font-size:1.55rem}.nav-logo img{height:40px}.mobile-menu{top:76px;left:12px;right:12px;border-radius:18px}.page-hero{height:300px;margin-top:66px}.page-hero-inner h1{font-size:2.45rem}.section{padding:68px 18px}.projects-grid{grid-template-columns:1fr}.project-card{border-radius:18px}.project-img{height:260px;min-height:260px;max-height:260px}.modal{padding:12px}.modal-header{padding:18px}.modal-title{font-size:1.4rem}.gallery-viewer-body{padding:16px 18px 24px}.viewer-main-frame{height:min(280px,42vh);min-height:180px}.viewer-thumb img{width:72px;height:48px}}
    /* Professional Footer */
     .main-footer {
       background:var(--navy);
@@ -421,418 +421,29 @@
   </footer>
 
   <script src="js/interior-projects-data.js"></script>
+  <script src="js/projects-loader.js"></script>
   <script src="js/residential-gallery.js"></script>
   <script>
-    const projects = [
-      {
-        owner: 'Ms. Swathi Deshmanya',
-        title: 'Sarjapura',
-        description: 'Full home interiors at Sarjapura — cohesive finishes, lighting, and practical layouts.',
-        gallery: [
-          'interior/imgswathi1.jpg',
-          'interior/imgswathi2.jpg',
-          'interior/imgswathi3.jpg'
-        ]
-      },
-      {
-        owner: 'Mrs. Sheela',
-        title: '1BHK, HAL',
-        description: 'Compact 1BHK interior at HAL with smart storage, warm tones, and clean execution.',
-        gallery: [
-          'interior/Sheela.jpg',
-          'interior/Sheela1.jpg',
-          'interior/Sheela2.jpg',
-          'interior/Sheela3.jpg',
-          'interior/Sheela4.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Vinod',
-        title: 'Yelahanka',
-        description: 'Residential interiors at Yelahanka with balanced spaces and premium material choices.',
-        gallery: [
-          'interior/Vinod.jpg',
-          
-          'interior/Vinod2.jpg',
-          'interior/Vinod3.jpg',
-          'interior/Vinod4.jpg',
-          'interior/Vinod5.jpg',
-          'interior/Vinod6.jpg',
-          'interior/Vinod7.jpg',
-        ]
-      },
-       {
-        owner: 'Mr. Shivananda',
-        title: '2BHK, KR Puram',
-        description: 'Full home interiors at 2BHK, KR Puram — cohesive finishes, lighting, and practical layouts.',
-        gallery: [
-          
-        ]
-      },
-       {
-        owner: 'Mr. Shivanand',
-        title: '3BHK, Medahalli',
-        description: 'Full home interiors at 3BHK, Medahalli — cohesive finishes, lighting, and practical layouts.',
-        gallery: [
-          'interior/Shivanand.jpg',
-          'interior/Shivanand1.jpg',
-          'interior/Shivanand2.jpg',
-          'interior/Shivanand3.jpg',
-          'interior/Shivanand4.jpg',
-          'interior/Shivanand5.jpg',
-          'interior/Shivanand6.jpg',
-          'interior/Shivanand7.jpg',
-          'interior/Shivanand8.jpg',
-          'interior/Shivanand9.jpg'
-          
-        ]
-      },
-      {
-        owner: 'Mr. Abhijith',
-        title: 'Interior, KR Puram',
-        description: 'Complete interior scope at KR Puram — living, bedrooms, kitchen, and bespoke details.',
-        gallery: [
-          'interior/ABHIJITH.jpg',
-          'interior/ABHIJITH1.jpg',
-          'interior/ABHIJITH2.jpg',
-          'interior/ABHIJITH3.jpg',
-          'interior/ABHIJITH4.jpg',
-          'interior/ABHIJITH5.jpg',
-          'interior/ABHIJITH6.jpg',
-          'interior/ABHIJITH7.jpg',
-          'interior/ABHIJITH8.jpg',
-          'interior/ABHIJITH9.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Dheeraj',
-        title: 'Duplex 3BHK, Amruthalli',
-        description: 'Duplex 3BHK interiors at Amruthalli — double-height feel, stairs integration, and luxury touches.',
-        gallery: [
-          'interior/Dheera.jpg',
-          'interior/Dheera1.jpg',
-          'interior/Dheera2.jpg',
-          'interior/Dheera3.jpg',
-          'interior/Dheera4.jpg',
-          'interior/Dheera5.jpg',
-          'interior/Dheera6.jpg',
-          'interior/Dheera7.jpg',
-          'interior/Dheera8.jpg',
-          'interior/Dheera9.jpg'
-        ]
-      },
-      {
-        owner: 'Ms. Sandhya Narendra',
-        title: 'Salarpuria Sattva Anugraha, Magadi Road, Bengaluru',
-        description: 'Apartment interiors at Salarpuria Sattva Anugraha, Magadi Road, Bengaluru with functional planning and elegant finishes.',
-        gallery: [
-          'interior/sandhya-1.jpg',
-          'interior/sandhya-2.jpg',
-          'interior/sandhya-3.jpg',
-          'interior/sandhya-4.jpg',
-          'interior/sandhya-5.jpg',
-          'interior/sandhya-6.jpg',
-          'interior/sandhya-7.jpg',
-          'interior/sandhya-8.jpg'
-        ]
-      },
-      {
-        owner: 'Ms. Smitha Ranganath',
-        title: '3BHK, Kasturi Nagar, Bengaluru',
-        description: '3BHK interior project at Kasturi Nagar, Bengaluru with customized living, kitchen, mandir, and dining spaces.',
-        gallery: [
-          'interior/smitha-living.jpg',
-          'interior/smitha-dining.jpg',
-          'interior/smitha-mandir.jpg',
-          'interior/smitha-kitchen-1.jpg',
-          'interior/smitha-kitchen-2.jpg',
-          'interior/smitha-bedroom-1.jpg',
-          'interior/smitha-bedroom-2.jpg',
-          'interior/smitha-bedroom-3.jpg',
-          'interior/smitha-bedroom-4.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Rakesh',
-        title: '3BHK, Sahakaranagar',
-        description: 'Complete 3BHK interior execution at Sahakaranagar with coordinated finishes and lighting.',
-        gallery: [
-          'interior/rakesh.jpg',
-          'interior/rakesh1.jpg',
-          'interior/rakesh2.jpg',
-          'interior/rakesh3.jpg',
-          'interior/rakesh4.jpg',
-          'interior/rakesh5.jpg'
-          
-        ]
-      },
+    let projects = [];
 
-       {
-        owner: 'Mr. Ranganath',
-        title: '3 BHK Apartments, Kasturi Nagar, Bengaluru',
-        description: 'Complete 3BHK interior execution at Kasturi Nagar with coordinated finishes and lighting.',
-        gallery: [
-          'interior/Ranganath5.jpg',
-          'interior/Ranganath1.jpg',
-          'interior/Ranganath2.jpg',
-          'interior/Ranganath3.jpg',
-          'interior/Ranganath4.jpg',
-          'interior/Ranganath.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Ranganath',
-        title: '3 BHK Apartments, Kasturi Nagar, Bengaluru',
-        description: 'Complete 3BHK interior execution at Kasturi Nagar with coordinated finishes and lighting.',
-        gallery: [
-          'interior/Ranganath5.jpg',
-          'interior/Ranganath1.jpg',
-          'interior/Ranganath2.jpg',
-          'interior/Ranganath3.jpg',
-          'interior/Ranganath4.jpg',
-          'interior/Ranganath.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Ramesh',
-        title: '3BHK, RMZ Yelahanka',
-        description: 'Complete 3BHK interior execution at RMZ Yelahanka with coordinated finishes and lighting.',
-        gallery: [
-          'interior/Ramesh1.jpg',
-          'interior/Ramesh2.jpg',
-          'interior/Ramesh3.jpg',
-          'interior/Ramesh4.jpg',
-          'interior/Ramesh5.jpg',
-          'interior/Ramesh6.jpg'
-        ]
-      },
-      {
-        owner: ' Mr. Raghunath ',
-        title: 'Duplex 3BHK',
-        description: 'Complete Duplex 3BHK interior execution at Abbigere with coordinated finishes and lighting.',
-        gallery: [
-          'interior/Raghunath.jpg',
-          'interior/Raghunath1.jpg',
-          'interior/Raghunath2.jpg',
-          'interior/Raghunath3.jpg',
-          'interior/Raghunath4.jpg',
-          'interior/Raghunath5.jpg',
-          'interior/Raghunath6.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Bharath',
-        title: '2BHK, DSR ITPL',
-        description: '2BHK apartment interiors at DSR ITPL focused on comfort, utility, and clean design language.',
-        gallery: [
-          'interior/Bharath.png',
-          'interior/Bharath1.png',
-          'interior/Bharath2.png',
-          'interior/Bharath3.png',
-          'interior/Bharath4.png',
-          'interior/Bharath5.png',
-          'interior/Bharath6.png',
-          'interior/Bharath7.png',
-          'interior/Bharath8.png',
-          'interior/Bharath9.png',
-          'interior/Bharath10.png',
-          'interior/Bharath11.png',
-          'interior/Bharath11.png',
-          'interior/Bharath12.png'
-        ]
-      },
-      {
-        owner: 'Panchayat PDO Office',
-        title: 'Vidurashwatha, Gauribidanur',
-        description: 'Interior work for Panchayat PDO Office at Vidurashwatha, Gauribidanur with durable and practical finishes.',
-        gallery: [
-          'interior/OFFICEpdo1.jpg',
-          'interior/OFFICEpdo.jpg',
-          'interior/OFFICEpdo2.jpg',
-          'interior/OFFICEpdo3.jpg'
-        ]
-      },
-      {
-        owner: '15A, Skygarden,',
-        title: '4500Sqft Apartments, Richmond Town, Bengaluru',
-        description: 'Large-format 4500 sqft apartment interiors at Richmond Town, Bengaluru with premium customized spaces.',
-        gallery: [
-          'interior/15A.jpg',
-          'interior/15A1.jpg',
-          'interior/15A2.jpg',
-          'interior/15A3.jpg',
-          'interior/15A4.jpg',
-          'interior/15A5.jpg',
-          'interior/15A6.jpg',
-          'interior/15A7.jpg',
-          'interior/15A8.jpg',
-          'interior/15A9.jpg',
-          'interior/15A10.jpg'
+    function slugify(value) {
+      return String(value || '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '');
+    }
 
-        ]
-      },
-      {
-        owner: 'Ms. Rajeshwari Pradeep',
-        title: '3BHK, Salarpuria Sattva OPUS, Jalahalli, Bengaluru',
-        description: '3BHK interiors at Salarpuria Sattva OPUS, Jalahalli, Bengaluru with detailed finishes and functional family spaces.',
-        gallery: [
-          'interior/rajeshwari-1.jpg',
-          'interior/rajeshwari-2.jpg',
-          'interior/rajeshwari-3.jpg',
-          'interior/rajeshwari-4.jpg',
-          'interior/rajeshwari-5.jpg',
-          'interior/rajeshwari-6.jpg',
-          'interior/rajeshwari-7.jpg',
-          'interior/rajeshwari-8.jpg',
-          'interior/rajeshwari-9.jpg',
-          'interior/rajeshwari-10.jpg'
-        ]
-      },
-      {
-        owner: 'Ms. Priya Mahesh',
-        title: '5BHK Triplex, RR Nagar, Bengaluru',
-        description: '5BHK triplex interiors at RR Nagar, Bengaluru with premium finishes and spacious planning across levels.',
-        gallery: [
-          'interior/priyam.png',
-          'interior/priyam1.png',
-          'interior/priyam2.png',
-          'interior/priyam3.png',
-          'interior/priyam4.png',
-          'interior/priyam5.png',
-          'interior/priyam6.png',
-          'interior/priyam7.png',
-          'interior/priyam8.png',
-          'interior/priyam9.png',
-          'interior/priyam10.png',
-          
-        ]
-      },
-      {
-        owner: 'Mr. Narendra',
-        title: 'Luxury Penthouse, Davangere',
-        description: 'Luxury penthouse interiors in Davangere with bespoke finishes and high-end detailing.',
-        gallery: [
-          'interior/Narendra.png',
-          'interior/Narendra1.png',
-          'interior/Narendra2.png',
-          'interior/Narendra3.png',
-          'interior/Narendra4.png',
-          'interior/Narendra5.png',
-          'interior/Narendra6.png',
-          'interior/Narendra7.png',
-          'interior/Narendra8.png',
-        ]
-      },
-      {
-        owner: 'Mr. Mithun',
-        title: '2BHK, Janapriya Apts, Bengaluru',
-        description: '2BHK apartment interiors at Janapriya Apartments, Bengaluru with efficient storage and modern styling.',
-        gallery: [
-          
-        ]
-      },
-      {
-        owner: 'Mr. Anurag',
-        title: 'Duplex, Chandra Layout',
-        description: 'Duplex home interiors at Chandra Layout with well-planned levels and contemporary finishes.',
-        gallery: [
-          'interior/'
-        ]
-      },
-      {
-        owner: 'Lotus Builders Head Office',
-        title: 'Sahakaranagar, Bengaluru',
-        description: 'Corporate head office interiors for Lotus Builders at Sahakaranagar, Bengaluru.',
-        gallery: [
-          'interior/lotus-1.jpg',
-          'interior/lotus-2.jpg',
-          'interior/lotus-3.jpg',
-          'interior/lotus-4.jpg',
-          'interior/lotus-5.jpg'
-        ]
-      },
-      {
-        owner: 'Leaders International School',
-        title: 'Gauribidanur',
-        description: 'Designed Interiors for Leaders International School, Gauribidanur with a modern and functional design.',
-        gallery: [
-          'interior/leaders-1.jpg',
-          'interior/leaders-2.jpg',
-          'interior/leaders-3.jpg',
-          'interior/leaders-4.jpg',
-          'interior/leaders-5.jpg',
-          'interior/leaders-6.jpg',
-          'interior/leaders-7.jpg'
-        ]
-      },
-      {
-        owner: 'Mr. Pushparaj Interior',
-        title: 'KR PURAM, Bengaluru',
-        description: 'KR Puram apartment interiors with a modern and functional design.',
-        gallery: [
-          'interior/imagePushparaj.png',
-          'interior/imagePushparaj1.png',
-          'interior/imagePushparaj2.png',
-          'interior/imagePushparaj3.png',
-          'interior/imagePushparaj4.png',
-          'interior/imagePushparaj5.png',
-          'interior/imagePushparaj6.png',
-          'interior/imagePushparaj7.png',
-          'interior/imagePushparaj8.png',
-          'interior/imagePushparaj9.png',
-        ]
-      },
-      {
-        owner: 'Mr. Pramod 3BHK, HSR',
-        title: 'HSR Layout, Bengaluru',
-        description: 'HSR layout apartment interiors with a modern and functional design.',
-        gallery: [
-          'interior/pramod.jpg',
-          'interior/pramod1.jpg',
-          'interior/pramod2.jpg',
-          'interior/pramod3.jpg',
-          'interior/pramod4.jpg',
-        ]
-      },
+    function renderProjectsGrid() {
+      projects = (window.INTERIOR_PROJECTS || []).map((p) => ({
+        ...p,
+        cover: p.cover || (Array.isArray(p.gallery) ? p.gallery[0] : '') || '',
+      }));
 
-      {
-        owner: 'Sri Kotureshwara Benne Dose',
-        title: 'Davanagere',
-        description: 'Interior branding and fit-out for Sri Kotureshwara Benne Dose in Davanagere.',
-        gallery: [
-          'commercial/Sriguru.png',
-        'commercial/Sriguru1.png',
-        'commercial/Sriguru2.png',
-        'commercial/Sriguru3.png',
-        'commercial/Sriguru4.png',
-        'commercial/Sriguru5.png',
-        'commercial/Sriguru6.png',
-        'commercial/Sriguru7.png',
-        'commercial/Sriguru8.png',
-        ]
-      },
-      {
-        owner: 'Ms. Shilpa Anjaneya',
-        title: '4BHK, Rajanukunte',
-        description: '4BHK home interiors at Rajanukunte with premium finishes and a cohesive modern aesthetic.',
-        gallery: [
-          'interior/shilpa-1.jpg',
-          'interior/shilpa-2.jpg',
-          'interior/shilpa-3.jpg',
-          'interior/shilpa-4.jpg',
-          'interior/shilpa-5.jpg',
-          'interior/Sah handovers_20241125_151559_0000.png'
-        ]
-      }
-    ]
-      .sort((a, b) => {
-        const clean = (name) => String(name || '').replace(/^(mr|mrs|ms)\.\s*/i, '').trim().toLowerCase();
-        return clean(a.owner).localeCompare(clean(b.owner));
-      })
-      .map((p) => ({ ...p, cover: p.gallery[0] }));
+      const projectsGrid = document.getElementById('projectsGrid');
+      if (!projectsGrid) return;
 
-    document.getElementById('projectsGrid').innerHTML = projects.map((p,i) => `
-      <div class="project-card" role="button" tabindex="0" onclick="openGallery(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openGallery(${i});}">
+      projectsGrid.innerHTML = projects.map((p, i) => `
+      <div class="project-card" role="button" tabindex="0" onclick="openProjectDetail(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProjectDetail(${i});}">
         <div class="project-img"><img src="${p.cover}" alt="${p.title} — ${p.owner}"><span class="project-badge">Interior</span></div>
         <div class="project-content">
           <div class="project-owner">${p.owner}</div>
@@ -842,16 +453,25 @@
         </div>
       </div>
     `).join('');
+    }
 
-    function openGallery(index) {
+    function openProjectDetail(index) {
       const selectedProject = projects[index];
-      if (!selectedProject || !window.SayHomesGallery) return;
-      SayHomesGallery.openCombined(selectedProject.owner, selectedProject, 'interior');
+      if (!selectedProject) return;
+      const slug = slugify(`${selectedProject.owner}-${selectedProject.title}`);
+
+      try {
+        sessionStorage.setItem('sayhomesInteriorProjectCurrent', JSON.stringify({ slug, project: selectedProject }));
+      } catch (e) {}
+
+      window.location.href = `interior-project-detail.html?project=${encodeURIComponent(slug)}`;
     }
 
     function lightboxPrev() { SayHomesGallery.lightboxPrev(); }
     function lightboxNext() { SayHomesGallery.lightboxNext(); }
     function closeImageLightbox() { SayHomesGallery.requestCloseLightbox(); }
+
+    (window.SayHomesProjects ? SayHomesProjects.ensureLoaded() : Promise.resolve()).then(renderProjectsGrid);
 
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('navToggle');
@@ -892,6 +512,7 @@
         toggleIcon.className = 'fa-solid fa-bars';
       });
     });
+  
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/lead-form.js"></script>

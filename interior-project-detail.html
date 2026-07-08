@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commercial Project Detail | SayHomes</title>
+  <title>Interior Project Detail | SayHomes</title>
   <link rel="icon" type="image/png" href="images/favicon.png" />
   <link rel="apple-touch-icon" href="images/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,26 +28,24 @@
     .mobile-menu a:last-child{background:var(--primary);color:#fff;justify-content:center;border-bottom:0}
     .float-btn{position:fixed;right:28px;bottom:28px;z-index:200;width:54px;height:54px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;box-shadow:0 8px 32px rgba(26,60,110,.35)}
     .page{padding:116px 24px 40px;max-width:1200px;margin:0 auto}
-    .project-nav-container{display:flex;align-items:center;justify-content:flex-start;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+    .project-nav-container{display:flex;align-items:center;justify-content:flex-start;gap:16px;margin-bottom:36px}
     .back-btn-custom,.nav-btn-alt{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(15,27,45,.08);background:var(--cream);color:var(--navy);padding:10px 24px;border-radius:30px;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;cursor:pointer}
     .detail-shell{display:grid;gap:40px}
     .hero-card{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
     .hero-content{display:flex;flex-direction:column;gap:20px}
     .hero-kicker{font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
-    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4vw,3.2rem);color:var(--navy);line-height:1.15;font-weight:400;text-transform:none}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.3rem,4.2vw,3.6rem);color:var(--navy);line-height:1.1;font-weight:400;text-transform:uppercase}
     .hero-subtitle{font-size:1.05rem;color:var(--muted)}
     .hero-wa-cta{display:inline-flex;align-items:center;gap:8px;width:fit-content;margin-top:8px;padding:10px 18px;background:var(--navy);color:#fff;border:0;border-radius:999px;font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:background .25s,transform .2s}
     .hero-wa-cta:hover{background:var(--primary);transform:translateY(-2px)}
     .hero-media{width:100%;aspect-ratio:4/3;max-height:520px;background:transparent;border-radius:28px;overflow:hidden;box-shadow:0 20px 45px rgba(15,27,45,.06);display:block}
     .hero-media img{width:100%;height:100%;object-fit:cover;background:transparent}
-    .gallery-section-wrapper,.video-section{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+    .gallery-section-wrapper{display:flex;flex-direction:column;gap:8px;margin-top:4px}
     .gallery-section-tag{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}
     .gallery-grid-display{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:stretch}
     .gallery-grid-card{position:relative;background:transparent;border-radius:0;aspect-ratio:4/3;width:100%;overflow:hidden;box-shadow:none;display:block;cursor:pointer}
     .gallery-grid-card img{width:100%;height:100%;object-fit:cover;background:transparent}
     .view-label{position:absolute;bottom:16px;right:16px;background:var(--primary);color:#fff;padding:6px 16px;border-radius:20px;font-size:.68rem;font-weight:600;letter-spacing:.05em;box-shadow:0 4px 10px rgba(26,60,110,.25)}
-    .video-box{width:100%;aspect-ratio:16/9;background:#1a1a1a;border-radius:16px;overflow:hidden}
-    .video-box iframe{width:100%;height:100%;border:0;display:block}
     .sayhomes-lightbox-modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;background:rgba(15,27,45,.92);backdrop-filter:blur(8px);opacity:0;transition:opacity .3s}
     .sayhomes-lightbox-modal.reveal-open{display:flex;align-items:center;justify-content:center;opacity:1}
     .lightbox-img-wrapper{width:90%;max-width:1000px;height:85vh;display:flex;align-items:center;justify-content:center}
@@ -113,7 +111,7 @@
 
   <main class="page">
     <div class="project-nav-container">
-      <a href="commercial-works.html" class="back-btn-custom" id="btnBackProjects"><i class="fa-solid fa-arrow-left"></i> BACK TO WORKS</a>
+      <a href="interior.html" class="back-btn-custom"><i class="fa-solid fa-arrow-left"></i> BACK TO PROJECTS</a>
       <button class="nav-btn-alt" id="btnPrevProject"><i class="fa-solid fa-chevron-left"></i> Previous</button>
       <button class="nav-btn-alt" id="btnNextProject">Next <i class="fa-solid fa-chevron-right"></i></button>
     </div>
@@ -121,9 +119,9 @@
 
     <div class="space-ctc-banner">
       <div class="space-ctc-content">
-        <span class="space-ctc-tag">START YOUR COMMERCIAL PROJECT</span>
+        <span class="space-ctc-tag">START YOUR INTERIOR PROJECT</span>
         <h2 class="space-ctc-title">Have a similar space in mind?</h2>
-        <p class="space-ctc-sub">Share your requirements and our commercial team will help you plan and execute your next project.</p>
+        <p class="space-ctc-sub">Share your requirements and our interior team will help you plan and execute your dream space.</p>
       </div>
       <a href="contact.html" class="space-ctc-btn">Let's Discuss <i class="fa-solid fa-arrow-right" style="font-size:0.75rem;"></i></a>
     </div>
@@ -174,13 +172,15 @@
     </div>
   </footer>
 
-  <script src="js/commercial-sectors.js"></script>
+  <script src="js/interior-projects-data.js"></script>
   <script src="js/projects-loader.js"></script>
-  <script src="js/commercial-work-detail.js"></script>
+  <script src="js/interior-project-detail.js"></script>
   <script>
     const shell = document.getElementById('detailShell');
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get('project') || '';
     (window.SayHomesProjects ? SayHomesProjects.ensureLoaded() : Promise.resolve()).then(() => {
-      window.SayHomesCommercialProjectDetail.renderProjectDetail(shell);
+      window.SayHomesInteriorProjectDetail.renderProjectDetail(shell, window.INTERIOR_PROJECTS, slug);
     });
 
     const navToggle = document.getElementById('navToggle');

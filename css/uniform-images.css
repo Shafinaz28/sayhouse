@@ -63,6 +63,7 @@
 
 /* —— Gallery modal (interior / building) —— */
 .viewer-main-frame {
+  position: relative;
   width: 100%;
   height: min(480px, 52vh);
   min-height: 280px;
@@ -72,6 +73,38 @@
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+}
+
+.viewer-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #0f1b2d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  box-shadow: 0 8px 24px rgba(15, 27, 45, 0.18);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.viewer-nav-btn:hover {
+  background: #c9a84c;
+  transform: translateY(-50%) scale(1.04);
+}
+
+.viewer-nav-prev {
+  left: 14px;
+}
+
+.viewer-nav-next {
+  right: 14px;
 }
 
 .viewer-main {

@@ -74,7 +74,13 @@
         ${heading}
         ${sub}
         <section class="viewer-main-frame">
+          <button type="button" class="viewer-nav-btn viewer-nav-prev" aria-label="Previous image">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
           <img class="viewer-main" src="${escapeHtml(imgs[0])}" alt="${altBase}" loading="lazy" role="button" tabindex="0" title="Tap to enlarge">
+          <button type="button" class="viewer-nav-btn viewer-nav-next" aria-label="Next image">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
         </section>
         <div class="viewer-thumbs">${thumbs}</div>
       </div>`;
@@ -89,6 +95,8 @@
 
     const main = sectionEl.querySelector('.viewer-main');
     const thumbs = sectionEl.querySelectorAll('.viewer-thumb');
+    const prevBtn = sectionEl.querySelector('.viewer-nav-prev');
+    const nextBtn = sectionEl.querySelector('.viewer-nav-next');
 
     if (main) {
       main.src = imgs[idx];
@@ -96,6 +104,20 @@
     }
     thumbs.forEach((btn, i) => btn.classList.toggle('active', i === idx));
     sectionEl.dataset.index = String(idx);
+
+    const showNav = imgs.length > 1;
+    if (prevBtn) prevBtn.style.display = showNav ? '' : 'none';
+    if (nextBtn) nextBtn.style.display = showNav ? '' : 'none';
+  }
+
+  function stepViewer(sectionEl, delta) {
+    const imgs = JSON.parse(sectionEl.dataset.images || '[]');
+    if (imgs.length <= 1) return;
+    let idx = Number(sectionEl.dataset.index || 0);
+    idx = (idx + delta + imgs.length) % imgs.length;
+    sectionEl.dataset.index = String(idx);
+    renderViewer(sectionEl);
+    startViewerTimer(sectionEl);
   }
 
   function startViewerTimer(sectionEl) {
@@ -232,6 +254,21 @@
           startViewerTimer(sectionEl);
         });
       });
+
+      const prevBtn = sectionEl.querySelector('.viewer-nav-prev');
+      const nextBtn = sectionEl.querySelector('.viewer-nav-next');
+      if (prevBtn) {
+        prevBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          stepViewer(sectionEl, -1);
+        });
+      }
+      if (nextBtn) {
+        nextBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          stepViewer(sectionEl, 1);
+        });
+      }
 
       if (main) {
         main.addEventListener('click', () => openLightboxAt(main));

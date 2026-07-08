@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Project | SayHomes Admin</title>
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --navy:#0F1B2D; --primary:#1A3C6E; --cream:#FAF7F2; --muted:#7A7269; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:'DM Sans',sans-serif; background:var(--cream); color:#2c2c2c; padding:40px 20px; }
+    .box { max-width:720px; margin:0 auto; background:#fff; border:1px solid rgba(15,27,45,.08); box-shadow:0 18px 50px rgba(15,27,45,.08); padding:32px; border-radius:12px; }
+    h1 { font-size:1.6rem; color:var(--navy); margin-bottom:8px; }
+    .sub { color:var(--muted); font-size:.92rem; line-height:1.6; margin-bottom:24px; }
+    .form-group { margin-bottom:16px; }
+    label { display:block; font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    input, select, textarea { width:100%; border:1px solid #f0ebe3; padding:12px 14px; font:inherit; font-size:.92rem; border-radius:4px; }
+    textarea { min-height:110px; resize:vertical; }
+    .row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    button { width:100%; margin-top:8px; background:var(--navy); color:#fff; border:0; padding:14px; font:inherit; font-size:.76rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; border-radius:4px; }
+    button:disabled { opacity:.7; cursor:wait; }
+    .msg { margin-top:16px; font-size:.9rem; }
+    .msg.ok { color:#1a6b3c; }
+    .msg.err { color:#b42318; }
+    @media(max-width:640px){ .row { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Add / Update Project</h1>
+    <p class="sub">Submit project details to your Google Sheet. After saving, refresh the project pages on the website. Image URLs can be site paths (e.g. <code>interior/Sheela.jpg</code>) or full links.</p>
+
+    <form id="projectForm" class="lead-form" novalidate>
+      <div class="form-group">
+        <label for="secret">Admin Secret</label>
+        <input id="secret" name="secret" type="password" required placeholder="Same as ADMIN_SECRET in ProjectsApi.gs">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="type">Project Type</label>
+          <select id="type" name="type" required>
+            <option value="building">Building Construction</option>
+            <option value="interior">Interior</option>
+            <option value="commercial">Commercial</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="show">Show on Website</label>
+          <select id="show" name="show">
+            <option value="YES">YES</option>
+            <option value="NO">NO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="owner">Owner / Project Name</label>
+        <input id="owner" name="owner" type="text" required placeholder="Mr. Yatheesh or Leaders International School">
+      </div>
+
+      <div class="row">
+        <div class="form-group">
+          <label for="title">Title / Subtitle</label>
+          <input id="title" name="title" type="text" placeholder="Ylnk, 1BHK HAL, etc.">
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input id="location" name="location" type="text" placeholder="Bengaluru">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" placeholder="Short description shown on project cards"></textarea>
+      </div>
+
+      <div class="row" id="commercialFields">
+        <div class="form-group">
+          <label for="sector">Commercial Sector</label>
+          <select id="sector" name="sector">
+            <option value="institutions">Institutions</option>
+            <option value="hospitality">Hospitality</option>
+            <option value="nonprofit">Non Profit</option>
+            <option value="commercial">Commercial</option>
+            <option value="peb">PEB</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="projectKey">Project Key (slug)</label>
+          <input id="projectKey" name="projectKey" type="text" placeholder="leaders, ima, gsk">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="coverImage">Cover Image URL</label>
+        <input id="coverImage" name="coverImage" type="text" placeholder="interior/Sheela.jpg">
+      </div>
+
+      <div class="form-group">
+        <label for="galleryImages">Gallery Image URLs (one per line)</label>
+        <textarea id="galleryImages" name="galleryImages" placeholder="interior/Sheela.jpg&#10;interior/Sheela1.jpg"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="videoUrl">Video URL (commercial optional)</label>
+        <input id="videoUrl" name="videoUrl" type="url" placeholder="https://www.youtube.com/embed/...">
+      </div>
+
+      <div class="form-group">
+        <label for="sortOrder">Sort Order</label>
+        <input id="sortOrder" name="sortOrder" type="number" min="0" step="1" placeholder="1">
+      </div>
+
+      <button type="submit" id="submitBtn">Save to Google Sheet</button>
+      <p id="formMsg" class="msg" hidden></p>
+    </form>
+  </div>
+
+  <script>
+  /** Same URL as js/projects-loader.js → PROJECTS_API_URL */
+  const PROJECTS_FORM_URL = '';
+
+  const form = document.getElementById('projectForm');
+  const msg = document.getElementById('formMsg');
+  const submitBtn = document.getElementById('submitBtn');
+  const typeEl = document.getElementById('type');
+  const commercialFields = document.getElementById('commercialFields');
+
+  function toggleCommercialFields() {
+    commercialFields.style.display = typeEl.value === 'commercial' ? 'grid' : 'none';
+  }
+  typeEl.addEventListener('change', toggleCommercialFields);
+  toggleCommercialFields();
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    msg.hidden = true;
+
+    if (!PROJECTS_FORM_URL) {
+      msg.textContent = 'Set PROJECTS_FORM_URL in admin-project-form.html after deploying ProjectsApi.gs.';
+      msg.className = 'msg err';
+      msg.hidden = false;
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
+
+    const fd = new FormData(form);
+    const body = new URLSearchParams();
+    fd.forEach((value, key) => body.append(key, String(value)));
+
+    try {
+      const res = await fetch(PROJECTS_FORM_URL, {
+        method: 'POST',
+        body: body.toString(),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      });
+      const data = await res.json();
+      if (data.ok) {
+        msg.textContent = 'Saved. Refresh project pages to see the update.';
+        msg.className = 'msg ok';
+        form.reset();
+        toggleCommercialFields();
+      } else {
+        throw new Error(data.error || 'Save failed');
+      }
+    } catch (err) {
+      msg.textContent = err.message || 'Could not save. Check secret, sheet tab, and Apps Script URL.';
+      msg.className = 'msg err';
+    } finally {
+      msg.hidden = false;
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Save to Google Sheet';
+    }
+  });
+  </script>
+</body>
+</html>
