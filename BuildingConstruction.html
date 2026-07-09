@@ -548,6 +548,9 @@
       projects = (window.BUILDING_PROJECTS || []).map((p) => ({
         ...p,
         cover: p.cover || (Array.isArray(p.gallery) ? p.gallery[0] : '') || '',
+        description:
+          p.description ||
+          `Residential construction at ${p.title || 'Bengaluru'} — quality structure, elevation, and finishes.`,
       }));
 
       const projectsGrid = document.getElementById('projectsGrid');

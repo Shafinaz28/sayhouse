@@ -61,6 +61,22 @@
     return `Interior project for ${owner || 'client'} at ${title || 'Bengaluru'} — refined finishes and practical layouts.`;
   }
 
+  function normalizeBuiltinData() {
+    if (Array.isArray(window.BUILDING_PROJECTS) && window.BUILDING_PROJECTS.length) {
+      window.BUILDING_PROJECTS = normalizeResidential(window.BUILDING_PROJECTS, buildingFallbackDescription);
+    }
+
+    if (Array.isArray(window.INTERIOR_PROJECTS) && window.INTERIOR_PROJECTS.length) {
+      window.INTERIOR_PROJECTS = normalizeResidential(
+        window.INTERIOR_PROJECTS.filter((p) => {
+          const g = (p.gallery || []).filter(Boolean);
+          return g.length && g[0] !== 'interior/';
+        }),
+        interiorFallbackDescription
+      );
+    }
+  }
+
   function applyCommercialFromSheet(rows) {
     if (!window.SayHomesCommercial || !Array.isArray(rows) || !rows.length) return;
 
@@ -130,6 +146,7 @@
 
   async function loadFromSheet() {
     if (!PROJECTS_API_URL) {
+      normalizeBuiltinData();
       loaded = true;
       return false;
     }
@@ -139,10 +156,12 @@
       const data = await res.json();
       const ok = applyPayload(data);
       if (!ok) {
+        normalizeBuiltinData();
         console.warn('Projects sheet returned no usable rows — using built-in project data.');
       }
       return ok;
     } catch (err) {
+      normalizeBuiltinData();
       console.warn('Could not load projects from Google Sheet — using built-in project data.', err);
       return false;
     } finally {

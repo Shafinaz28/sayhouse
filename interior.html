@@ -437,6 +437,9 @@
       projects = (window.INTERIOR_PROJECTS || []).map((p) => ({
         ...p,
         cover: p.cover || (Array.isArray(p.gallery) ? p.gallery[0] : '') || '',
+        description:
+          p.description ||
+          `Interior project for ${p.owner || 'client'} at ${p.title || 'Bengaluru'} — refined finishes and practical layouts.`,
       }));
 
       const projectsGrid = document.getElementById('projectsGrid');
