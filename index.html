@@ -117,12 +117,28 @@
       font-weight:600;
       letter-spacing:0.08em;
       text-transform:uppercase;
-      color:rgba(255,255,255,0.86);
+      color:var(--text);
       text-decoration:none;
       transition:all .25s;
       white-space:nowrap;
       padding:8px 14px;
       border-radius:4px;
+    }
+
+    #navbar.navbar-hero:not(.scrolled) .nav-links a,
+    #navbar.navbar-hero:not(.scrolled) .nav-links a.active,
+    #navbar.navbar-hero:not(.scrolled) .nav-links a:hover {
+      color:var(--text) !important;
+    }
+
+    #navbar.navbar-hero:not(.scrolled) .nav-links a.active {
+      box-shadow:inset 0 -2px 0 currentColor !important;
+    }
+
+    #navbar.navbar-hero:not(.scrolled) .nav-toggle {
+      color:var(--navy);
+      border-color:rgba(15,27,45,0.12);
+      background:#fff;
     }
 
     #navbar.scrolled .nav-links a,
