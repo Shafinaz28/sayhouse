@@ -1,6 +1,5 @@
 /* Two-column project category hero (Interior / Building / Commercial) */
 .project-hero {
-  margin-top: 72px;
   background: var(--cream, #faf7f2);
   padding: 48px 40px 64px;
 }
@@ -179,7 +178,6 @@
 
 @media (max-width: 640px) {
   .project-hero {
-    margin-top: 66px;
     padding: 32px 18px 48px;
   }
 

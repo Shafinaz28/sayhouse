@@ -809,50 +809,7 @@
       }
     }
 
-    /* Unified Navbar */
-    #navbar {
-      background:rgba(236,233,228,0.97);
-      box-shadow:0 1px 0 rgba(0,0,0,0.08);
-      transition:background .35s, box-shadow .35s;
-    }
-    #navbar.scrolled,
-    body.menu-open #navbar {
-      background:rgba(236,233,228,0.97);
-      backdrop-filter:blur(16px);
-      box-shadow:0 1px 0 rgba(0,0,0,0.08);
-    }
-    .nav-logo {
-      color:var(--logo-blue);
-      transition:color .35s;
-      display:flex;
-      align-items:center;
-    }
-    .nav-logo img { height:48px; width:auto; display:block; }
-    .nav-logo span { color:var(--logo-red); }
-    .nav-links a {
-      color:var(--text);
-      padding:8px 14px;
-      border-radius:4px;
-      transition:all .25s;
-    }
-    #navbar.scrolled .nav-links a,
-    body.menu-open .nav-links a { color:var(--text); }
-    .nav-links a:hover,
-    #navbar.scrolled .nav-links a:hover,
-    .nav-links a.active,
-    #navbar.scrolled .nav-links a.active,
-    body.menu-open .nav-links a.active {
-      background:var(--primary);
-      color:#fff;
-    }
-    .nav-toggle {
-      border:1px solid rgba(15,27,45,0.15);
-      background:#fff;
-      color:var(--navy);
-      transition:all .3s;
-      box-shadow:0 8px 24px rgba(15,27,45,0.08);
-    }
-
+    /* Unified Navbar — css/site-navbar.css */
     .float-btn {
       position:fixed;
       right:28px;

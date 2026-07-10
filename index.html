@@ -14,8 +14,8 @@
   <link rel="stylesheet" href="css/uniform-images.css">
   <link rel="stylesheet" href="css/projects-glass.css">
   <link rel="stylesheet" href="css/mobile-responsive.css">
-  <link rel="stylesheet" href="css/site-navbar.css">
   <link rel="stylesheet" href="css/enquiry-popup.css">
+  <link rel="preload" as="image" href="images/Get%20Started.jpg" fetchpriority="high">
 
   <style>
     :root {
@@ -73,26 +73,9 @@
       transform: scale(1);
     }
 
-    /* Navbar */
+    /* Navbar — layout & glass: css/site-navbar.css */
     #navbar {
-      position:fixed;
-      top:0;
-      left:0;
-      width:100%;
-      height:72px;
-      padding:0 40px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      z-index:100;
-      transition:background .35s, box-shadow .35s;
-    }
-
-    #navbar.scrolled,
-    body.menu-open #navbar {
-      background:rgba(250,247,242,0.97);
-      backdrop-filter:blur(16px);
-      box-shadow:0 1px 0 rgba(0,0,0,0.08);
+      /* floating pill + scroll glass handled in site-navbar.css */
     }
 
     .nav-logo {
@@ -145,24 +128,24 @@
     #navbar.scrolled .nav-links a,
     body.menu-open .nav-links a { color:var(--text); }
 
-    .nav-links a:hover,
-    #navbar.scrolled .nav-links a:hover {
-      background:var(--primary);
-      color:#fff !important;
-    }
-    .nav-links a.active,
     #navbar.scrolled .nav-links a.active,
     body.menu-open .nav-links a.active {
-      background:var(--primary);
-      color:#fff !important;
+      color:var(--text);
+      box-shadow:inset 0 -2px 0 currentColor;
+    }
+
+    #navbar.scrolled .nav-links a:hover,
+    body.menu-open .nav-links a:hover {
+      color:var(--text);
+      opacity:0.72;
     }
 
     .nav-cta {
       background:var(--primary);
       color:#fff !important;
       -webkit-text-fill-color:#fff;
-      padding:10px 24px;
-      border-radius:3px;
+      padding:10px 22px;
+      border-radius:999px;
       font-size:0.76rem;
       font-weight:700;
       letter-spacing:0.1em;
@@ -556,7 +539,12 @@
       background:#fff;
       --steps-icon-size:72px;
     }
-  #working-steps .section-head-center { margin-bottom:48px; }
+    #working-steps .section-head-center { margin-bottom:48px; }
+    #working-steps .steps-nav,
+    #working-steps .steps-panels {
+      opacity:1;
+      transform:none;
+    }
   #working-steps .steps-tag {
     display:inline-flex;
     align-items:center;
@@ -1818,6 +1806,7 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="css/site-navbar.css">
 </head>
 
 <body>
@@ -1962,7 +1951,7 @@
         <h2 class="section-title">Your Roadmap to Building the Home of Your Dreams</h2>
       </div>
 
-      <div class="steps-nav reveal d1" role="tablist" aria-label="Construction process steps">
+      <div class="steps-nav" role="tablist" aria-label="Construction process steps">
         <button type="button" class="step-tab active" role="tab" aria-selected="true" aria-controls="step-panel-0" id="step-tab-0" data-step="0">
           <span class="step-num" aria-hidden="true">1</span>
           <span class="step-icon"><i class="fa-solid fa-comments"></i></span>
@@ -1995,10 +1984,10 @@
         </button>
       </div>
 
-      <div class="steps-panels reveal d2">
+      <div class="steps-panels">
         <article class="step-panel active" id="step-panel-0" role="tabpanel" aria-labelledby="step-tab-0">
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/Get Started.jpg" alt="Consultation and planning meeting" loading="lazy">
+            <img class="step-panel-img" src="images/Get%20Started.jpg" alt="Consultation and planning meeting" width="800" height="600" loading="eager" fetchpriority="high" decoding="async">
             <div class="step-panel-content">
               <h3>Let's Get Started</h3>
               <p>We begin with a detailed discussion about your vision, budget, plot details, and timeline. Our team listens carefully and outlines a clear path for your dream home.</p>
@@ -2013,7 +2002,7 @@
 
         <article class="step-panel" id="step-panel-1" role="tabpanel" aria-labelledby="step-tab-1" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/discussing-blueprint.jpg" alt="Home design and specifications" loading="lazy">
+            <img class="step-panel-img" src="images/discussing-blueprint.jpg" alt="Home design and specifications" width="800" height="600" loading="lazy" decoding="async">
             <div class="step-panel-content">
               <h3>Design Specification</h3>
               <p>Our architects prepare floor plans, 3D elevations, and material specifications tailored to your lifestyle, Vastu preferences, and local regulations.</p>
@@ -2073,7 +2062,7 @@
 
         <article class="step-panel" id="step-panel-5" role="tabpanel" aria-labelledby="step-tab-5" hidden>
           <div class="step-panel-inner">
-            <img class="step-panel-img" src="images/Completion & Handover.jpg" alt="Completed home handover" loading="lazy">
+            <img class="step-panel-img" src="images/Completion%20%26%20Handover.jpg" alt="Completed home handover" width="800" height="600" loading="lazy" decoding="async">
             <div class="step-panel-content">
               <h3>Completion &amp; Handover</h3>
               <p>After final inspection and snag resolution, we hand over your home with documentation, warranties, and a walkthrough of every space and system.</p>
@@ -2649,10 +2638,28 @@ const reveals = document.querySelectorAll('.reveal');
       stepPanels.forEach((panel, i) => {
         const active = i === index;
         panel.classList.toggle('active', active);
-        if (active) panel.removeAttribute('hidden');
-        else panel.setAttribute('hidden', '');
+        if (active) {
+          panel.removeAttribute('hidden');
+          const img = panel.querySelector('.step-panel-img');
+          if (img) {
+            img.loading = 'eager';
+            if (!img.complete && img.src) {
+              const preload = new Image();
+              preload.src = img.currentSrc || img.src;
+            }
+          }
+        } else {
+          panel.setAttribute('hidden', '');
+        }
       });
     }
+
+    document.querySelectorAll('#working-steps .step-panel-img').forEach((img) => {
+      if (img.loading === 'lazy' && img.src) {
+        const preload = new Image();
+        preload.src = img.src;
+      }
+    });
 
     stepTabs.forEach((tab) => {
       tab.addEventListener('click', () => {

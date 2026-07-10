@@ -17,6 +17,11 @@ video {
   max-width: 100%;
 }
 
+.nav-logo img,
+.footer-logo img {
+  background: transparent !important;
+}
+
 .project-img picture,
 .project-img picture img,
 .hero-media picture,
@@ -196,9 +201,9 @@ video {
 
   .page-hero {
     height: auto !important;
-    min-height: 260px;
-    margin-top: 66px;
-    padding: 48px 16px 40px;
+    min-height: calc(300px + var(--navbar-hero-space, 88px));
+    margin-top: 0 !important;
+    padding: var(--navbar-hero-space, 88px) 16px 40px;
   }
 
   .page-hero-inner h1 {

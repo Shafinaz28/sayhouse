@@ -53,7 +53,7 @@
   function buildPopup() {
     const existing = document.getElementById('enquiryPopup');
     if (existing) {
-      if (existing.querySelector('.input-icon-wrap')) {
+      if (existing.querySelector('.input-icon-wrap') || existing.querySelector('.enquiry-popup-icon')) {
         existing.remove();
       } else {
         popupEl = existing;
@@ -77,7 +77,6 @@
       <div class="enquiry-popup-box">
         <button type="button" class="enquiry-popup-close" data-close-popup aria-label="Close enquiry form"><i class="fa-solid fa-xmark"></i></button>
         <div class="enquiry-popup-header">
-          <div class="enquiry-popup-icon" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></div>
           <p class="enquiry-popup-kicker">Get In Touch</p>
           <h2 id="enquiryPopupTitle">Let's Build Together</h2>
           <p>Share your details and our team will get back to you within 24 hours.</p>

@@ -47,6 +47,7 @@
 
   function upgradeImg(img) {
     if (!img || img.closest('picture')) return;
+    if (img.classList.contains('step-panel-img') || img.dataset.skipAvif === '1') return;
     const src = img.getAttribute('src');
     if (!src || /^https?:\/\//i.test(src)) return;
 
