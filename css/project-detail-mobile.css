@@ -145,7 +145,17 @@
     padding: 13px 20px;
   }
 
-  /* Lightbox */
+/* Lightbox */
+  .sayhomes-lightbox-modal.reveal-open {
+    cursor: pointer;
+  }
+
+  .sayhomes-lightbox-modal.reveal-open .lightbox-modal-img,
+  .sayhomes-lightbox-modal.reveal-open .lightbox-nav-btn,
+  .sayhomes-lightbox-modal.reveal-open .lightbox-close-btn {
+    cursor: default;
+  }
+
   .sayhomes-lightbox-modal {
     padding: 0;
   }

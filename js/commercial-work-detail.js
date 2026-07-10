@@ -135,6 +135,14 @@
       card.addEventListener('click', () => openLightbox(index));
     });
 
+    function shouldIgnoreLightboxBackdropClick(target) {
+      return (
+        target.closest('.lightbox-modal-img') ||
+        target.closest('.lightbox-nav-btn') ||
+        target.closest('.lightbox-close-btn')
+      );
+    }
+
     closeBtn?.addEventListener('click', closeLightbox);
     prevLightboxBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -145,7 +153,7 @@
       showNext();
     });
     lightboxModal?.addEventListener('click', (e) => {
-      if (e.target === lightboxModal) closeLightbox();
+      if (!shouldIgnoreLightboxBackdropClick(e.target)) closeLightbox();
     });
 
     document.addEventListener('keydown', function onKey(e) {

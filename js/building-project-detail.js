@@ -125,15 +125,33 @@
         });
       });
 
+      function shouldIgnoreLightboxBackdropClick(target) {
+        return (
+          target.closest('.lightbox-modal-img') ||
+          target.closest('.lightbox-nav-btn') ||
+          target.closest('.lightbox-close-btn')
+        );
+      }
+
       if (lightboxModal && closeBtn) {
         // Close on clicking 'X'
         closeBtn.addEventListener('click', closeLightbox);
-        if (prevLightboxBtn) prevLightboxBtn.addEventListener('click', lightboxPrev);
-        if (nextLightboxBtn) nextLightboxBtn.addEventListener('click', lightboxNext);
+        if (prevLightboxBtn) {
+          prevLightboxBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxPrev();
+          });
+        }
+        if (nextLightboxBtn) {
+          nextLightboxBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            lightboxNext();
+          });
+        }
 
-        // Close on clicking outside the image background framework wrapper area
+        // Close on backdrop or empty space beside the image
         lightboxModal.addEventListener('click', (e) => {
-          if (e.target === lightboxModal) closeLightbox();
+          if (!shouldIgnoreLightboxBackdropClick(e.target)) closeLightbox();
         });
 
         document.addEventListener('keydown', (e) => {
