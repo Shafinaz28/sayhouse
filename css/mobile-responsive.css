@@ -12,8 +12,23 @@ body {
 
 img,
 picture,
+picture img,
 video {
   max-width: 100%;
+}
+
+.project-img picture,
+.project-img picture img,
+.hero-media picture,
+.hero-media picture img,
+.gallery-grid-card picture,
+.gallery-grid-card picture img,
+#gallery .gallery-item picture,
+#gallery .gallery-item picture img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .inner {

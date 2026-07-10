@@ -860,10 +860,7 @@
     <div class="projects-grid">
       <a href="interior.html" class="project-card reveal d1">
         <div class="project-img">
-          <picture>
-            <source srcset="images/KI1.avif" type="image/avif">
-            <img src="images/KI1.jpg" alt="Interior Projects" loading="lazy">
-          </picture>
+          <img src="images/KI1.jpg" alt="Interior Projects" loading="lazy">
           <span class="project-badge">Interior</span>
         </div>
         <div class="project-content">
@@ -878,10 +875,7 @@
 
       <a href="BuildingConstruction.html" class="project-card reveal d2">
         <div class="project-img">
-          <picture>
-            <source srcset="residentail images/DIrphan.avif" type="image/avif">
-            <img src="residentail images/DIrphan.jpg" alt="Building Construction" loading="lazy">
-          </picture>
+          <img src="residentail images/DIrphan.jpg" alt="Building Construction" loading="lazy">
           <span class="project-badge">Construction</span>
         </div>
         <div class="project-content">
@@ -896,10 +890,7 @@
 
       <a href="CommercialProjects.html" class="project-card reveal d3">
         <div class="project-img">
-          <picture>
-            <source srcset="commercial/GSK%20Conventional%20Hall,%20Chikkaballapura.avif" type="image/avif">
-            <img src="commercial/GSK%20Conventional%20Hall,%20Chikkaballapura.jpg" alt="Commercial Projects" loading="lazy">
-          </picture>
+          <img src="commercial/GSK%20Conventional%20Hall,%20Chikkaballapura.jpg" alt="Commercial Projects" loading="lazy">
           <span class="project-badge">Commercial</span>
         </div>
         <div class="project-content">
@@ -998,7 +989,13 @@ const revealObserver = new IntersectionObserver((entries) => {
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/lead-form.js"></script>
+  <script src="js/avif-image.js"></script>
     <script src="js/enquiry-popup.js"></script>
   <script src="js/site-navbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.SayHomesAvif) SayHomesAvif.upgradeAll();
+    });
+  </script>
 </body>
 </html>

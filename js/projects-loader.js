@@ -23,7 +23,18 @@
     return String(text || '')
       .split(/\r?\n|,/)
       .map((s) => s.trim())
-      .filter(Boolean);
+      .filter(Boolean)
+      .map(toFallbackPath);
+  }
+
+  function toFallbackPath(src) {
+    return String(src || '')
+      .replace(/^\.\//, '')
+      .replace(/\.(avif|png|webp)(\?.*)?$/i, '.jpg$2');
+  }
+
+  function fallbackGallery(list) {
+    return (list || []).filter(Boolean).map(toFallbackPath);
   }
 
   function sortByOwner(list) {
@@ -35,7 +46,7 @@
     return sortByOwner(
       (list || [])
         .map((p) => {
-          const gallery = (p.gallery || []).filter(Boolean);
+          const gallery = fallbackGallery(p.gallery);
           if (!gallery.length) return null;
           const title = p.title || p.location || '';
           return {
@@ -46,7 +57,7 @@
               p.description ||
               fallbackDescription(title, p.owner),
             gallery,
-            cover: p.cover || gallery[0],
+            cover: toFallbackPath(p.cover || gallery[0]),
           };
         })
         .filter(Boolean)
@@ -90,7 +101,7 @@
     rows.forEach((row) => {
       const key = String(row.key || '').trim();
       if (!key) return;
-      const images = (row.images || row.gallery || []).filter(Boolean);
+      const images = fallbackGallery(row.images || row.gallery);
       if (!images.length) return;
 
       projects[key] = {

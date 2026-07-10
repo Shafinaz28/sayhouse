@@ -7,7 +7,7 @@ const path = require('path');
 const sharp = require('sharp');
 
 const ROOT = path.join(__dirname, '..');
-const FOLDERS = ['images', 'interior', 'commercial', 'residentail images'];
+const FOLDERS = ['images', 'interior', 'commercial', 'residentail images', 'logo'];
 const EXT = /\.(jpe?g|png)$/i;
 const CONCURRENCY = 6;
 

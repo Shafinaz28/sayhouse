@@ -53,6 +53,11 @@
 
     document.title = `${selectedProject.name || 'Commercial Project'} | SayHomes`;
 
+    const pic = (src, alt, opts) =>
+      window.SayHomesAvif
+        ? SayHomesAvif.picture(src, alt, opts)
+        : `<img src="${src}" alt="${alt.replace(/"/g, '&quot;')}" loading="${opts?.loading || 'lazy'}">`;
+
     container.innerHTML = `
       <section class="hero-card">
         <div class="hero-content">
@@ -64,7 +69,7 @@
           </a>
         </div>
         <div class="hero-media">
-          <img src="${heroImage}" alt="${selectedProject.name}" loading="lazy">
+          ${pic(heroImage, selectedProject.name, { loading: 'eager', fetchPriority: 'high' })}
         </div>
       </section>
 
@@ -72,8 +77,8 @@
         <p class="gallery-section-tag">Gallery</p>
         <div class="gallery-grid-display">
           ${galleryImages.map((img, imageIndex) => `
-            <div class="gallery-grid-card" data-full-src="${img}">
-              <img src="${img}" alt="${selectedProject.name} View ${imageIndex + 1}" loading="lazy">
+            <div class="gallery-grid-card" data-full-src="${window.SayHomesAvif ? SayHomesAvif.fallbackSrc(img) : img}">
+              ${pic(img, `${selectedProject.name} View ${imageIndex + 1}`, { loading: 'lazy' })}
               <span class="view-label">View</span>
             </div>
           `).join('')}

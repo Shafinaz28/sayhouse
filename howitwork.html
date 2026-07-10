@@ -498,7 +498,13 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/lead-form.js"></script>
+  <script src="js/avif-image.js"></script>
     <script src="js/enquiry-popup.js"></script>
   <script src="js/site-navbar.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.SayHomesAvif) SayHomesAvif.upgradeAll();
+    });
+  </script>
 </body>
 </html>
