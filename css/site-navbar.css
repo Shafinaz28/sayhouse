@@ -5,6 +5,8 @@
   --navbar-bar-height: 62px;
   --navbar-hero-gap: 28px;
   --navbar-hero-space: calc(var(--navbar-float-top) + var(--navbar-bar-height) + var(--navbar-hero-gap));
+  --navbar-max-width: 1360px;
+  --navbar-side-inset: 28px;
 }
 
 #navbar {
@@ -12,9 +14,9 @@
   top: 14px !important;
   left: 50% !important;
   transform: translateX(-50%) !important;
-  width: min(1140px, calc(100% - 48px)) !important;
+  width: min(var(--navbar-max-width), calc(100% - var(--navbar-side-inset) * 2)) !important;
   height: 62px !important;
-  padding: 0 12px 0 20px !important;
+  padding: 0 16px 0 24px !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -64,7 +66,7 @@ body.menu-open #navbar.navbar-hero:not(.scrolled) {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: 2rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -312,9 +314,9 @@ body.menu-open #navbar.navbar-hero:not(.scrolled) .nav-toggle {
 
   #navbar {
     top: 10px !important;
-    width: calc(100% - 20px) !important;
+    width: calc(100% - 16px) !important;
     height: 58px !important;
-    padding: 0 10px 0 14px !important;
+    padding: 0 12px 0 16px !important;
   }
 
   .nav-logo img {
@@ -323,8 +325,8 @@ body.menu-open #navbar.navbar-hero:not(.scrolled) .nav-toggle {
 
   .mobile-menu {
     top: 78px;
-    left: 10px;
-    right: 10px;
+    left: 8px;
+    right: 8px;
     border-radius: 18px;
   }
 
