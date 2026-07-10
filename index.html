@@ -1671,32 +1671,47 @@
       .step-panel-img { min-height:260px; }
       .step-panel-content { padding:32px 24px; }
       .packages-grid-wrap {
-        overflow-x:auto;
-        -webkit-overflow-scrolling:touch;
-        overscroll-behavior-x:contain;
-        margin-inline:-20px;
-        padding-inline:20px;
-        padding-bottom:18px;
-        scroll-snap-type:x proximity;
+        overflow: visible;
+        margin-inline: 0;
+        padding-inline: 0;
+        padding-bottom: 0;
+        scroll-snap-type: none;
       }
       .packages-grid {
-        grid-template-columns:repeat(4, minmax(240px, 240px));
-        gap:14px;
-        width:max-content;
-        max-width:none;
-        margin-top:40px;
+        grid-template-columns: 1fr;
+        gap: 16px;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 32px;
       }
       .packages-grid .pkg-card {
-        scroll-snap-align:start;
-        min-width:240px;
+        scroll-snap-align: none;
+        min-width: 0;
+        width: 100%;
       }
       .service-card,
       .pkg-card {
-        border-radius:18px;
-        box-shadow:0 14px 40px rgba(15,27,45,0.06);
+        border-radius: 18px;
+        box-shadow: 0 14px 40px rgba(15, 27, 45, 0.06);
+      }
+      .pkg-card {
+        padding: 28px 22px;
+      }
+      .pkg-card h3 {
+        font-size: 1.28rem;
+      }
+      .pkg-card p {
+        font-size: 0.84rem;
+        line-height: 1.65;
+      }
+      .pkg-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.25rem;
+        margin-bottom: 18px;
       }
       .service-card {
-        padding:36px 26px;
+        padding: 36px 26px;
       }
       .gallery-grid {
         gap:14px;

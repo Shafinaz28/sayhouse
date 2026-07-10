@@ -56,7 +56,25 @@ video {
 }
 
 /* Mobile */
-@media (max-width: 640px) {
+    @media (max-width: 768px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 36px;
+      }
+
+      .packages-grid-wrap {
+        overflow: visible;
+        margin-inline: 0;
+        padding-inline: 0;
+      }
+
+      .pkg-card {
+        padding: 30px 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
   #navbar {
     height: 66px;
     padding-inline: 16px !important;
@@ -285,6 +303,8 @@ video {
   #gallery .gallery-overlay {
     opacity: 1 !important;
     padding: 14px 16px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
 
   #gallery .gallery-overlay span {
@@ -298,13 +318,18 @@ video {
   }
 }
 
-/* Glass cards — lighter blur on small screens */
+/* Gallery images stay sharp on mobile — no backdrop blur on image containers */
 @media (max-width: 768px) {
+  #gallery .gallery-item,
   .project-card,
-  .project-content,
-  #gallery .gallery-item {
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+  .project-img {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  #gallery .gallery-item img,
+  .project-img img {
+    filter: none !important;
   }
 }
 

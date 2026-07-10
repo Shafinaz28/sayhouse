@@ -51,9 +51,14 @@
   }
 
   function buildPopup() {
-    if (document.getElementById('enquiryPopup')) {
-      popupEl = document.getElementById('enquiryPopup');
-      return;
+    const existing = document.getElementById('enquiryPopup');
+    if (existing) {
+      if (existing.querySelector('.input-icon-wrap')) {
+        existing.remove();
+      } else {
+        popupEl = existing;
+        return;
+      }
     }
 
     const pageName = document.title.replace(/\s*\|.*$/, '').trim() || 'SayHomes';
@@ -70,8 +75,9 @@
     popupEl.innerHTML = `
       <div class="enquiry-popup-backdrop" data-close-popup></div>
       <div class="enquiry-popup-box">
-        <button type="button" class="enquiry-popup-close" data-close-popup aria-label="Close enquiry form">&times;</button>
+        <button type="button" class="enquiry-popup-close" data-close-popup aria-label="Close enquiry form"><i class="fa-solid fa-xmark"></i></button>
         <div class="enquiry-popup-header">
+          <div class="enquiry-popup-icon" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></div>
           <p class="enquiry-popup-kicker">Get In Touch</p>
           <h2 id="enquiryPopupTitle">Let's Build Together</h2>
           <p>Share your details and our team will get back to you within 24 hours.</p>
@@ -80,25 +86,25 @@
           <input type="hidden" name="source" value="${source.replace(/"/g, '&quot;')}">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="popup-name">Full Name</label>
+              <label class="form-label" for="popup-name"><i class="fa-solid fa-user"></i> Full Name</label>
               <input class="form-input" id="popup-name" name="name" type="text" placeholder="Your full name" required>
             </div>
             <div class="form-group">
-              <label class="form-label" for="popup-phone">Phone Number</label>
+              <label class="form-label" for="popup-phone"><i class="fa-solid fa-phone"></i> Phone Number</label>
               <input class="form-input" id="popup-phone" name="phone" type="tel" placeholder="+91 XXXXX XXXXX" required>
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="popup-email">Email Address</label>
+            <label class="form-label" for="popup-email"><i class="fa-solid fa-envelope"></i> Email Address</label>
             <input class="form-input" id="popup-email" name="email" type="email" placeholder="you@example.com" required>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label" for="popup-location">Location</label>
+              <label class="form-label" for="popup-location"><i class="fa-solid fa-location-dot"></i> Location</label>
               <input class="form-input" id="popup-location" name="location" type="text" placeholder="Your city">
             </div>
             <div class="form-group">
-              <label class="form-label" for="popup-service">Service Required</label>
+              <label class="form-label" for="popup-service"><i class="fa-solid fa-layer-group"></i> Service Required</label>
               <select class="form-input" id="popup-service" name="service" required>
                 <option value="">Select a service</option>
                 <option value="Building Construction">Building Construction</option>
@@ -110,12 +116,12 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="popup-message">Message</label>
+            <label class="form-label" for="popup-message"><i class="fa-solid fa-comment-dots"></i> Message</label>
             <textarea class="form-input" id="popup-message" name="message" rows="3" placeholder="Tell us about your project..."></textarea>
           </div>
           <button type="submit" class="submit-btn" data-submit-btn>
+            <i class="fa-solid fa-paper-plane" data-btn-icon aria-hidden="true"></i>
             <span data-btn-text>Submit Enquiry</span>
-            <i class="fa-solid fa-arrow-right" data-btn-icon></i>
             <span class="btn-spinner hidden" data-btn-spinner aria-hidden="true"></span>
           </button>
         </form>
