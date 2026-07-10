@@ -192,8 +192,9 @@ video {
   }
 
   .float-btn {
-    right: max(14px, env(safe-area-inset-right, 0px));
-    bottom: max(14px, env(safe-area-inset-bottom, 0px));
+    position: fixed !important;
+    right: max(14px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(14px, env(safe-area-inset-bottom, 0px)) !important;
     width: 48px;
     height: 48px;
     font-size: 1.15rem;

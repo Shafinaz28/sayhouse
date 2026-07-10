@@ -362,3 +362,46 @@ main.page {
     min-height: calc(300px + var(--navbar-hero-space)) !important;
   }
 }
+
+/* Floating WhatsApp button — fixed bottom-right on all pages */
+.float-btn {
+  position: fixed !important;
+  right: 28px !important;
+  bottom: 28px !important;
+  left: auto !important;
+  top: auto !important;
+  z-index: 250 !important;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--primary, #1a3c6e);
+  color: #fff !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  text-decoration: none;
+  box-shadow: 0 8px 32px rgba(26, 60, 110, 0.35);
+  animation: sayhomes-float-pulse 2.5s ease infinite;
+}
+
+.float-btn:hover,
+.float-btn:focus-visible {
+  color: #fff !important;
+  transform: translateY(-2px);
+}
+
+@keyframes sayhomes-float-pulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(26, 60, 110, 0.35); }
+  50% { box-shadow: 0 8px 48px rgba(26, 60, 110, 0.6); }
+}
+
+@media (max-width: 640px) {
+  .float-btn {
+    right: max(14px, env(safe-area-inset-right, 0px)) !important;
+    bottom: max(14px, env(safe-area-inset-bottom, 0px)) !important;
+    width: 48px;
+    height: 48px;
+    font-size: 1.15rem;
+  }
+}
