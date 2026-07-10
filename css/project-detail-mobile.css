@@ -1,0 +1,199 @@
+/* Individual project detail pages — mobile & tablet */
+
+@media (max-width: 900px) {
+  .page {
+    padding-top: 100px;
+  }
+
+  .detail-shell {
+    gap: 28px;
+  }
+
+  .hero-card {
+    gap: 24px;
+  }
+
+  .hero-media {
+    max-height: none;
+    border-radius: 18px;
+  }
+
+  .gallery-grid-display {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 88px 16px 24px;
+  }
+
+  /* Back full width, Previous / Next side by side */
+  .project-nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 22px;
+    width: 100%;
+  }
+
+  .project-nav-container .back-btn-custom {
+    flex: 1 1 100%;
+    width: 100%;
+    justify-content: center;
+    padding: 11px 14px;
+    font-size: 0.64rem;
+    letter-spacing: 0.06em;
+    text-align: center;
+  }
+
+  .project-nav-container .nav-btn-alt {
+    flex: 1 1 calc(50% - 5px);
+    min-width: 0;
+    justify-content: center;
+    padding: 11px 12px;
+    font-size: 0.68rem;
+  }
+
+  .hero-content {
+    gap: 14px;
+    width: 100%;
+  }
+
+  .hero-kicker {
+    font-size: 0.64rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero-title {
+    font-size: clamp(1.65rem, 7.5vw, 2.25rem);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .hero-wa-cta {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    padding: 12px 16px;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+  }
+
+  .hero-media {
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(15, 27, 45, 0.08);
+  }
+
+  .gallery-section-tag {
+    font-size: 0.62rem;
+  }
+
+  .gallery-grid-display {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .gallery-grid-card {
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .view-label {
+    bottom: 10px;
+    right: 10px;
+    padding: 5px 12px;
+    font-size: 0.62rem;
+  }
+
+  .project-specs-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .space-ctc-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 28px 20px;
+    border-radius: 16px;
+    gap: 18px;
+    margin-top: 16px;
+  }
+
+  .space-ctc-title {
+    font-size: clamp(1.35rem, 6vw, 1.75rem);
+  }
+
+  .space-ctc-sub {
+    font-size: 0.84rem;
+    max-width: none;
+  }
+
+  .space-ctc-btn {
+    width: 100%;
+    justify-content: center;
+    white-space: normal;
+    text-align: center;
+    padding: 13px 20px;
+  }
+
+  /* Lightbox */
+  .sayhomes-lightbox-modal {
+    padding: 0;
+  }
+
+  .lightbox-close-btn {
+    top: max(12px, env(safe-area-inset-top, 0px));
+    right: 12px;
+    font-size: 28px;
+    line-height: 1;
+    z-index: 4;
+  }
+
+  .lightbox-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .lightbox-nav-prev {
+    left: 10px;
+  }
+
+  .lightbox-nav-next {
+    right: 10px;
+  }
+
+  .lightbox-img-wrapper {
+    width: 94%;
+    height: 78vh;
+  }
+
+  .video-box {
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .project-nav-container .back-btn-custom {
+    font-size: 0.6rem;
+    padding: 10px 12px;
+  }
+
+  .project-nav-container .nav-btn-alt {
+    font-size: 0.64rem;
+    padding: 10px 8px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.45rem, 8vw, 1.85rem);
+  }
+}
