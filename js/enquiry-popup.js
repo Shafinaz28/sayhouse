@@ -33,8 +33,9 @@
     showTimeout = setTimeout(openPopup, wait);
   }
 
-  function openPopup() {
-    if (isBlocked() || isOpen()) return;
+  function openPopup(manual) {
+    if (!manual && isBlocked()) return;
+    if (isOpen()) return;
 
     clearShowTimeout();
     buildPopup();
@@ -189,6 +190,11 @@
     resumeSchedule();
     watchInterval = setInterval(watchDue, 5000);
   }
+
+  window.SayHomesEnquiry = {
+    open: () => openPopup(true),
+    close: closePopup,
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', boot);

@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/uniform-images.css">
+  <link rel="stylesheet" href="css/site-navbar.css">
   <link rel="stylesheet" href="css/enquiry-popup.css">
   <style>
     :root {
@@ -147,7 +148,7 @@
 <body>
 
   <!-- Navbar -->
-  <nav id="navbar">
+    <nav id="navbar">
     <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
 
     <ul class="nav-links">
@@ -159,7 +160,7 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <a href="contact.html" class="nav-cta">Start a Project</a>
+    <a href="#" class="nav-cta" data-open-enquiry>Start a Project</a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>
@@ -172,8 +173,9 @@
     <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
     <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
     <a href="howitwork.html"><i class="fa-solid fa-route"></i>How It Works</a>
-    <a href="contact.html"><i class="fa-solid fa-phone"></i>Start a Project</a>
+    <a href="#" data-open-enquiry><i class="fa-solid fa-phone"></i>Start a Project</a>
   </div>
+
 
   <a href="https://wa.me/919686326936" class="float-btn" title="WhatsApp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
 
@@ -474,12 +476,6 @@
   </footer>
 
   <script>
-    const navToggle = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const toggleIcon = navToggle.querySelector('i');
-    let menuOpen = false;
-    let menuHistoryActive = false;
-
     function goBackPage() {
       if (window.history.length > 1) {
         window.history.back();
@@ -487,48 +483,6 @@
         window.location.href = 'index.html';
       }
     }
-
-    function setMobileMenu(open, fromPopstate) {
-      menuOpen = open;
-      mobileMenu.classList.toggle('active', open);
-      document.body.classList.toggle('menu-open', open);
-      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      toggleIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-      if (!open && menuHistoryActive && !fromPopstate) {
-        menuHistoryActive = false;
-      }
-    }
-
-    navToggle.addEventListener('click', () => {
-      if (menuOpen) {
-        if (menuHistoryActive) {
-          window.history.back();
-        } else {
-          setMobileMenu(false);
-        }
-        return;
-      }
-      setMobileMenu(true);
-      history.pushState({ sayhomesMenu: true }, '');
-      menuHistoryActive = true;
-    });
-
-    window.addEventListener('popstate', () => {
-      if (menuOpen) {
-        setMobileMenu(false, true);
-        menuHistoryActive = false;
-      }
-    });
-
-    mobileMenu.querySelectorAll('a').forEach((a) => {
-      a.addEventListener('click', () => {
-        if (menuHistoryActive) {
-          menuHistoryActive = false;
-          history.replaceState(null, '', location.href);
-        }
-        setMobileMenu(false);
-      });
-    });
 
     document.getElementById('heroBackBtn')?.addEventListener('click', goBackPage);
     document.getElementById('breadcrumbBack')?.addEventListener('click', (e) => {
@@ -544,6 +498,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/lead-form.js"></script>
-  <script src="js/enquiry-popup.js"></script>
+    <script src="js/enquiry-popup.js"></script>
+  <script src="js/site-navbar.js"></script>
 </body>
 </html>

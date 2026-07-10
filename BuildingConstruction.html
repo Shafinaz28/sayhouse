@@ -12,7 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="css/uniform-images.css">
+  <link rel="stylesheet" href="css/projects-glass.css">
+  <link rel="stylesheet" href="css/mobile-responsive.css">
   <link rel="stylesheet" href="css/project-hero.css">
+  <link rel="stylesheet" href="css/site-navbar.css">
   <link rel="stylesheet" href="css/enquiry-popup.css">
 
   <style>
@@ -390,7 +393,7 @@
 </head>
 <body>
   <!-- Navbar -->
-  <nav id="navbar">
+    <nav id="navbar">
     <a href="index.html" class="nav-logo"><img src="images/logo.png" alt="SayHomes logo"></a>
 
     <ul class="nav-links">
@@ -402,7 +405,7 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
 
-    <a href="contact.html" class="nav-cta">Start a Project</a>
+    <a href="#" class="nav-cta" data-open-enquiry>Start a Project</a>
 
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>
@@ -415,8 +418,9 @@
     <a href="packages.html"><i class="fa-solid fa-layer-group"></i>Packages</a>
     <a href="about.html"><i class="fa-solid fa-building"></i>About</a>
     <a href="howitwork.html"><i class="fa-solid fa-route"></i>How It Works</a>
-    <a href="contact.html"><i class="fa-solid fa-phone"></i>Start a Project</a>
+    <a href="#" data-open-enquiry><i class="fa-solid fa-phone"></i>Start a Project</a>
   </div>
+
 
   <a href="https://wa.me/919686326936" class="float-btn" title="WhatsApp Us" aria-label="WhatsApp Us">
     <i class="fa-brands fa-whatsapp"></i>
@@ -442,7 +446,7 @@
     </div>
   </header>
 
-  <section class="section">
+  <section class="section projects-glass-section">
     <div class="inner">
       <div class="section-head">
         <span class="section-tag">Construction Project Gallery</span>
@@ -533,6 +537,7 @@
 
   <script src="js/building-projects-data.js"></script>
   <script src="js/projects-loader.js"></script>
+  <script src="js/avif-image.js"></script>
   <script src="js/residential-gallery.js"></script>
   <script>
     let projects = [];
@@ -558,7 +563,7 @@
 
       projectsGrid.innerHTML = projects.map((p, i) => `
       <div class="project-card" role="button" tabindex="0" onclick="openProjectDetail(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProjectDetail(${i});}">
-        <div class="project-img"><img src="${p.cover}" alt="${p.title} — ${p.owner}"><span class="project-badge">Construction</span></div>
+        <div class="project-img">${SayHomesAvif.picture(p.cover, `${p.title} — ${p.owner}`)}<span class="project-badge">Construction</span></div>
         <div class="project-content">
           <div class="project-owner">${p.owner}</div>
           <h3>${p.title}</h3>
@@ -582,50 +587,10 @@
     function closeImageLightbox() { SayHomesGallery.requestCloseLightbox(); }
 
     (window.SayHomesProjects ? SayHomesProjects.ensureLoaded() : Promise.resolve()).then(renderProjectsGrid);
-
-    const navbar = document.getElementById('navbar');
-    const navToggle = document.getElementById('navToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const toggleIcon = navToggle.querySelector('i');
-    const currentPage = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    const navTargets = new Set([currentPage]);
-    if (!currentPage) navTargets.add('index.html');
-    if (['interior.html', 'buildingconstruction.html', 'commercialprojects.html'].includes(currentPage)) {
-      navTargets.add('projects.html');
-    }
-    document.querySelectorAll('.nav-links a, #mobileMenu a').forEach((link) => {
-      const href = (link.getAttribute('href') || '').split('#')[0].toLowerCase();
-      if (navTargets.has(href)) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
-      }
-    });
-    function updateNavbar() {
-      navbar.classList.toggle('scrolled', window.scrollY > 40);
-    }
-
-    window.addEventListener('scroll', updateNavbar);
-    window.addEventListener('load', updateNavbar);
-
-    navToggle.addEventListener('click', () => {
-      const isOpen = mobileMenu.classList.toggle('active');
-      document.body.classList.toggle('menu-open', isOpen);
-      navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      toggleIcon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-        document.body.classList.remove('menu-open');
-        navToggle.setAttribute('aria-expanded', 'false');
-        toggleIcon.className = 'fa-solid fa-bars';
-      });
-    });
-  
-  </script>
+</script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="js/lead-form.js"></script>
-  <script src="js/enquiry-popup.js"></script>
+    <script src="js/enquiry-popup.js"></script>
+  <script src="js/site-navbar.js"></script>
 </body>
 </html>

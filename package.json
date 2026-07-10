@@ -1,0 +1,25 @@
+{
+  "name": "sayhouse",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "convert:avif": "node scripts/convert-to-avif.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shafinaz28/sayhouse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Shafinaz28/sayhouse/issues"
+  },
+  "homepage": "https://github.com/Shafinaz28/sayhouse#readme",
+  "devDependencies": {
+    "sharp": "^0.35.3"
+  }
+}
