@@ -404,7 +404,6 @@
       <div class="section-head">
         <span class="section-tag">Construction Project Gallery</span>
         <h2 class="section-title">Building Construction Projects</h2>
-        <p class="section-sub">Each card shows the homeowner. Tap a card to view the building construction photo gallery for that project.</p>
       </div>
       <div class="projects-grid" id="projectsGrid"></div>
     </div>
@@ -516,7 +515,10 @@
 
       projectsGrid.innerHTML = projects.map((p, i) => `
       <div class="project-card" role="button" tabindex="0" onclick="openProjectDetail(${i})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProjectDetail(${i});}">
-        <div class="project-img">${SayHomesAvif.picture(p.cover, `${p.title} — ${p.owner}`)}<span class="project-badge">Construction</span></div>
+        <div class="project-img">${SayHomesAvif.picture(p.cover, `${p.title} — ${p.owner}`, {
+          loading: i < 6 ? 'eager' : 'lazy',
+          fetchPriority: i < 2 ? 'high' : '',
+        })}<span class="project-badge">Construction</span></div>
         <div class="project-content">
           <div class="project-owner">${p.owner}</div>
           <h3>${p.title}</h3>
@@ -525,6 +527,10 @@
         </div>
       </div>
     `).join('');
+
+      if (window.SayHomesProjects && SayHomesProjects.bindDriveImageFallbacks) {
+        SayHomesProjects.bindDriveImageFallbacks(projectsGrid);
+      }
     }
 
     function openProjectDetail(index) {

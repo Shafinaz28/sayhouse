@@ -1,24 +1,28 @@
 /**
- * SayHomes — Projects API (read + form submit)
+ * SayHomes — Projects API (read + form submit + Drive image proxy)
  *
  * Sheet tab: "Projects"
- *
- * Row 1 headers:
+ * Headers:
  * Type | Owner | Title | Location | Description | Sector | Project Key | Cover Image | Gallery Images | Video URL | Sort Order | Show
  *
- * Type: building | interior | commercial
- * Gallery Images: one image URL per line (Alt+Enter in cell)
- * Sector (commercial only): institutions | hospitality | nonprofit | commercial | peb
- * Project Key (commercial): e.g. leaders, ima, gsk
+ * For building/interior: leave Sector + Project Key EMPTY.
+ * Paste full Drive links only in Cover Image and Gallery Images.
  *
- * Deploy → Web app → Anyone
- * Paste URL in js/projects-loader.js and admin-project-form.html
+ * Deploy → Web app → Anyone → New version after each code change
  */
 
 var PROJECTS_SHEET_NAME = 'Projects';
-var ADMIN_SECRET = 'sayhomes-projects-2026'; // change this after deploy
+var ADMIN_SECRET = 'sayhomes-projects-2026';
 
-function doGet() {
+function doGet(e) {
+  e = e || {};
+  var p = (e.parameter) ? e.parameter : {};
+
+  // Image proxy: /exec?action=drive&id=FILE_ID
+  if (String(p.action || '') === 'drive' && p.id) {
+    return serveDriveImage_(String(p.id));
+  }
+
   var sheet = getProjectsSheet_();
   if (!sheet) {
     return jsonOut_({ ok: true, building: [], interior: [], commercial: [] });
@@ -45,9 +49,11 @@ function doGet() {
     var location = String(obj.Location || '').trim();
     if (!owner && !title) return;
 
-    var gallery = parseGallery_(obj['Gallery Images']);
-    var cover = String(obj['Cover Image'] || '').trim();
+    var images = collectProjectImages_(obj);
+    var gallery = images.gallery.map(normalizeImageUrl_);
+    var cover = normalizeImageUrl_(images.cover);
     if (!gallery.length && cover) gallery = [cover];
+    if (!gallery.length) return;
 
     var item = {
       owner: owner,
@@ -70,11 +76,13 @@ function doGet() {
     }
 
     if (type === 'commercial') {
-      var key = String(obj['Project Key'] || '').trim() || slugify_(owner || title);
+      var key = String(obj['Project Key'] || '').trim();
+      if (/drive\.google\.com/i.test(key)) key = '';
+      key = key || slugify_(owner || title);
       parsed.commercial.push({
         key: key,
         name: owner || title,
-        sector: String(obj.Sector || 'commercial').trim().toLowerCase(),
+        sector: normalizeSector_(obj.Sector),
         video: String(obj['Video URL'] || '').trim(),
         images: gallery,
         cover: cover || gallery[0] || '',
@@ -95,6 +103,39 @@ function doGet() {
   });
 }
 
+/** Serve Drive file as base64 JSON so website <img> can display it */
+function serveDriveImage_(fileId) {
+  try {
+    var file = DriveApp.getFileById(fileId);
+    try {
+      file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+    } catch (shareErr) {}
+
+    var blob = file.getBlob();
+    var bytes = blob.getBytes();
+    // Keep responses smaller for web cards
+    if (bytes.length > 4.5 * 1024 * 1024) {
+      return jsonOut_({
+        ok: true,
+        contentType: 'image/jpeg',
+        url: 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w2000',
+      });
+    }
+
+    return jsonOut_({
+      ok: true,
+      contentType: blob.getContentType() || 'image/jpeg',
+      data: Utilities.base64Encode(bytes),
+    });
+  } catch (err) {
+    return jsonOut_({
+      ok: false,
+      error: String(err),
+      url: 'https://drive.google.com/thumbnail?id=' + fileId + '&sz=w2000',
+    });
+  }
+}
+
 function doPost(e) {
   try {
     var p = (e && e.parameter) ? e.parameter : {};
@@ -107,6 +148,10 @@ function doPost(e) {
       return jsonOut_({ ok: false, error: 'Projects sheet not found' });
     }
 
+    var galleryRaw = String(p.galleryImages || '').trim();
+    var galleryNorm = parseGallery_(galleryRaw).map(normalizeImageUrl_).join('\n');
+    var coverNorm = normalizeImageUrl_(String(p.coverImage || '').trim());
+
     sheet.appendRow([
       String(p.type || '').trim(),
       String(p.owner || '').trim(),
@@ -115,8 +160,8 @@ function doPost(e) {
       String(p.description || '').trim(),
       String(p.sector || '').trim(),
       String(p.projectKey || '').trim(),
-      String(p.coverImage || '').trim(),
-      String(p.galleryImages || '').trim(),
+      coverNorm,
+      galleryNorm || galleryRaw,
       String(p.videoUrl || '').trim(),
       Number(p.sortOrder) || '',
       String(p.show || 'YES').trim(),
@@ -143,13 +188,99 @@ function rowToObject_(headers, row) {
   return obj;
 }
 
+/** Pull image URLs even if customer pasted Drive link in wrong columns */
+function collectProjectImages_(obj) {
+  var cover = String(obj['Cover Image'] || '').trim();
+  var gallery = parseGallery_(obj['Gallery Images']);
+
+  var extras = []
+    .concat(parseGallery_(obj['Sector']))
+    .concat(parseGallery_(obj['Project Key']))
+    .concat(parseGallery_(obj['Video URL']))
+    .concat(parseGallery_(cover));
+
+  extras.forEach(function (u) {
+    if (isUsableImage_(u) && gallery.indexOf(u) === -1) gallery.push(u);
+  });
+
+  // If Cover Image is broken/short, use first good gallery/drive URL
+  if (!isUsableImage_(cover)) {
+    cover = '';
+    for (var i = 0; i < gallery.length; i++) {
+      if (isUsableImage_(gallery[i])) {
+        cover = gallery[i];
+        break;
+      }
+    }
+  }
+
+  gallery = gallery.filter(isUsableImage_);
+  return { cover: cover, gallery: gallery };
+}
+
+function isUsableImage_(u) {
+  var s = String(u || '').trim();
+  if (!s || s.length < 8) return false;
+  if (/youtube\.com|youtu\.be/i.test(s)) return false;
+  if (/^https?:\/\/drive\.google$/i.test(s)) return false; // truncated cell
+  if (/drive\.google\.com/i.test(s)) return /\/d\/|id=/.test(s);
+  if (/\.(jpe?g|png|webp|gif|avif|bmp)(\?|$)/i.test(s)) return true;
+  if (/^https?:\/\//i.test(s)) return true;
+  if (/^(interior|commercial|residentail|images)\//i.test(s)) return true;
+  if (/^\.\//.test(s)) return true;
+  return false;
+}
+
+function normalizeSector_(val) {
+  var s = String(val || 'commercial').trim().toLowerCase();
+  if (/drive\.google\.com|^https?:\/\//i.test(s)) return 'commercial';
+  return s || 'commercial';
+}
+
 function parseGallery_(text) {
-  return String(text || '')
-    .split(/\r?\n|,/)
-    .map(function (s) {
-      return String(s || '').trim();
-    })
-    .filter(Boolean);
+  var lines = String(text || '').split(/\r?\n/);
+  var out = [];
+  lines.forEach(function (line) {
+    var t = String(line || '').trim();
+    if (!t) return;
+    if (/^https?:\/\//i.test(t) || /drive\.google\.com/i.test(t)) {
+      out.push(t);
+      return;
+    }
+    String(t)
+      .split(',')
+      .map(function (s) {
+        return String(s || '').trim();
+      })
+      .filter(Boolean)
+      .forEach(function (s) {
+        out.push(s);
+      });
+  });
+  return out;
+}
+
+function extractDriveId_(url) {
+  var s = String(url || '').trim();
+  var idMatch =
+    s.match(/\/file\/d\/([^/?&#]+)/) ||
+    s.match(/[?&]id=([^&]+)/) ||
+    s.match(/\/thumbnail\?id=([^&]+)/) ||
+    s.match(/\/d\/([^/?&#]+)/);
+  return idMatch && idMatch[1] ? idMatch[1] : '';
+}
+
+/** Convert Google Drive share links for website use (fast — no DriveApp calls here) */
+function normalizeImageUrl_(url) {
+  var s = String(url || '').trim();
+  if (!s) return '';
+
+  var id = extractDriveId_(s);
+  if (id && /drive\.google\.com|docs\.google\.com/i.test(s)) {
+    return 'https://drive.google.com/thumbnail?id=' + id + '&sz=w1000';
+  }
+
+  return s;
 }
 
 function isShown_(val) {

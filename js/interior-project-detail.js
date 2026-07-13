@@ -93,6 +93,10 @@
       </div>
     `;
 
+    if (window.SayHomesProjects && SayHomesProjects.bindDriveImageFallbacks) {
+      SayHomesProjects.bindDriveImageFallbacks(container);
+    }
+
     const lightboxModal = container.querySelector('#sayhomesLightbox');
     const lightboxImg = container.querySelector('#lightboxActiveTargetImage');
     const closeBtn = container.querySelector('.lightbox-close-btn');

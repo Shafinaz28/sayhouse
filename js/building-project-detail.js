@@ -83,6 +83,10 @@
         </div>
       `;
 
+      if (window.SayHomesProjects && SayHomesProjects.bindDriveImageFallbacks) {
+        SayHomesProjects.bindDriveImageFallbacks(container);
+      }
+
       // --- Lightbox Interactive Functionality Logic ---
       const lightboxModal = container.querySelector('#sayhomesLightbox');
       const lightboxImg = container.querySelector('#lightboxActiveTargetImage');
