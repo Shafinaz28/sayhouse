@@ -50,21 +50,6 @@
       video: YT,
       images: ['commercial/lisg1.jpg', 'commercial/lisg2.jpg', 'commercial/lisg3.jpg'],
     },
-    sriguru: {
-      name: 'M/s SRI GURU KOTTURESHWARA BENNE DOSE HOTEL DAVANGERE',
-      video: YT,
-      images: [
-        'commercial/Sriguru.jpg',
-        'commercial/Sriguru1.jpg',
-        'commercial/Sriguru2.jpg',
-        'commercial/Sriguru3.jpg',
-        'commercial/Sriguru4.jpg',
-        'commercial/Sriguru5.jpg',
-        'commercial/Sriguru6.jpg',
-        'commercial/Sriguru7.jpg',
-        'commercial/Sriguru8.jpg',
-      ],
-    },
     resort: {
       name: 'Resort at Gauribidanur',
       video: YT,
@@ -111,8 +96,8 @@
     },
     hospitality: {
       title: 'Hospitality',
-      subtitle: 'F16 · Sri Guru Hotel · Resort',
-      projectKeys: ['f16', 'sriguru', 'resort'],
+      subtitle: 'F16 · Resort',
+      projectKeys: ['f16', 'resort'],
     },
     nonprofit: {
       title: 'Non Profit Org',

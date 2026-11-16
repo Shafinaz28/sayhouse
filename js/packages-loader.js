@@ -198,16 +198,9 @@
     });
   }
 
-  function setLoading(on) {
-    const el = document.getElementById('packagesLoading');
-    if (el) el.hidden = !on;
-  }
-
   async function loadFromSheet() {
     const grid = document.getElementById('packagesGrid');
     if (!grid || !PACKAGES_API_URL) return;
-
-    setLoading(true);
 
     const builtinCards = captureBuiltinCards(grid);
 
@@ -232,8 +225,6 @@
       observeReveals(grid);
     } catch (err) {
       console.warn('Could not load packages from Google Sheet — using built-in packages.', err);
-    } finally {
-      setLoading(false);
     }
   }
 

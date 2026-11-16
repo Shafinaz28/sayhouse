@@ -180,7 +180,7 @@
 
     rows.forEach((row) => {
       const key = String(row.key || '').trim();
-      if (!key) return;
+      if (!key || key === 'sriguru') return;
       const images = fallbackGallery(row.images || row.gallery);
       if (!images.length) return;
 
