@@ -868,6 +868,42 @@
       font-style:italic;
     }
 
+    /* Clientele and associations */
+    #clientele,
+    #associations { background:#fff; }
+    #clientele { padding-bottom:20px; }
+    #associations { padding-top:8px; }
+    .logo-board-grid {
+      list-style:none;
+      display:grid;
+      grid-template-columns:repeat(5, minmax(0, 1fr));
+      gap:8px 28px;
+      align-items:center;
+      margin:40px 0 0;
+      padding:0;
+    }
+    .logo-board-grid li {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:118px;
+      padding:8px 6px;
+    }
+    .logo-board-grid img {
+      display:block;
+      width:auto;
+      height:88px;
+      max-width:100%;
+      max-height:96px;
+      object-fit:contain;
+    }
+    #associations .logo-board-grid {
+      grid-template-columns:repeat(2, minmax(160px, 240px));
+      justify-content:center;
+      gap:12px 72px;
+    }
+    #associations .logo-board-grid img { max-height:112px; }
+
     /* Packages */
     #packages { background:#fff; }
     #packages .reveal { text-align:center; }
@@ -1463,6 +1499,7 @@
     }
 
     @media (max-width:1024px) {
+      .logo-board-grid { grid-template-columns:repeat(3, minmax(0, 1fr)); }
       .nav-links,
       .nav-cta {
         display:none;
@@ -1680,6 +1717,17 @@
         padding-inline: 0;
         padding-bottom: 0;
         scroll-snap-type: none;
+      }
+      .logo-board-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 12px;
+        margin-top: 28px;
+      }
+      .logo-board-grid li { min-height: 88px; }
+      .logo-board-grid img { max-height: 72px; }
+      #associations .logo-board-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px 16px;
       }
       .packages-grid {
         grid-template-columns: 1fr;
@@ -2380,6 +2428,40 @@
           <div class="gallery-overlay"><span>Convention Center</span></div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="clientele" class="section" aria-label="Clientele">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">Who we work with</span>
+        <h2 class="section-title">COLLAB & CLIENTS</h2>
+      </div>
+      <ul class="logo-board-grid">
+        <li><img src="logo/clientele/leaders-international-school.jpg" alt="Leaders International School" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/indian-medical-association.jpg" alt="Indian Medical Association" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/riverbed.jpg" alt="Riverbed" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/f16-resto.jpg" alt="F16 Resto" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/kbr-butter-dosa.jpg" alt="KBR's Butter Dosa" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/anjaneya-seva-samiti.jpg" alt="Anjaneya Seva Samiti" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/lotus-builders.jpg" alt="Lotus Builders and Developers" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/bigrock-properties.jpg" alt="Bigrock Properties" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/rastrakuta.jpg" alt="Rastrakuta Infra Developers" data-skip-avif="1"></li>
+        <li><img src="logo/clientele/mithra-cafe.jpg" alt="Mithra Cafe" data-skip-avif="1"></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="associations" class="section" aria-label="Associations">
+    <div class="inner">
+      <div class="reveal section-head-center">
+        <span class="section-tag">Memberships</span>
+        <h2 class="section-title">Associations</h2>
+      </div>
+      <ul class="logo-board-grid">
+        <li><img src="logo/associations/rotary.webp" alt="Rotary International" data-skip-avif="1"></li>
+        <li><img src="logo/associations/bni-clear.png" alt="BNI Proud Member" data-skip-avif="1"></li>
+      </ul>
     </div>
   </section>
 

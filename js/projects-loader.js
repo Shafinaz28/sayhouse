@@ -219,11 +219,31 @@
     }
 
     if (interior.length) {
+      const galleryOf = (p) => (p.gallery || []).filter(Boolean);
+      const fromSheet = interior.filter((p) => {
+        const g = galleryOf(p);
+        return g.length && g[0] !== 'interior/';
+      });
+      const builtin = Array.isArray(window.INTERIOR_PROJECTS) ? window.INTERIOR_PROJECTS : [];
+      const keyOf = (p) =>
+        `${String(p.owner || '').trim().toLowerCase()}|${String(p.title || p.location || '').trim().toLowerCase()}`;
+      const builtinByKey = new Map();
+      builtin.forEach((p) => {
+        const g = galleryOf(p);
+        if (g.length && g[0] !== 'interior/') builtinByKey.set(keyOf(p), p);
+      });
+      const merged = fromSheet.map((p) => {
+        const local = builtinByKey.get(keyOf(p));
+        if (!local) return p;
+        const have = new Set(galleryOf(p).map((src) => String(src).toLowerCase()));
+        const extra = galleryOf(local).filter((src) => !have.has(String(src).toLowerCase()));
+        if (!extra.length) return p;
+        return { ...p, gallery: [...galleryOf(p), ...extra] };
+      });
+      const seen = new Set(fromSheet.map(keyOf));
+      const extras = [...builtinByKey.values()].filter((p) => !seen.has(keyOf(p)));
       window.INTERIOR_PROJECTS = normalizeResidential(
-        interior.filter((p) => {
-          const g = (p.gallery || []).filter(Boolean);
-          return g.length && g[0] !== 'interior/';
-        }),
+        [...merged, ...extras],
         interiorFallbackDescription
       );
     }
